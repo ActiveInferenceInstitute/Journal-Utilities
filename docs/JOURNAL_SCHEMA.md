@@ -4,10 +4,25 @@ Target schema for the refactor of the `ActiveInferenceJournal` repo. Goal: unifo
 flat, machine-readable item folders with a canonical `metadata.json`, no placeholder
 cruft, audio kept off `main`, and top-level indexes.
 
+## Top-level namespace
+
+Content is source-namespaced so other channels and non-video sources coexist:
+
+```
+data/video/activeinferenceinstitute/<Series>/...   # this channel
+data/video/<other-channel>/...                      # other YouTube channels
+data/<other-type>/<source>/...                      # non-video sources
+docs/                                               # technical documentation
+INDEX.json  INDEX.md  README.md                     # top level
+```
+
+Every channel video is represented (idempotent build from the JU channel manifest +
+transcripts); uncategorized videos live under `<namespace>/Other/<video_id>/`.
+
 ## Per-item folder
 
 ```
-<Series>/<Series>_<NNN[.E]>/
+data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
   metadata.json        # canonical record (see below) — single source of truth
   README.md            # generated human nav: title(s), date, links, contents
   transcript.txt       # clean text (per part: "## Part N" headers when multi-part)

@@ -21,6 +21,9 @@ import re
 from pathlib import Path
 
 PLACEHOLDERS = {"blank_document.txt", "blank.txt"}
+# Source-namespaced root so other channels / non-video sources can live alongside:
+#   data/video/activeinferenceinstitute/<Series>/...   data/<type>/<source>/...
+SRC_PREFIX = "data/video/activeinferenceinstitute"
 IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp"}
 SERIES_DIRS_SKIP = {".git", "Stream Series Template"}
 
@@ -161,7 +164,7 @@ def build_item(item: Path, journal: Path, out_dir: Path, titles: dict, audio_out
 
     rel = item.relative_to(journal)
     series = rel.parts[0]
-    dest = out_dir / rel
+    dest = out_dir / SRC_PREFIX / rel
     dest.mkdir(parents=True, exist_ok=True)
 
     parts: dict[str, dict] = {}
@@ -257,8 +260,10 @@ def build_v2(journal: Path, out_dir: Path, audio_out: Path) -> dict:
         if not f.is_file():
             continue
         rel = f.relative_to(journal)
-        if rel.parts[0] in (".git", "Stream Series Template"):
+        if rel.parts[0] in (".git", "Stream Series Template", "data", "docs"):
             continue
+        if rel.name in ("README.md", "INDEX.json", "INDEX.md", "SCHEMA.md", ".gitignore"):
+            continue  # regenerated at the top level
         if f.name in PLACEHOLDERS or f.name == ".gitkeep":
             continue
         if under_item(f):
@@ -266,17 +271,76 @@ def build_v2(journal: Path, out_dir: Path, audio_out: Path) -> dict:
         ext = f.suffix.lower()
         if ext in {".m4a", ".mp3", ".wav", ".opus", ".webm"}:
             dst = audio_out / rel
-        else:
-            dst = out_dir / rel
+        elif len(rel.parts) == 1:  # top-level loose file → docs/
+            dst = out_dir / "docs" / rel.name
+        else:  # course-level / series-level file → under the source namespace
+            dst = out_dir / SRC_PREFIX / rel
         _copy(f, dst)
         passthrough += 1
 
-    return {"items": len(records), "titles_known": len(titles),
+    # Coverage pass: ensure EVERY channel video is an item (idempotent). Videos with a
+    # JU transcript but no curated item get a generated item, categorized by title.
+    generated = _build_uncovered(journal, out_dir, titles, item_paths)
+
+    return {"items": len(records) + generated, "curated_items": len(records),
+            "generated_items": generated, "titles_known": len(titles),
             "total_moved": sum(r["moved"] for r in records),
             "total_dropped": sum(r["dropped"] for r in records),
             "total_audio": sum(r["audio"] for r in records),
             "passthrough": passthrough,
             "with_transcript": sum(1 for r in records if r["transcripts"])}
+
+
+def _build_uncovered(journal: Path, out_dir: Path, titles: dict, item_paths: list) -> int:
+    """Generate an item for every channel video not already in a curated item.
+
+    Categorized videos land in their series; uncategorized ones go to ``Other/``.
+    Idempotent: re-running produces the same tree. Uses JU transcripts when present.
+    """
+    from journal_utilities.youtube.categorizer import categorize_name
+
+    mani = journal.parent / "Journal-Utilities" / "data" / "output" / "channel_videos.json"
+    tx_dir = journal.parent / "Journal-Utilities" / "data" / "output" / "transcripts"
+    if not mani.exists():
+        return 0
+    videos = json.loads(mani.read_text(encoding="utf-8")).get("videos", [])
+    covered = set()
+    for mj in (out_dir / SRC_PREFIX).rglob("metadata.json"):
+        try:
+            for p in json.loads(mj.read_text(encoding="utf-8")).get("parts", []):
+                covered.add(p["video_id"])
+        except (OSError, json.JSONDecodeError):
+            continue
+
+    generated = 0
+    for v in videos:
+        vid = v.get("id")
+        if not vid or vid in covered:
+            continue
+        cat, ser, ep = categorize_name(v.get("title", ""), is_unique_event_name=False)
+        if cat and ser:
+            series, item = cat, ser
+        else:
+            series, item = "Other", vid
+        dest = out_dir / SRC_PREFIX / series / item
+        dest.mkdir(parents=True, exist_ok=True)
+        meta = {
+            "series": series, "item": item, "source": "youtube", "channel": "ActiveInferenceInstitute",
+            "category": cat, "episode": ep,
+            "parts": [{"video_id": vid, "url": v.get("url", f"https://www.youtube.com/watch?v={vid}"),
+                       "title": v.get("title", ""), "duration": v.get("duration"),
+                       "upload_date": v.get("upload_date", "")}],
+        }
+        (dest / "metadata.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
+        tx = tx_dir / f"{vid}.txt"
+        if tx.exists():
+            (dest / "transcript.txt").write_text(tx.read_text(encoding="utf-8", errors="replace"), encoding="utf-8")
+        (dest / "README.md").write_text(
+            f"# {item}\n\nSeries: **{series}**\n\n- [{v.get('title') or '(untitled)'}]"
+            f"({v.get('url', '')}) — `{vid}`\n", encoding="utf-8")
+        covered.add(vid)
+        generated += 1
+    return generated
 
 
 def main() -> int:
