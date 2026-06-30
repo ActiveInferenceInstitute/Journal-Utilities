@@ -198,6 +198,9 @@ Journal-Utilities/
 ## 📚 Documentation
 
 All technical detail lives in `docs/`. The README you're reading is the overview and entry point.
+See [`docs/JOURNAL_SCHEMA.md`](docs/JOURNAL_SCHEMA.md) for the ActiveInferenceJournal v2 schema
+and [`docs/REFACTOR_READINESS.md`](docs/REFACTOR_READINESS.md) for the refactor pipeline
+(`scripts/refactor_journal.py`).
 
 | Guide | What You'll Find |
 |-------|------------------|

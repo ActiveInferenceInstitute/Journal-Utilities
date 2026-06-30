@@ -6,12 +6,34 @@ Guidance for Claude Code (claude.ai/code) when working with this repository.
 
 Journal-Utilities is a Python processing pipeline for Active Inference Institute YouTube content. It supports six workflows:
 
-1. **YouTube Channel Download** — Enumerate and download transcripts, audio, and video via `yt-dlp` with cookie-based auth
+1. **YouTube Channel Download** — Enumerate and download transcripts, audio, and video via `yt-dlp`
 2. **Local Whisper Transcription** — Apple Silicon–optimized transcription via `mlx-whisper`
 3. **WhisperX Transcription** — GPU-based transcription with speaker diarization (CUDA + SurrealDB)
 4. **Entity Extraction (RAG)** — Cohere AI entity/relationship extraction into SurrealDB graph
 5. **Export** — Multi-format transcript export (plaintext, PDF, Markdown, JSON, HTML)
 6. **Web Interface** — FastAPI SPA for browsing the video library with Ollama-powered RAG chat
+
+## Journal v2 refactor
+
+`scripts/refactor_journal.py` transforms the sibling `ActiveInferenceJournal` repo into
+the uniform v2 schema — see [`docs/JOURNAL_SCHEMA.md`](docs/JOURNAL_SCHEMA.md) and
+[`docs/REFACTOR_READINESS.md`](docs/REFACTOR_READINESS.md). Run `--build <dir>` for an
+out-of-place staging tree (audit/dry-run); content-based item detection + a passthrough
+pass guarantee zero data loss (reconcile total source files == captured + intentional
+drops before any in-place apply). Audio is split to the journal's `audio` branch
+(`<item>/audio/<name>.64k.m4a`); `main` carries no audio.
+
+## Operational notes (important)
+
+- **Cookie safety:** the downloader runs **cookie-free** when no `cookies.txt` exists. A
+  leaked `cookies.txt` once exposed live Google session cookies in this public repo —
+  it is now gitignored and purged from history. **Never use `--cookies-from-browser`**
+  into a tracked path; never commit `cookies.txt`.
+- **Enumeration:** `channel.py` unions the `/videos` + `/streams` + `/shorts` tabs (the
+  `UU...` uploads playlist truncates at ~100). Full channel = ~729 videos.
+- `timeout` is not on macOS (use `gtimeout` or none). For transcript-only work, a
+  lightweight venv (`yt-dlp` + `youtube-transcript-api`) is enough — `whisperx` is only
+  for diarization.
 
 ## Development Commands
 
