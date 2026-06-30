@@ -1,0 +1,34 @@
+# docs — Journal-Utilities
+
+Technical documentation for the Journal-Utilities pipeline (the engine that produces the
+[ActiveInferenceJournal](https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal)
+data repository). The repo [`../README.md`](../README.md) is the overview; these are the
+module- and workflow-level guides.
+
+## Pipeline / module guides
+
+| Doc | Covers |
+| --- | --- |
+| [`youtube.md`](youtube.md) | Channel enumeration (`youtube/channel.py`) — unions videos+streams+shorts tabs. |
+| [`youtube_download.md`](youtube_download.md) | Downloading transcripts/audio/video via `yt-dlp` (`download/downloader.py`). |
+| [`transcription.md`](transcription.md) | Local Whisper (`mlx-whisper`) and WhisperX transcription. |
+| [`data.md`](data.md) | Data layout, manifests, and the SurrealDB store. |
+| [`rag.md`](rag.md) | Entity/relationship extraction (Cohere → SurrealDB graph). |
+| [`export.md`](export.md) | Multi-format transcript export (plaintext/PDF/MD/JSON/HTML). |
+| [`render.md`](render.md) | Markdown/HTML rendering, course scaffolding. |
+| [`web_interface.md`](web_interface.md) | FastAPI SPA for browsing the library. |
+| [`chat_engine.md`](chat_engine.md) | Ollama-powered RAG chat over transcripts. |
+| [`configuration.md`](configuration.md) | `config.ini` + `.env` reference. |
+
+## Journal refactor
+
+| Doc | Covers |
+| --- | --- |
+| [`JOURNAL_SCHEMA.md`](JOURNAL_SCHEMA.md) | The ActiveInferenceJournal v2 schema + source-namespaced layout (`scripts/refactor_journal.py`). |
+| [`REFACTOR_READINESS.md`](REFACTOR_READINESS.md) | Coverage, the local-LLM stack, and the refactor/verification process. |
+
+## Collaboration
+
+Journal-Utilities is the **code**; ActiveInferenceJournal is the **content**. The schema
+of record is mirrored in both: `docs/JOURNAL_SCHEMA.md` here and `docs/SCHEMA.md` in the
+journal. Keep them in sync when the per-item structure changes.
