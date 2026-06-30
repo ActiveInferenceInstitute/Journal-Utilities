@@ -39,6 +39,24 @@ private (`WrixYErQot0`, `jhIzOXA1ZFg`, `t2TgSuYH-K8`). Being transcribed via `ml
 | WhisperX | not installed | GPU diarization (optional) |
 | Cohere | needs `COHERE_API_KEY` | entity/relationship graph (optional) |
 
+## ⚠️ BLOCKER before in-place apply — converter coverage gap
+
+The converter's `find_items` only matches `<Series>_<number>` folders. Full-journal
+reconciliation (10,987 files total vs. 9,263 captured) found **1,725 files it does NOT
+reach** and would lose in an in-place swap:
+
+| Area | Files | Cause |
+| --- | --- | --- |
+| `Applied Active Inference Symposium/` | 1,128 | spaces in name; non-standard item dirs |
+| `Courses/` | 552 | Discussion/Lecture nesting + course-level files |
+| `ReviewStream/` | 43 | non-standard item naming |
+| top-level `README.md` | 1 | outside any item |
+
+**Gate:** the in-place apply must not run until `total files == captured + intentional
+drops` (placeholders + redundant `.simple.json`). The bulk (9,263 files / 4,725 moved)
+is reconciled to **0 loss**; these series need `find_items`/classification extended +
+top-level file passthrough first.
+
 ## Mega-push plan (after prep verified)
 
 1. `refactor_journal.py --apply` → in-place convert the journal to v2 (git mv preserves

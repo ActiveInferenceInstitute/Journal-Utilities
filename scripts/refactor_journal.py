@@ -110,10 +110,130 @@ def analyze(journal: Path) -> dict:
     }
 
 
+_VID_RE = re.compile(r"([A-Za-z0-9_-]{11})(?:\.|$|_)")
+
+
+def _video_id(name: str) -> str:
+    # ids appear as ..._<id>.json / ..._youtube_<id>.json / <item>.<ep>_<id>...
+    stem = re.sub(r"\.(simple\.)?(json|txt|srt)$", "", name)
+    m = re.search(r"_([A-Za-z0-9_-]{11})$", stem) or re.search(r"_([A-Za-z0-9_-]{11})\b", stem)
+    return m.group(1) if m else ""
+
+
+def _load_titles(journal: Path) -> dict[str, str]:
+    """video_id -> title, from the Journal-Utilities channel manifest if present."""
+    mani = journal.parent / "Journal-Utilities" / "data" / "output" / "channel_videos.json"
+    if not mani.exists():
+        return {}
+    try:
+        data = json.loads(mani.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return {v["id"]: v.get("title", "") for v in data.get("videos", []) if v.get("id")}
+
+
+def build_item(item: Path, journal: Path, out_dir: Path, titles: dict, audio_out: Path) -> dict:
+    """Build one v2 item folder under out_dir. Returns a per-item record + reconciliation."""
+    from journal_utilities.youtube.categorizer import categorize_name
+
+    rel = item.relative_to(journal)
+    series = rel.parts[0]
+    dest = out_dir / rel
+    dest.mkdir(parents=True, exist_ok=True)
+
+    parts: dict[str, dict] = {}
+    transcript_txt: list[tuple[str, str]] = []
+    transcript_json: list[dict] = []
+    moved = 0
+    dropped = 0
+    audio_files: list[str] = []
+
+    for f in sorted(item.rglob("*")):
+        if not f.is_file():
+            continue
+        relparts = list(f.relative_to(item).parts[:-1])
+        cat = classify(relparts, f.name)
+        vid = _video_id(f.name)
+        if vid:
+            parts.setdefault(vid, {"video_id": vid, "url": f"https://www.youtube.com/watch?v={vid}",
+                                   "title": titles.get(vid, "")})
+        if cat == "DROP":
+            dropped += 1
+        elif cat == "transcript_txt":
+            transcript_txt.append((vid, f.read_text(encoding="utf-8", errors="replace")))
+        elif cat == "transcript_json":
+            pass  # redundant simple.json — consumed by transcript.txt
+        elif cat == "metadata":
+            try:
+                seg = json.loads(f.read_text(encoding="utf-8", errors="replace"))
+                transcript_json.append({"video_id": vid, "segments": seg})
+            except json.JSONDecodeError:
+                _copy(f, _unique(dest / "assets" / "notes", f.name, relparts)); moved += 1
+        elif cat == "AUDIO":
+            ao = audio_out / rel / f.name
+            ao.parent.mkdir(parents=True, exist_ok=True)
+            _copy(f, ao); audio_files.append(f.name)
+        else:  # captions / translations / assets/*
+            _copy(f, _unique(dest / cat, f.name, relparts)); moved += 1
+
+    cat_, ser_, ep_ = categorize_name(titles.get(next(iter(parts), ""), "") or item.name, is_unique_event_name=False)
+    meta = {
+        "series": series, "item": item.name, "source": "youtube", "channel": "ActiveInferenceInstitute",
+        "category": cat_, "episode": ep_,
+        "parts": sorted(parts.values(), key=lambda p: p["video_id"]),
+    }
+    (dest / "metadata.json").write_text(json.dumps(meta, indent=2, ensure_ascii=False), encoding="utf-8")
+    if transcript_txt:
+        body = "\n\n".join(f"## {vid}\n\n{txt.strip()}" for vid, txt in transcript_txt if txt.strip())
+        (dest / "transcript.txt").write_text(body, encoding="utf-8")
+    if transcript_json:
+        (dest / "transcript.json").write_text(json.dumps(transcript_json, ensure_ascii=False), encoding="utf-8")
+    # README
+    lines = [f"# {item.name}", "", f"Series: **{series}**", ""]
+    for p in meta["parts"]:
+        t = p["title"] or "(untitled)"
+        lines.append(f"- [{t}]({p['url']}) — `{p['video_id']}`")
+    lines += ["", "Contents: " + ", ".join(sorted({d.name for d in dest.iterdir() if d.is_dir()}) or ["—"]) + "."]
+    (dest / "README.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    return {"item": str(rel), "parts": len(parts), "moved": moved, "dropped": dropped,
+            "transcripts": len(transcript_txt), "audio": len(audio_files)}
+
+
+def _copy(src: Path, dst: Path) -> None:
+    import shutil
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(src, dst)
+
+
+def _unique(dirpath: Path, name: str, relparts: list[str]) -> Path:
+    """Return a collision-free target path. Disambiguates by prefixing the source
+    subdir when the basename already exists from a different source location."""
+    dirpath.mkdir(parents=True, exist_ok=True)
+    target = dirpath / name
+    if not target.exists():
+        return target
+    prefix = "_".join(p for p in relparts if p) or "x"
+    return dirpath / f"{prefix}__{name}"
+
+
+def build_v2(journal: Path, out_dir: Path, audio_out: Path) -> dict:
+    titles = _load_titles(journal)
+    items = find_items(journal)
+    records = [build_item(it, journal, out_dir, titles, audio_out) for it in items]
+    return {"items": len(records), "titles_known": len(titles),
+            "total_moved": sum(r["moved"] for r in records),
+            "total_dropped": sum(r["dropped"] for r in records),
+            "total_audio": sum(r["audio"] for r in records),
+            "with_transcript": sum(1 for r in records if r["transcripts"])}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--journal", type=Path, default=Path(__file__).resolve().parent.parent.parent / "ActiveInferenceJournal")
-    ap.add_argument("--apply", action="store_true", help="(not yet) perform moves; default is dry-run audit")
+    ap.add_argument("--build", type=Path, default=None, help="build v2 staging tree at this path (out-of-place)")
+    ap.add_argument("--audio-out", type=Path, default=None, help="collect audio files here (for the audio branch)")
+    ap.add_argument("--apply", action="store_true", help="(gated) perform moves; default is dry-run audit")
     ap.add_argument("--report", type=Path, default=None, help="write full JSON plan here")
     args = ap.parse_args()
 
@@ -121,6 +241,16 @@ def main() -> int:
     if not journal.exists():
         print(f"journal not found: {journal}")
         return 1
+
+    if args.build:
+        out = args.build.resolve()
+        audio_out = (args.audio_out or (out.parent / "_audio")).resolve()
+        out.mkdir(parents=True, exist_ok=True)
+        audio_out.mkdir(parents=True, exist_ok=True)
+        print(f"building v2 staging -> {out}\naudio -> {audio_out}")
+        res = build_v2(journal, out, audio_out)
+        print(json.dumps(res, indent=2))
+        return 0
 
     plan = analyze(journal)
     print(f"=== ActiveInferenceJournal v2 refactor — DRY RUN ===")
