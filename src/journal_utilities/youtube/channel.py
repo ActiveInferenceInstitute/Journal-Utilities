@@ -77,67 +77,63 @@ def enumerate_channel_videos(
     Raises:
         RuntimeError: If yt-dlp exits with a non-zero status.
     """
-    # Use the "Uploads" playlist (UU...) for robust enumeration of all videos
-    # including Shorts and Live streams, bypassing tab/UI variances.
+    # Enumerate across the channel's tabs (videos + streams + shorts) and union the
+    # results, because the Uploads playlist (UU...) form is truncated to ~100 entries
+    # by YouTube. The /videos and /streams tabs together cover the full library.
     if channel_id.startswith("UC") and len(channel_id) == 24:
-        uploads_id = "UU" + channel_id[2:]
-        channel_url = f"https://www.youtube.com/playlist?list={uploads_id}"
-        logger.info("Enumerating videos from Uploads playlist %s (derived from %s)", uploads_id, channel_id)
+        base = f"https://www.youtube.com/channel/{channel_id}"
+        urls = [f"{base}/videos", f"{base}/streams", f"{base}/shorts"]
+        logger.info("Enumerating channel %s across tabs: videos, streams, shorts", channel_id)
     else:
-        channel_url = f"https://www.youtube.com/channel/{channel_id}"
+        urls = [f"https://www.youtube.com/channel/{channel_id}"]
         logger.info("Enumerating videos for channel %s", channel_id)
 
-    cmd: list[str] = [
+    base_cmd: list[str] = [
         "yt-dlp",
         "--flat-playlist",
         "--dump-json",
         "--no-warnings",
         "--ignore-errors",
     ]
-
     if date_after:
-        cmd.extend(["--dateafter", date_after])
+        base_cmd.extend(["--dateafter", date_after])
     if date_before:
-        cmd.extend(["--datebefore", date_before])
+        base_cmd.extend(["--datebefore", date_before])
     if max_videos:
-        cmd.extend(["--playlist-end", str(max_videos)])
+        base_cmd.extend(["--playlist-end", str(max_videos)])
 
-    cmd.append(channel_url)
-
-    logger.debug("Running command: %s", " ".join(cmd))
-    start_time = time.monotonic()
-
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        timeout=1200,  # Allow more time for large channels (600+ videos)
-    )
-
-    elapsed = time.monotonic() - start_time
-    logger.info("yt-dlp enumeration completed in %.1fs (exit code %d)", elapsed, result.returncode)
-
-    if result.returncode != 0 and not result.stdout.strip():
-        logger.error("yt-dlp stderr: %s", result.stderr)
-        raise RuntimeError(
-            f"yt-dlp failed with exit code {result.returncode}: {result.stderr[:500]}"
-        )
-
-    # Parse JSON lines output
     videos: list[VideoInfo] = []
-    for line in result.stdout.strip().splitlines():
-        if not line.strip():
-            continue
+    seen: set[str] = set()
+    start_time = time.monotonic()
+    for url in urls:
+        cmd = [*base_cmd, url]
+        logger.debug("Running command: %s", " ".join(cmd))
         try:
-            entry = json.loads(line)
-            video = _parse_video_entry(entry)
-            if video:
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=1200)
+        except subprocess.TimeoutExpired:
+            logger.warning("yt-dlp timed out enumerating %s", url)
+            continue
+        if result.returncode != 0 and not result.stdout.strip():
+            logger.warning("yt-dlp tab %s failed (exit %d): %s", url, result.returncode, result.stderr[:200])
+            continue
+        for line in result.stdout.strip().splitlines():
+            if not line.strip():
+                continue
+            try:
+                video = _parse_video_entry(json.loads(line))
+            except json.JSONDecodeError as exc:
+                logger.warning("Skipping malformed JSON line: %s", exc)
+                continue
+            if video and video.id not in seen:
+                seen.add(video.id)
                 videos.append(video)
                 if max_videos and len(videos) >= max_videos:
                     break
-        except json.JSONDecodeError as exc:
-            logger.warning("Skipping malformed JSON line: %s", exc)
-            continue
+        if max_videos and len(videos) >= max_videos:
+            break
+
+    elapsed = time.monotonic() - start_time
+    logger.info("yt-dlp enumeration completed in %.1fs across %d tab(s)", elapsed, len(urls))
 
     manifest = ChannelManifest(
         channel_id=channel_id,
