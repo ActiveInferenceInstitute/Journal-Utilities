@@ -64,19 +64,37 @@ def classify(rel_parts: list[str], name: str) -> str:
     return "UNMAPPED"
 
 
+# A folder is an "item" if it directly contains any of these template subdirs.
+# Content-based detection captures stream items AND non-standard names (symposium
+# years, "End of 2023 Review", course Lecture_N) without relying on a name pattern.
+TEMPLATE_SUBDIRS = {
+    "Metadata", "Transcripts", "Captions", "Translations", "Audio", "Video",
+    "Images", "Prose", "Appendices", "Bibliographic Information", "HTML",
+}
+
+
+def _is_item(d: Path) -> bool:
+    return any((d / sub).is_dir() for sub in TEMPLATE_SUBDIRS)
+
+
 def find_items(journal: Path) -> list[Path]:
     items: list[Path] = []
+
+    def walk(d: Path) -> None:
+        for sub in sorted(d.iterdir()):
+            if not sub.is_dir() or sub.name in SERIES_DIRS_SKIP:
+                continue
+            if _is_item(sub):
+                items.append(sub)  # do not descend into an item
+            else:
+                walk(sub)
+
     for series in sorted(journal.iterdir()):
-        if not series.is_dir() or series.name in SERIES_DIRS_SKIP:
-            continue
-        for sub in sorted(series.iterdir()):
-            if sub.is_dir() and ITEM_RE.match(sub.name):
-                items.append(sub)
-            elif sub.is_dir():
-                # nested (e.g. TextbookGroup/<cohort>/Meeting_xxx)
-                for deep in sorted(sub.iterdir()):
-                    if deep.is_dir() and ITEM_RE.match(deep.name):
-                        items.append(deep)
+        if series.is_dir() and series.name not in SERIES_DIRS_SKIP:
+            if _is_item(series):
+                items.append(series)
+            else:
+                walk(series)
     return items
 
 
@@ -114,9 +132,14 @@ _VID_RE = re.compile(r"([A-Za-z0-9_-]{11})(?:\.|$|_)")
 
 
 def _video_id(name: str) -> str:
-    # ids appear as ..._<id>.json / ..._youtube_<id>.json / <item>.<ep>_<id>...
+    # ids appear as ..._<id> / ..._youtube_<id> / <title> [<id>] / <item>.<ep>_<id>
     stem = re.sub(r"\.(simple\.)?(json|txt|srt)$", "", name)
-    m = re.search(r"_([A-Za-z0-9_-]{11})$", stem) or re.search(r"_([A-Za-z0-9_-]{11})\b", stem)
+    m = (
+        re.search(r"\[([A-Za-z0-9_-]{11})\]", stem)  # symposium: "... [hW9IiOujS1E]_0"
+        or re.search(r"_youtube_([A-Za-z0-9_-]{11})\b", stem)
+        or re.search(r"_([A-Za-z0-9_-]{11})$", stem)
+        or re.search(r"_([A-Za-z0-9_-]{11})\b", stem)
+    )
     return m.group(1) if m else ""
 
 
@@ -220,11 +243,39 @@ def _unique(dirpath: Path, name: str, relparts: list[str]) -> Path:
 def build_v2(journal: Path, out_dir: Path, audio_out: Path) -> dict:
     titles = _load_titles(journal)
     items = find_items(journal)
+    item_paths = [it.resolve() for it in items]
     records = [build_item(it, journal, out_dir, titles, audio_out) for it in items]
+
+    # Passthrough pass: copy every file NOT under a detected item verbatim, so nothing
+    # outside the item structure (course-level files, top-level README, …) is lost.
+    def under_item(p: Path) -> bool:
+        rp = p.resolve()
+        return any(ip == rp or ip in rp.parents for ip in item_paths)
+
+    passthrough = 0
+    for f in journal.rglob("*"):
+        if not f.is_file():
+            continue
+        rel = f.relative_to(journal)
+        if rel.parts[0] in (".git", "Stream Series Template"):
+            continue
+        if f.name in PLACEHOLDERS or f.name == ".gitkeep":
+            continue
+        if under_item(f):
+            continue
+        ext = f.suffix.lower()
+        if ext in {".m4a", ".mp3", ".wav", ".opus", ".webm"}:
+            dst = audio_out / rel
+        else:
+            dst = out_dir / rel
+        _copy(f, dst)
+        passthrough += 1
+
     return {"items": len(records), "titles_known": len(titles),
             "total_moved": sum(r["moved"] for r in records),
             "total_dropped": sum(r["dropped"] for r in records),
             "total_audio": sum(r["audio"] for r in records),
+            "passthrough": passthrough,
             "with_transcript": sum(1 for r in records if r["transcripts"])}
 
 
