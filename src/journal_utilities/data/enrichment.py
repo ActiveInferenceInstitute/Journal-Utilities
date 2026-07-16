@@ -66,6 +66,11 @@ PER_PART_KEYS = ("title", "date", "slides_url", "paper_link", "doi", "zenodo")
 # Name suffixes/credentials that a naive comma-split would sever.
 _NAME_SUFFIX = re.compile(r"^(?:Psy\.?\s?D\.?|Ph\.?\s?D\.?|M\.?\s?D\.?|Jr\.?|Sr\.?|Esq\.?|[IVX]{2,3})$", re.I)
 
+# Canonical spellings for people who appear under multiple names across sources.
+NAME_ALIASES = {
+    "Sasha Mikhailova": "Alexandra Mikhailova",
+}
+
 _CURLY = str.maketrans({"“": '"', "”": '"', "„": '"', "‘": "'", "’": "'"})
 
 
@@ -84,7 +89,7 @@ def split_names(raw) -> list[str]:
             names[-1] = f"{names[-1]}, {token}"
         else:
             names.append(token)
-    return names
+    return [NAME_ALIASES.get(name, name) for name in names]
 
 
 def _iso_date(raw) -> str:
@@ -105,7 +110,10 @@ def map_coda_row(values: dict) -> dict:
         if value:
             out[key] = value
 
-    put("title", _clean(values.get("Title or name of stream")))
+    # Title follows the channel convention: "<Unique event name> ~ <stream title>".
+    unique = _clean(values.get("Unique event name"))
+    stream = _clean(values.get("Title or name of stream"))
+    put("title", f"{unique} ~ {stream}" if unique and stream else stream or unique)
     put("date", _iso_date(values.get("Date")))
     put("guests", split_names(values.get("Guests")))
     put("other_participants", split_names(values.get("Other Participants")))

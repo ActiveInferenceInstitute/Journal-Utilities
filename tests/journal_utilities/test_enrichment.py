@@ -41,9 +41,14 @@ class TestSplitNames:
         assert split_names(None) == []
         assert split_names(False) == []
 
+    def test_alias_normalization(self):
+        assert split_names("Ivan Metelkin,Sasha Mikhailova") == [
+            "Ivan Metelkin", "Alexandra Mikhailova"]
+
 
 class TestMapCodaRow:
     FULL_ROW = {
+        "Unique event name": "GuestStream #128.1",
         "Title or name of stream": "Learning in Physical Systems",
         "Date": "2025-11-05T00:00:00.000-08:00",
         "Guests": "Marcelo Guzman",
@@ -62,7 +67,7 @@ class TestMapCodaRow:
 
     def test_full_row(self):
         out = map_coda_row(self.FULL_ROW)
-        assert out["title"] == "Learning in Physical Systems"
+        assert out["title"] == "GuestStream #128.1 ~ Learning in Physical Systems"
         assert out["date"] == "2025-11-05"
         assert out["guests"] == ["Marcelo Guzman"]
         assert out["other_participants"] == ["Daniel Friedman", "Bert Berkers"]
