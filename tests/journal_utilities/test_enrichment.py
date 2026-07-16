@@ -174,6 +174,16 @@ class TestMergeEnrichment:
         kept, _ = merge_enrichment(self.BASE, {}, fill_parts=fill)
         assert kept["parts"] == self.BASE["parts"]
 
+    def test_sessions_seed_only_never_overwrite(self):
+        seed = [{"index": 1, "session_name": "abcdefghijk_sess01", "start": "0:00:00"}]
+        edited = [{"index": 1, "session_name": "abcdefghijk_sess01", "start": "0:00:00",
+                   "guests": ["Hand Edit"]}]
+        seeded, changed = merge_enrichment(self.BASE, {"sessions": seed})
+        assert changed and seeded["sessions"] == seed
+        kept, changed2 = merge_enrichment(dict(self.BASE, sessions=edited), {"sessions": seed})
+        assert not changed2
+        assert kept["sessions"] == edited
+
     def test_replace_parts_overrides_bogus_ids(self):
         meta = dict(self.BASE, parts=[{"video_id": "Int1-Sess01", "url": "", "title": ""}])
         fill = [{"video_id": "rIemcswLfGg", "url": "u", "title": "t"}]

@@ -63,6 +63,10 @@ CANONICAL_ORDER = (
 # Fields that may attach per-part when multiple Coda rows map to one item.
 PER_PART_KEYS = ("title", "date", "slides_url", "paper_link", "doi", "zenodo")
 
+# Journal-owned fields: enrichment seeds them when absent but NEVER overwrites —
+# the journal repo is their source of truth and hand-edits there must stick.
+SEED_ONLY_KEYS = ("sessions",)
+
 # Name suffixes/credentials that a naive comma-split would sever.
 _NAME_SUFFIX = re.compile(r"^(?:Psy\.?\s?D\.?|Ph\.?\s?D\.?|M\.?\s?D\.?|Jr\.?|Sr\.?|Esq\.?|[IVX]{2,3})$", re.I)
 
@@ -276,7 +280,7 @@ def merge_enrichment(
     new = dict(meta)
     for key in ENRICH_KEYS:
         value = enrichment.get(key)
-        if value:
+        if value and not (key in SEED_ONLY_KEYS and meta.get(key)):
             new[key] = value
 
     if fill_parts and (replace_parts or not new.get("parts")):

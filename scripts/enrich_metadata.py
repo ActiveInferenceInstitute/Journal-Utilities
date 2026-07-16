@@ -198,6 +198,41 @@ def process_curated_parts(items: dict, manifest: dict, pending: dict, report: di
         report["curated_parts"].append({"item": rel, "video_id": vid})
 
 
+def _fmt_start(seconds: float) -> str:
+    total = int(seconds)
+    return f"{total // 3600}:{total % 3600 // 60:02d}:{total % 60:02d}"
+
+
+def load_chapters(path: Path) -> dict[str, list]:
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def chapter_sessions(meta: dict, chapters: dict[str, list]) -> list[dict]:
+    """Seed sessions[] from YouTube chapter lists, sequential across parts.
+
+    Only fires when at least one part has >=2 chapters (a single chapter is
+    not a session structure). Speaker attribution is left to humans — the
+    journal owns sessions after seeding.
+    """
+    sessions: list[dict] = []
+    for part in meta.get("parts", []):
+        vid = part.get("video_id", "")
+        part_chapters = chapters.get(vid) or []
+        if len(part_chapters) < 2:
+            continue
+        for chapter in part_chapters:
+            index = len(sessions) + 1
+            sessions.append({
+                "index": index,
+                "session_name": f"{vid}_sess{index:02d}",
+                "start": _fmt_start(chapter["start"]),
+                "title": chapter["title"],
+            })
+    return sessions
+
+
 def _sess(vid: str, index: int, start: str, guests: list[str], title: str = "") -> dict:
     session = {"index": index, "session_name": f"{vid}_sess{index:02d}", "start": start}
     if title:
@@ -312,6 +347,7 @@ def main() -> int:
     parser.add_argument("--split-dir", type=Path, default=REPO / "data/input")
     parser.add_argument("--manifest", type=Path, default=REPO / "data/output/channel_videos.json")
     parser.add_argument("--db-export", type=Path, default=REPO / "data/input/session_db_export.json")
+    parser.add_argument("--chapters", type=Path, default=REPO / "data/input/video_chapters.json")
     parser.add_argument("--apply", action="store_true", help="write changes (default: dry run)")
     parser.add_argument("--report", type=Path, help="write full JSON report to this path")
     args = parser.parse_args()
@@ -325,7 +361,8 @@ def main() -> int:
         "duplicates_marked": [], "per_part_attachments": [], "conflicts": [],
         "items_enriched": 0, "items_unchanged": 0, "errors": [],
         "db_export": "absent", "db_slides": [], "name_diffs": [],
-        "private_registry": None, "curated_parts": [],
+        "private_registry": None, "curated_parts": [], "chapter_seeded": [],
+        "chapters_cache": "absent",
         "per_series": defaultdict(lambda: {"enriched": 0, "total": 0}),
     }
 
@@ -360,6 +397,8 @@ def main() -> int:
         if vid in vid_index:
             db_by_item[vid_index[vid]].append(rec)
     report["db_export"] = f"{args.db_export.name} ({len(db_records)} sessions)" if db_records else "absent"
+    chapters = load_chapters(args.chapters)
+    report["chapters_cache"] = f"{sum(1 for c in chapters.values() if c)} videos with chapters" if chapters else "absent"
 
     for rel, entry in items.items():
         series = rel.split("/")[0]
@@ -393,6 +432,17 @@ def main() -> int:
                 enrichment["enriched_from"] = list(
                     dict.fromkeys(enrichment.get("enriched_from", []) + ["youtube"])
                 )
+
+        # YouTube chapters seed sessions[] when nothing else has (journal-owned
+        # after seeding — hand-edits there are never overwritten).
+        if not enrichment.get("sessions") and not entry["meta"].get("sessions"):
+            seeded = chapter_sessions(entry["meta"], chapters)
+            if seeded:
+                enrichment["sessions"] = seeded
+                enrichment["enriched_from"] = list(
+                    dict.fromkeys(enrichment.get("enriched_from", []) + ["youtube"])
+                )
+                report["chapter_seeded"].append(rel)
 
         # Legacy-DB overlay: slides links the current Coda table lost or holds junk for.
         # Single-part items take them at item level; multi-part items per-part.
@@ -462,6 +512,8 @@ def _print_summary(report: dict, dry_run: bool) -> None:
           f"({sum(s['sessions'] for s in report['split_files'])} sessions)")
     print(f"duplicates marked:    {report['duplicates_marked']}")
     print(f"curated part fixes:   {[c['item'].split('/')[-1] for c in report['curated_parts']]}")
+    print(f"chapters cache:       {report['chapters_cache']}")
+    print(f"chapter-seeded items: {len(report['chapter_seeded'])}")
     print(f"items enriched:       {report['items_enriched']}")
     print(f"items already current:{report['items_unchanged']:>4}")
     print(f"per-part attachments: {len(report['per_part_attachments'])}")
