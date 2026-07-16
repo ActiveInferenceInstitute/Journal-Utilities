@@ -40,8 +40,11 @@ def main() -> int:
     parser.add_argument("--report", type=Path, help="write full JSON worklist here")
     args = parser.parse_args()
 
+    from datetime import date as _date
+    today = _date.today().isoformat()
+
     root = args.journal / SRC_PREFIX
-    buckets = {"missing": [], "captions_only": [], "diarized": []}
+    buckets = {"missing": [], "captions_only": [], "diarized": [], "scheduled": []}
     covered_ids: set[str] = set()
     for meta_path in sorted(root.rglob("metadata.json")):
         item_dir = meta_path.parent
@@ -52,7 +55,11 @@ def main() -> int:
                 covered_ids.add(part["video_id"])
         if meta.get("duplicate_of"):
             continue  # content lives at the curated item
-        buckets[item_status(item_dir)].append(rel)
+        status = item_status(item_dir)
+        dates = [meta.get("date", "")] + [p.get("date", "") for p in meta.get("parts", [])]
+        if status == "missing" and max(filter(None, dates), default="") > today:
+            status = "scheduled"  # future stream — nothing to transcribe yet
+        buckets[status].append(rel)
 
     manifest_videos = json.loads(MANIFEST.read_text(encoding="utf-8")).get("videos", [])
     no_item = [
@@ -68,6 +75,7 @@ def main() -> int:
     print(f"  diarized (done):      {len(buckets['diarized'])}")
     print(f"  captions only:        {len(buckets['captions_only'])}  (WhisperX upgrade candidates)")
     print(f"  missing transcript:   {len(buckets['missing'])}  (needs transcription)")
+    print(f"  scheduled (future):   {len(buckets['scheduled'])}  {buckets['scheduled']}")
     from datetime import date
     manifest_age = date.fromtimestamp(MANIFEST.stat().st_mtime).isoformat()
     print(f"channel videos w/o item:{len(no_item):>4}  (manifest from {manifest_age} — re-enumerate for newer videos)")
@@ -79,7 +87,8 @@ def main() -> int:
 
     if args.report:
         args.report.write_text(json.dumps(
-            {"missing": buckets["missing"], "captions_only": buckets["captions_only"],
+            {"missing": buckets["missing"], "scheduled": buckets["scheduled"],
+             "captions_only": buckets["captions_only"],
              "diarized_count": len(buckets["diarized"]), "no_item": no_item,
              "private": private}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         print(f"full worklist -> {args.report}")
