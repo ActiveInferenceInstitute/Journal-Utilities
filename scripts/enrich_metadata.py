@@ -35,6 +35,7 @@ from journal_utilities.data.enrichment import (  # noqa: E402
     map_coda_row,
     merge_enrichment,
     parse_split_file,
+    prefer_url,
 )
 from journal_utilities.youtube.categorizer import categorize_name  # noqa: E402
 from journal_utilities.youtube.youtube import extract_youtube_id  # noqa: E402
@@ -42,6 +43,21 @@ from journal_utilities.youtube.youtube import extract_youtube_id  # noqa: E402
 logger = logging.getLogger("enrich_metadata")
 
 SRC_PREFIX = "data/video/activeinferenceinstitute"  # matches refactor_journal.py
+GITHUB_BASE = "https://github.com/ActiveInferenceInstitute/ActiveInferenceJournal/tree/main"
+
+
+def load_db_export(path: Path) -> dict[str, dict]:
+    """session_name -> record for whole-video sessions (per-talk _sessNN skipped)."""
+    if not path.exists():
+        return {}
+    sessions = json.loads(path.read_text(encoding="utf-8")).get("sessions", [])
+    return {s["session_name"]: s for s in sessions if "_sess" not in s["session_name"]}
+
+
+def github_link(rel: str) -> str:
+    from urllib.parse import quote
+
+    return f"{GITHUB_BASE}/{quote(SRC_PREFIX + '/' + rel, safe='/')}"
 
 
 def load_journal_index(journal: Path) -> dict[str, dict]:
@@ -148,6 +164,38 @@ def match_coda_rows(rows: list[dict], vid_index: dict, items: dict, report: dict
 UNION_KEYS = ("guests", "other_participants", "keywords")
 
 
+def _collect_name_diffs(rec: dict, enrichment: dict, rel: str, report: dict) -> None:
+    """Record (not apply) people-name disagreements between legacy DB and Coda."""
+    from journal_utilities.data.enrichment import split_names
+
+    for field in ("guests", "other_participants"):
+        db_names = split_names(rec.get(field) or "")
+        coda_names = enrichment.get(field) or []
+        if db_names and coda_names and not set(db_names) <= set(coda_names):
+            report["name_diffs"].append({"item": rel, "field": field, "db": db_names, "coda": coda_names})
+
+
+def write_private_registry(journal: Path, db_records: dict, vid_index: dict, apply: bool, report: dict) -> None:
+    """Document private/unlisted channel videos absent from the journal."""
+    private = [
+        {"video_id": vid, "title": rec.get("title", "")}
+        for vid, rec in sorted(db_records.items())
+        if rec.get("is_private") and vid not in vid_index
+    ]
+    if not private:
+        return
+    path = journal / SRC_PREFIX / "private_videos.json"
+    payload = json.dumps(
+        {"description": "Private/unlisted videos known to the Institute but absent from "
+                        "this public corpus (from the legacy session database).",
+         "videos": private},
+        indent=2, ensure_ascii=False) + "\n"
+    changed = not path.exists() or path.read_text(encoding="utf-8") != payload
+    if changed and apply:
+        path.write_text(payload, encoding="utf-8")
+    report["private_registry"] = {"videos": len(private), "written": changed and apply}
+
+
 def combine_rows(entries: list, meta: dict, report: dict, rel: str) -> tuple[dict, dict]:
     """Merge multiple matched rows: shared values -> item level, list fields
     union, per-part fields attach to their part, rest first-row-wins."""
@@ -181,6 +229,7 @@ def main() -> int:
     parser.add_argument("--coda-cache", type=Path, default=REPO / "data/input/livestream_fulldata_full.json")
     parser.add_argument("--split-dir", type=Path, default=REPO / "data/input")
     parser.add_argument("--manifest", type=Path, default=REPO / "data/output/channel_videos.json")
+    parser.add_argument("--db-export", type=Path, default=REPO / "data/input/session_db_export.json")
     parser.add_argument("--apply", action="store_true", help="write changes (default: dry run)")
     parser.add_argument("--report", type=Path, help="write full JSON report to this path")
     args = parser.parse_args()
@@ -193,6 +242,8 @@ def main() -> int:
         "matched_by_fallback": [], "unmatched": [], "split_files": [],
         "duplicates_marked": [], "per_part_attachments": [], "conflicts": [],
         "items_enriched": 0, "items_unchanged": 0, "errors": [],
+        "db_export": "absent", "db_slides": [], "name_diffs": [],
+        "private_registry": None,
         "per_series": defaultdict(lambda: {"enriched": 0, "total": 0}),
     }
 
@@ -219,16 +270,26 @@ def main() -> int:
 
     matched = match_coda_rows(rows, vid_index, items, report)
 
+    db_records = load_db_export(args.db_export)
+    db_by_item: dict[str, list] = defaultdict(list)
+    for vid, rec in db_records.items():
+        if vid in vid_index:
+            db_by_item[vid_index[vid]].append(rec)
+    report["db_export"] = f"{args.db_export.name} ({len(db_records)} sessions)" if db_records else "absent"
+
     for rel, entry in items.items():
         series = rel.split("/")[0]
         report["per_series"][series]["total"] += 1
-        enrichment: dict = {}
+        # Provenance is sticky: a source that contributed in a past run stays
+        # recorded even when this run has nothing new from it.
+        enrichment: dict = {"enriched_from": list(entry["meta"].get("enriched_from", []))}
         part_updates: dict = {}
         fill_parts = None
 
         if rel in matched:
-            enrichment, part_updates = combine_rows(matched[rel], entry["meta"], report, rel)
-            enrichment.setdefault("enriched_from", [])
+            row_fields, part_updates = combine_rows(matched[rel], entry["meta"], report, rel)
+            row_fields.pop("enriched_from", None)
+            enrichment.update(row_fields)
             enrichment["enriched_from"] = list(dict.fromkeys(enrichment["enriched_from"] + ["coda"]))
         if rel in pending:
             work = pending[rel]
@@ -245,8 +306,40 @@ def main() -> int:
                     dict.fromkeys(enrichment.get("enriched_from", []) + ["youtube"])
                 )
 
-        if not enrichment and not part_updates and not fill_parts:
-            continue
+        # Legacy-DB overlay: slides links the current Coda table lost or holds junk for.
+        # Single-part items take them at item level; multi-part items per-part.
+        db_recs = db_by_item.get(rel, [])
+        multi_part = len(entry["meta"].get("parts", [])) > 1
+        for rec in db_recs:
+            db_slides = (rec.get("slides_url") or "").strip()
+            _collect_name_diffs(rec, enrichment, rel, report)
+            if not db_slides.startswith(("http://", "https://")):
+                continue
+            applied = False
+            if multi_part:
+                vid = rec["session_name"]
+                existing = next((p.get("slides_url", "") for p in entry["meta"]["parts"]
+                                 if p.get("video_id") == vid), "")
+                if prefer_url(existing, db_slides) != existing:
+                    part_updates.setdefault(vid, {})["slides_url"] = db_slides
+                    report["db_slides"].append({"item": rel, "part": vid, "replaced": existing or None})
+                    applied = True
+            else:
+                current = enrichment.get("slides_url") or entry["meta"].get("slides_url") or ""
+                if prefer_url(current, db_slides) != current:
+                    enrichment["slides_url"] = db_slides
+                    report["db_slides"].append({"item": rel, "part": None, "replaced": current or None})
+                    applied = True
+            already_db = db_slides in (
+                [enrichment.get("slides_url"), entry["meta"].get("slides_url")]
+                + [p.get("slides_url") for p in entry["meta"].get("parts", [])]
+            )
+            if applied or already_db:
+                enrichment["enriched_from"] = list(dict.fromkeys(enrichment.get("enriched_from", []) + ["db"]))
+
+        # Canonical self-link into this repo's current layout (Coda's are pre-v2, stale).
+        enrichment["github"] = github_link(rel)
+        enrichment["enriched_from"] = list(dict.fromkeys(enrichment.get("enriched_from", []) + ["generated"]))
 
         new_meta, changed = merge_enrichment(entry["meta"], enrichment, part_updates, fill_parts)
         if changed:
@@ -258,6 +351,8 @@ def main() -> int:
                 )
         else:
             report["items_unchanged"] += 1
+
+    write_private_registry(args.journal, db_records, vid_index, args.apply, report)
 
     report["per_series"] = dict(sorted(report["per_series"].items()))
     _print_summary(report, dry_run=not args.apply)
@@ -282,6 +377,13 @@ def _print_summary(report: dict, dry_run: bool) -> None:
     print(f"items already current:{report['items_unchanged']:>4}")
     print(f"per-part attachments: {len(report['per_part_attachments'])}")
     print(f"conflicts:            {len(report['conflicts'])}")
+    print(f"db export:            {report['db_export']}")
+    print(f"db slides applied:    {len(report['db_slides'])} "
+          f"({sum(1 for s in report['db_slides'] if s['replaced'])} replaced junk)")
+    print(f"name diffs (review):  {len(report['name_diffs'])}")
+    if report["private_registry"]:
+        print(f"private registry:     {report['private_registry']['videos']} videos "
+              f"(written: {report['private_registry']['written']})")
     if report["errors"]:
         print("ERRORS:")
         for err in report["errors"]:

@@ -137,6 +137,16 @@ def map_coda_row(values: dict) -> dict:
     return out
 
 
+def prefer_url(primary, fallback) -> str:
+    """Return primary if it's an http(s) URL, else fallback if it is, else primary."""
+    primary, fallback = _clean(primary), _clean(fallback)
+    if primary.startswith(("http://", "https://")):
+        return primary
+    if fallback.startswith(("http://", "https://")):
+        return fallback
+    return primary
+
+
 @dataclass
 class SplitResult:
     """Parsed session split-file for one multi-talk video."""
@@ -264,6 +274,9 @@ def merge_enrichment(
         parts = [dict(p) for p in new.get("parts", [])]
         for part in parts:
             for key, value in part_updates.get(part.get("video_id", ""), {}).items():
+                if key == "slides_url":
+                    # A display label must never replace a real URL.
+                    value = prefer_url(value, part.get(key, ""))
                 if value:
                     part[key] = value
         new["parts"] = parts

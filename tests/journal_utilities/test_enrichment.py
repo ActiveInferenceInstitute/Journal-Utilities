@@ -8,8 +8,22 @@ from journal_utilities.data.enrichment import (
     map_coda_row,
     merge_enrichment,
     parse_split_file,
+    prefer_url,
     split_names,
 )
+
+
+class TestPreferUrl:
+    def test_keeps_valid_primary(self):
+        assert prefer_url("https://a.example", "https://b.example") == "https://a.example"
+
+    def test_falls_back_when_primary_is_junk(self):
+        assert prefer_url("#2022.2", "https://b.example") == "https://b.example"
+        assert prefer_url("", "https://b.example") == "https://b.example"
+
+    def test_keeps_junk_primary_when_no_url_fallback(self):
+        assert prefer_url("#2022.2", "") == "#2022.2"
+        assert prefer_url("", "") == ""
 
 FIXTURES = Path(__file__).parent.parent / "fixtures"
 
@@ -154,6 +168,15 @@ class TestMergeEnrichment:
         assert changed and filled["parts"] == fill
         kept, _ = merge_enrichment(self.BASE, {}, fill_parts=fill)
         assert kept["parts"] == self.BASE["parts"]
+
+    def test_part_slides_label_never_replaces_url(self):
+        meta = dict(self.BASE, parts=[{"video_id": "abcdefghijk",
+                                       "slides_url": "https://docs.google.com/x"}])
+        new, changed = merge_enrichment(
+            meta, {}, part_updates={"abcdefghijk": {"slides_url": "#035.1"}}
+        )
+        assert not changed
+        assert new["parts"][0]["slides_url"] == "https://docs.google.com/x"
 
     def test_part_updates_target_by_video_id(self):
         new, changed = merge_enrichment(
