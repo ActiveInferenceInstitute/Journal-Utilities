@@ -174,6 +174,14 @@ class TestMergeEnrichment:
         kept, _ = merge_enrichment(self.BASE, {}, fill_parts=fill)
         assert kept["parts"] == self.BASE["parts"]
 
+    def test_replace_parts_overrides_bogus_ids(self):
+        meta = dict(self.BASE, parts=[{"video_id": "Int1-Sess01", "url": "", "title": ""}])
+        fill = [{"video_id": "rIemcswLfGg", "url": "u", "title": "t"}]
+        new, changed = merge_enrichment(meta, {}, fill_parts=fill, replace_parts=True)
+        assert changed and new["parts"] == fill
+        again, changed2 = merge_enrichment(new, {}, fill_parts=fill, replace_parts=True)
+        assert not changed2
+
     def test_part_slides_label_never_replaces_url(self):
         meta = dict(self.BASE, parts=[{"video_id": "abcdefghijk",
                                        "slides_url": "https://docs.google.com/x"}])

@@ -164,6 +164,36 @@ def match_coda_rows(rows: list[dict], vid_index: dict, items: dict, report: dict
 UNION_KEYS = ("guests", "other_participants", "keywords")
 
 
+# Human-verified corrections (2026-07-16): the refactor's 11-char id regex
+# matched asset filename fragments for these items; the real uploads sat
+# uncategorized in Other/. Maps item -> its actual YouTube video id.
+CURATED_PARTS = {
+    "Applied Active Inference Symposium/2023 Ecosystem Symposium/First_Interval": "rIemcswLfGg",
+    "Applied Active Inference Symposium/2023 Ecosystem Symposium/Second_Interval": "PVeyvHSAwmk",
+}
+
+
+def process_curated_parts(items: dict, manifest: dict, pending: dict, report: dict) -> None:
+    """Replace bogus refactor-derived parts with the real video; mark Other/ duplicates."""
+    for rel, vid in CURATED_PARTS.items():
+        if rel not in items or vid not in manifest:
+            report["errors"].append(f"curated parts: {rel!r} or video {vid} unavailable")
+            continue
+        pending[rel] = {
+            "enrichment": {"enriched_from": ["curated"]},
+            "fill_parts": [manifest_part(manifest[vid])],
+            "replace_parts": True,
+        }
+        duplicate = f"Other/{vid}"
+        if duplicate in items:
+            pending[duplicate] = {
+                "enrichment": {"duplicate_of": rel, "enriched_from": ["curated"]},
+                "fill_parts": None,
+            }
+            report["duplicates_marked"].append(duplicate)
+        report["curated_parts"].append({"item": rel, "video_id": vid})
+
+
 # Human-reviewed disagreements where the Coda value was confirmed correct;
 # suppressed from the review report. (item, field, db names as parsed)
 RESOLVED_NAME_DIFFS = {
@@ -253,7 +283,7 @@ def main() -> int:
         "duplicates_marked": [], "per_part_attachments": [], "conflicts": [],
         "items_enriched": 0, "items_unchanged": 0, "errors": [],
         "db_export": "absent", "db_slides": [], "name_diffs": [],
-        "private_registry": None,
+        "private_registry": None, "curated_parts": [],
         "per_series": defaultdict(lambda: {"enriched": 0, "total": 0}),
     }
 
@@ -263,8 +293,10 @@ def main() -> int:
         return 1
     manifest = load_manifest(args.manifest)
 
-    # Split files first, so symposium parts get filled before id-matching.
+    # Split files and curated corrections first, so symposium parts are
+    # filled/replaced before id-matching.
     pending = process_split_files(args.split_dir, items, manifest, report)
+    process_curated_parts(items, manifest, pending, report)
     vid_index = video_index(items)
     for rel, work in pending.items():
         for part in work.get("fill_parts") or []:
@@ -295,6 +327,7 @@ def main() -> int:
         enrichment: dict = {"enriched_from": list(entry["meta"].get("enriched_from", []))}
         part_updates: dict = {}
         fill_parts = None
+        replace_parts = False
 
         if rel in matched:
             row_fields, part_updates = combine_rows(matched[rel], entry["meta"], report, rel)
@@ -311,6 +344,7 @@ def main() -> int:
                 else:
                     enrichment.setdefault(key, value)
             fill_parts = work["fill_parts"]
+            replace_parts = work.get("replace_parts", False)
             if fill_parts:
                 enrichment["enriched_from"] = list(
                     dict.fromkeys(enrichment.get("enriched_from", []) + ["youtube"])
@@ -351,7 +385,7 @@ def main() -> int:
         enrichment["github"] = github_link(rel)
         enrichment["enriched_from"] = list(dict.fromkeys(enrichment.get("enriched_from", []) + ["generated"]))
 
-        new_meta, changed = merge_enrichment(entry["meta"], enrichment, part_updates, fill_parts)
+        new_meta, changed = merge_enrichment(entry["meta"], enrichment, part_updates, fill_parts, replace_parts)
         if changed:
             report["items_enriched"] += 1
             report["per_series"][series]["enriched"] += 1
@@ -383,6 +417,7 @@ def _print_summary(report: dict, dry_run: bool) -> None:
     print(f"split files:          {len(report['split_files'])} "
           f"({sum(s['sessions'] for s in report['split_files'])} sessions)")
     print(f"duplicates marked:    {report['duplicates_marked']}")
+    print(f"curated part fixes:   {[c['item'].split('/')[-1] for c in report['curated_parts']]}")
     print(f"items enriched:       {report['items_enriched']}")
     print(f"items already current:{report['items_unchanged']:>4}")
     print(f"per-part attachments: {len(report['per_part_attachments'])}")

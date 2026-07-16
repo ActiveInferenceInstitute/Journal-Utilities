@@ -258,6 +258,7 @@ def merge_enrichment(
     enrichment: dict,
     part_updates: Optional[dict] = None,
     fill_parts: Optional[list[dict]] = None,
+    replace_parts: bool = False,
 ) -> tuple[dict, bool]:
     """
     Merge enrichment into a metadata.json dict.
@@ -265,7 +266,9 @@ def merge_enrichment(
     - Only ENRICH_KEYS are ever set/overwritten; foreign keys survive.
     - Empty enrichment values are skipped (never written, never deleted).
     - ``part_updates`` maps video_id -> {field: value} for per-part fields.
-    - ``fill_parts`` replaces ``parts`` only when the existing list is empty.
+    - ``fill_parts`` replaces ``parts`` only when the existing list is empty,
+      or unconditionally with ``replace_parts`` (curated corrections of
+      refactor-derived bogus ids).
     - Returns (new_meta, changed) — changed compares values, so key
       reordering alone never triggers a write.
     """
@@ -275,7 +278,7 @@ def merge_enrichment(
         if value:
             new[key] = value
 
-    if fill_parts and not new.get("parts"):
+    if fill_parts and (replace_parts or not new.get("parts")):
         new["parts"] = fill_parts
 
     if part_updates:
