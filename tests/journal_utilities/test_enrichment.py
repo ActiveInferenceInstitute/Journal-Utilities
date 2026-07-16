@@ -1,0 +1,168 @@
+"""Tests for journal_utilities.data.enrichment."""
+
+from pathlib import Path
+
+import pytest
+
+from journal_utilities.data.enrichment import (
+    map_coda_row,
+    merge_enrichment,
+    parse_split_file,
+    split_names,
+)
+
+FIXTURES = Path(__file__).parent.parent / "fixtures"
+
+
+class TestSplitNames:
+    def test_simple_split(self):
+        assert split_names("Daniel Friedman,Bert Berkers") == ["Daniel Friedman", "Bert Berkers"]
+
+    def test_credential_suffix_rejoined(self):
+        assert split_names("Alexey Tolchinsky, Psy.D.") == ["Alexey Tolchinsky, Psy.D."]
+        assert split_names("Jane Doe, PhD,John Smith") == ["Jane Doe, PhD", "John Smith"]
+
+    def test_empty_and_nonstring(self):
+        assert split_names("") == []
+        assert split_names(None) == []
+        assert split_names(False) == []
+
+
+class TestMapCodaRow:
+    FULL_ROW = {
+        "Title or name of stream": "Learning in Physical Systems",
+        "Date": "2025-11-05T00:00:00.000-08:00",
+        "Guests": "Marcelo Guzman",
+        "Other Participants": "Daniel Friedman,Bert Berkers",
+        "Github": "https://github.com/x",
+        "Slides": "https://slides.example",
+        "Paper link": "https://paper.example",
+        "DOI": "10.5281/zenodo.1",
+        "Zenodo Link": "https://zenodo.org/1",
+        "Keywords": "active inference, physics",
+        "Thumbnail Image": "https://img.example/t.jpg",
+        "Human Summary": "A summary.",
+        "Copypasta": "should be ignored",
+        "Caption Status": "should be ignored",
+    }
+
+    def test_full_row(self):
+        out = map_coda_row(self.FULL_ROW)
+        assert out["title"] == "Learning in Physical Systems"
+        assert out["date"] == "2025-11-05"
+        assert out["guests"] == ["Marcelo Guzman"]
+        assert out["other_participants"] == ["Daniel Friedman", "Bert Berkers"]
+        assert out["slides_url"] == "https://slides.example"
+        assert out["keywords"] == ["active inference", "physics"]
+        assert out["thumbnails"] == {"thumbnail": "https://img.example/t.jpg"}
+        assert out["summaries"] == {"human": "A summary."}
+        assert "copypasta" not in {k.lower() for k in out}
+
+    def test_empty_cells_omitted(self):
+        out = map_coda_row({"Title or name of stream": "X", "Guests": "", "DOI": "  "})
+        assert out == {"title": "X"}
+
+    def test_slides_url_fallback_column(self):
+        out = map_coda_row({"Slides URL": "https://alt.example"})
+        assert out["slides_url"] == "https://alt.example"
+
+    def test_abstract_lands_in_summaries(self):
+        out = map_coda_row({"Abstract": "An abstract."})
+        assert out["summaries"] == {"abstract": "An abstract."}
+
+    def test_nonstring_cells_ignored(self):
+        out = map_coda_row({"Guests": False, "Date": 42, "Title or name of stream": "T"})
+        assert out == {"title": "T"}
+
+
+class TestParseSplitFile:
+    @pytest.fixture()
+    def result(self):
+        return parse_split_file((FIXTURES / "split_sample.txt").read_text(encoding="utf-8"))
+
+    def test_counts_and_target(self, result):
+        assert len(result.sessions) == 3
+        assert result.category == "Applied Active Inference Symposium/2024"
+        assert result.series == "part 1"
+        assert result.video_id == "cIBIecj7UZE"
+
+    def test_session_fields(self, result):
+        first = result.sessions[0]
+        assert first["index"] == 1
+        assert first["session_name"] == "cIBIecj7UZE_sess01"
+        assert first["start"] == "0:00:00"
+        assert first["guests"] == ["Karl Friston"]
+        # curly quotes normalized, title from the chapter list
+        assert "From pixels to planning" in first["title"]
+        assert "“" not in first["title"]
+
+    def test_start_normalization(self, result):
+        assert result.sessions[1]["start"] == "1:59:35"
+        assert result.sessions[2]["start"] == "2:59:25"
+
+    def test_common_description_strips_session_line(self, result):
+        assert "4th Applied Active Inference Symposium" in result.description
+        assert "Session 1:" not in result.description
+        assert "Session 2:" not in result.description
+
+    def test_count_mismatch_raises(self):
+        text = (FIXTURES / "split_sample.txt").read_text(encoding="utf-8")
+        truncated = text[: text.rindex("CREATE session")]
+        with pytest.raises(ValueError, match="mismatch"):
+            parse_split_file(truncated)
+
+
+class TestMergeEnrichment:
+    BASE = {
+        "series": "GuestStream",
+        "item": "GuestStream_094",
+        "source": "youtube",
+        "channel": "ActiveInferenceInstitute",
+        "category": "GuestStream",
+        "episode": "1",
+        "parts": [{"video_id": "abcdefghijk", "url": "u", "title": "YouTube Title"}],
+    }
+
+    def test_adds_enrichment_keys(self):
+        new, changed = merge_enrichment(self.BASE, {"guests": ["A"], "date": "2024-01-01"})
+        assert changed
+        assert new["guests"] == ["A"]
+        assert new["parts"][0]["title"] == "YouTube Title"  # untouched
+
+    def test_idempotent(self):
+        enrichment = {"guests": ["A"], "summaries": {"human": "s"}}
+        once, changed1 = merge_enrichment(self.BASE, enrichment)
+        twice, changed2 = merge_enrichment(once, enrichment)
+        assert changed1 and not changed2
+        assert once == twice
+
+    def test_empty_values_never_clobber(self):
+        meta = dict(self.BASE, github="https://keep.example")
+        new, changed = merge_enrichment(meta, {"github": "", "guests": []})
+        assert not changed
+        assert new["github"] == "https://keep.example"
+
+    def test_foreign_keys_survive(self):
+        meta = dict(self.BASE, custom_field="daniel's")
+        new, _ = merge_enrichment(meta, {"guests": ["A"]})
+        assert new["custom_field"] == "daniel's"
+
+    def test_fill_parts_only_when_empty(self):
+        fill = [{"video_id": "x" * 11, "url": "u", "title": "t"}]
+        empty = dict(self.BASE, parts=[])
+        filled, changed = merge_enrichment(empty, {}, fill_parts=fill)
+        assert changed and filled["parts"] == fill
+        kept, _ = merge_enrichment(self.BASE, {}, fill_parts=fill)
+        assert kept["parts"] == self.BASE["parts"]
+
+    def test_part_updates_target_by_video_id(self):
+        new, changed = merge_enrichment(
+            self.BASE, {}, part_updates={"abcdefghijk": {"date": "2024-05-01"}}
+        )
+        assert changed
+        assert new["parts"][0]["date"] == "2024-05-01"
+
+    def test_reorder_alone_is_not_a_change(self):
+        scrambled = {k: self.BASE[k] for k in reversed(list(self.BASE))}
+        _, changed = merge_enrichment(scrambled, {})
+        assert not changed
