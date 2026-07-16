@@ -69,6 +69,7 @@ _NAME_SUFFIX = re.compile(r"^(?:Psy\.?\s?D\.?|Ph\.?\s?D\.?|M\.?\s?D\.?|Jr\.?|Sr\
 # Canonical spellings for people who appear under multiple names across sources.
 NAME_ALIASES = {
     "Sasha Mikhailova": "Alexandra Mikhailova",
+    "JF Cloutier": "Jean-François Cloutier",
 }
 
 _CURLY = str.maketrans({"“": '"', "”": '"', "„": '"', "‘": "'", "’": "'"})

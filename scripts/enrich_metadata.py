@@ -172,21 +172,8 @@ CURATED_PARTS = {
     "Applied Active Inference Symposium/2023 Ecosystem Symposium/Second_Interval": "PVeyvHSAwmk",
 }
 
-# The Coda rows for the two 2023 Symposium videos carry each other's guest
-# list (swapped upstream). Rosters below come from the video descriptions
-# (verified 2026-07-16) and override Coda until the table is fixed.
-CURATED_GUESTS = {
-    "Applied Active Inference Symposium/2023 Ecosystem Symposium/First_Interval": [
-        "André Bastos", "Keith Duggar", "Sanjeev Namjoshi", "Inês Hipólito",
-        "Aswin Paul", "Takuya Isomura", "Shanna Dobson", "Nynke Boiten",
-    ],
-    "Applied Active Inference Symposium/2023 Ecosystem Symposium/Second_Interval": [
-        "Jean-François Cloutier", "Conor Heins", "Bert de Vries", "Dmitry Bagaev",
-        "Bart van Erp", "Rafael Kaufmann", "Avel Guénin-Carlut",
-        "Pablo Fernandez-Maquieira", "Mahault Albarracin", "Anna Lembke",
-        "Curt Jaimungal", "Karl J Friston", "Guillaume Dumas",
-    ],
-}
+# (CURATED_GUESTS retired 2026-07-16: the swapped guest lists for the two
+# 2023 Symposium videos were fixed upstream in the Coda/Superhuman table.)
 
 
 def process_curated_parts(items: dict, manifest: dict, pending: dict, report: dict) -> None:
@@ -199,11 +186,7 @@ def process_curated_parts(items: dict, manifest: dict, pending: dict, report: di
             "enrichment": {"enriched_from": ["curated"]},
             "fill_parts": [manifest_part(manifest[vid])],
             "replace_parts": True,
-            "overrides": {
-                key: value for key, value in
-                (("guests", CURATED_GUESTS.get(rel)), ("sessions", CURATED_SESSIONS.get(rel)))
-                if value
-            },
+            "overrides": {"sessions": CURATED_SESSIONS[rel]} if rel in CURATED_SESSIONS else {},
         }
         duplicate = f"Other/{vid}"
         if duplicate in items:
