@@ -41,7 +41,10 @@ def main() -> int:
         todo = todo[: args.limit]
     logger.info("%d cached, %d to fetch", len(cache), len(todo))
 
-    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "extract_flat": False}
+    # sleep_interval_requests keeps us under YouTube's metadata rate limit;
+    # a full-channel sweep without it gets blocked partway ("try again later").
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True,
+            "extract_flat": False, "sleep_interval_requests": 2}
     fetched = failed = 0
     with yt_dlp.YoutubeDL(opts) as ydl:
         for i, video in enumerate(todo, 1):
