@@ -199,7 +199,11 @@ def process_curated_parts(items: dict, manifest: dict, pending: dict, report: di
             "enrichment": {"enriched_from": ["curated"]},
             "fill_parts": [manifest_part(manifest[vid])],
             "replace_parts": True,
-            "overrides": {"guests": CURATED_GUESTS[rel]} if rel in CURATED_GUESTS else {},
+            "overrides": {
+                key: value for key, value in
+                (("guests", CURATED_GUESTS.get(rel)), ("sessions", CURATED_SESSIONS.get(rel)))
+                if value
+            },
         }
         duplicate = f"Other/{vid}"
         if duplicate in items:
@@ -209,6 +213,43 @@ def process_curated_parts(items: dict, manifest: dict, pending: dict, report: di
             }
             report["duplicates_marked"].append(duplicate)
         report["curated_parts"].append({"item": rel, "video_id": vid})
+
+
+def _sess(vid: str, index: int, start: str, guests: list[str], title: str = "") -> dict:
+    session = {"index": index, "session_name": f"{vid}_sess{index:02d}", "start": start}
+    if title:
+        session["title"] = title
+    if guests:
+        session["guests"] = guests
+    return session
+
+
+# Per-talk segments from the video descriptions (verified 2026-07-16).
+CURATED_SESSIONS = {
+    "Applied Active Inference Symposium/2023 Ecosystem Symposium/First_Interval": [
+        _sess("rIemcswLfGg", 1, "0:00:00", ["André Bastos"]),
+        _sess("rIemcswLfGg", 2, "0:44:19", ["Keith Duggar"]),
+        _sess("rIemcswLfGg", 3, "1:03:54", ["Sanjeev Namjoshi"]),
+        _sess("rIemcswLfGg", 4, "1:23:35", ["Inês Hipólito"]),
+        _sess("rIemcswLfGg", 5, "1:58:05", ["Aswin Paul"]),
+        _sess("rIemcswLfGg", 6, "3:19:30", ["Takuya Isomura"]),
+        _sess("rIemcswLfGg", 7, "3:56:55", ["Shanna Dobson"]),
+        _sess("rIemcswLfGg", 8, "4:28:25", ["Nynke Boiten"]),
+    ],
+    "Applied Active Inference Symposium/2023 Ecosystem Symposium/Second_Interval": [
+        _sess("PVeyvHSAwmk", 1, "0:00:00", ["Jean-François Cloutier"]),
+        _sess("PVeyvHSAwmk", 2, "1:01:25", ["Conor Heins"]),
+        _sess("PVeyvHSAwmk", 3, "1:31:24", ["Bert de Vries", "Dmitry Bagaev", "Bart van Erp"]),
+        _sess("PVeyvHSAwmk", 4, "2:19:49", [], title="Active Inference Institute"),
+        _sess("PVeyvHSAwmk", 5, "3:01:20", ["Rafael Kaufmann"]),
+        _sess("PVeyvHSAwmk", 6, "3:31:10", ["Avel Guénin-Carlut"]),
+        _sess("PVeyvHSAwmk", 7, "4:00:40", ["Pablo Fernandez-Maquieira"]),
+        _sess("PVeyvHSAwmk", 8, "4:30:00", ["Mahault Albarracin"]),
+        _sess("PVeyvHSAwmk", 9, "5:02:30",
+              ["Anna Lembke", "Curt Jaimungal", "Karl J Friston", "Guillaume Dumas"],
+              title="Roundtable"),
+    ],
+}
 
 
 # Human-reviewed disagreements where the Coda value was confirmed correct;
