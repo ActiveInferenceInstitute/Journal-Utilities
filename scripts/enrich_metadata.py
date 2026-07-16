@@ -246,7 +246,8 @@ CURATED_SESSIONS = {
         _sess("PVeyvHSAwmk", 7, "4:00:40", ["Pablo Fernandez-Maquieira"]),
         _sess("PVeyvHSAwmk", 8, "4:30:00", ["Mahault Albarracin"]),
         _sess("PVeyvHSAwmk", 9, "5:02:30",
-              ["Anna Lembke", "Curt Jaimungal", "Karl J Friston", "Guillaume Dumas"],
+              ["Bert de Vries", "Rafael Kaufmann", "Anna Lembke", "Curt Jaimungal",
+               "Karl J Friston", "Guillaume Dumas"],
               title="Roundtable"),
     ],
 }
