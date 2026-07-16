@@ -164,6 +164,14 @@ def match_coda_rows(rows: list[dict], vid_index: dict, items: dict, report: dict
 UNION_KEYS = ("guests", "other_participants", "keywords")
 
 
+# Human-reviewed disagreements where the Coda value was confirmed correct;
+# suppressed from the review report. (item, field, db names as parsed)
+RESOLVED_NAME_DIFFS = {
+    # Verified against the video and website 2026-07-16: guest is Austin Cook.
+    ("GuestStream/GuestStream_072", "guests", ("John Cook",)),
+}
+
+
 def _collect_name_diffs(rec: dict, enrichment: dict, rel: str, report: dict) -> None:
     """Record (not apply) people-name disagreements between legacy DB and Coda."""
     from journal_utilities.data.enrichment import split_names
@@ -171,6 +179,8 @@ def _collect_name_diffs(rec: dict, enrichment: dict, rel: str, report: dict) -> 
     for field in ("guests", "other_participants"):
         db_names = split_names(rec.get(field) or "")
         coda_names = enrichment.get(field) or []
+        if (rel, field, tuple(db_names)) in RESOLVED_NAME_DIFFS:
+            continue
         if db_names and coda_names and not set(db_names) <= set(coda_names):
             report["name_diffs"].append({"item": rel, "field": field, "db": db_names, "coda": coda_names})
 
