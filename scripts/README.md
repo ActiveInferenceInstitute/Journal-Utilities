@@ -96,3 +96,15 @@ python scripts/fix_scheduled_dates.py
 ```
 
 > **Note**: Requires a running SurrealDB instance and valid credentials in `.env`.
+
+## Journal v2 metadata and indexes
+
+```bash
+python scripts/enrich_metadata.py --journal ../ActiveInferenceJournal --snapshot-only --apply
+python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal
+python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal --check
+```
+
+`enrich_metadata.py` is dry-run by default and preserves journal-owned
+`sessions[]`. `generate_journal_indexes.py` derives `INDEX.json` and `INDEX.md`
+from canonical metadata, including duplicate and unique-video counts.
