@@ -12,6 +12,18 @@ class TestCategorizeName:
     """Tests for categorize_name function."""
 
     # Livestream tests
+    def test_fundamentals_session(self):
+        category, series, episode = categorize_name(
+            "Fundamentals of Active Inference (Chapter 6 Session 27) July 14, 2026", False)
+        assert category == "TextbookGroup/Namjoshi2026/Cohort_1"
+        assert series == "Session_027"
+
+    def test_fundamentals_review_session(self):
+        category, series, _ = categorize_name(
+            "Fundamentals of Active Inference (Part 1 review, Session 24) July 3, 2026", False)
+        assert category == "TextbookGroup/Namjoshi2026/Cohort_1"
+        assert series == "Session_024"
+
     def test_livestream_unique_event_name(self):
         category, series, episode = categorize_name("Livestream #057.2", True)
         assert category == "Livestream"

@@ -58,6 +58,7 @@ YOUTUBE_TITLE_PATTERNS = {
     'reviewstream': r'(ReviewStream|Active Inference Livestream Review)',
     'roundtable': r'(ActInfLab|Active Inference Institute).*?(\d{4}).*?Quarterly Roundtable #(\d+)',
     'textbookgroup': r'ActInf Textbook Group ~ Cohort (\d+) ~ (?:Meeting|Session) (\d+)',
+    'fundamentals': r'Fundamentals of Active Inference.*?Session (\d+)',
     'twitterspaces': r'Active Inference ~ Twitter spaces #(\d+)',
     'morphstream': r'MorphStream #?(\d+)\.(\d+)',
     'artstream': r'ArtStream #?(\d+)\.(\d+)',
@@ -237,7 +238,15 @@ def _match_stream(name: str, patterns: dict, is_unique_event_name: bool) -> Even
 def _match_textbook(name: str, patterns: dict) -> EventCategory:
     """Match textbook group patterns."""
     result = EventCategory()
-    
+
+    # Namjoshi 2026 "Fundamentals of Active Inference" reading group
+    if 'fundamentals' in patterns:
+        match = re.search(patterns['fundamentals'], name)
+        if match:
+            result.category = "TextbookGroup/Namjoshi2026/Cohort_1"
+            result.series = f"Session_{match.group(1).zfill(3)}"
+            return result
+
     if 'textbook_parr' in patterns:
         match = re.search(patterns['textbook_parr'], name)
         if match:
