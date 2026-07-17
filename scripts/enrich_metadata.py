@@ -170,6 +170,10 @@ UNION_KEYS = ("guests", "other_participants", "keywords")
 CURATED_PARTS = {
     "Applied Active Inference Symposium/2023 Ecosystem Symposium/First_Interval": "rIemcswLfGg",
     "Applied Active Inference Symposium/2023 Ecosystem Symposium/Second_Interval": "PVeyvHSAwmk",
+    # Social Sciences course lectures: curated items had empty parts while the
+    # real uploads sat uncategorized (verified 2026-07-17).
+    "Courses/ActiveInferenceForTheSocialSciences/ActInf_Basics_Lecture": "BNLnbOFdgc0",
+    "Courses/ActiveInferenceForTheSocialSciences/Introduction_Lecture": "JkORFoyk8o8",
 }
 
 # (CURATED_GUESTS retired 2026-07-16: the swapped guest lists for the two
