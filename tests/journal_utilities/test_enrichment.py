@@ -25,6 +25,7 @@ class TestPreferUrl:
         assert prefer_url("#2022.2", "") == "#2022.2"
         assert prefer_url("", "") == ""
 
+
 FIXTURES = Path(__file__).parent.parent / "fixtures"
 
 
@@ -43,7 +44,9 @@ class TestSplitNames:
 
     def test_alias_normalization(self):
         assert split_names("Ivan Metelkin,Sasha Mikhailova") == [
-            "Ivan Metelkin", "Alexandra Mikhailova"]
+            "Ivan Metelkin",
+            "Alexandra Mikhailova",
+        ]
 
 
 class TestMapCodaRow:
@@ -84,6 +87,26 @@ class TestMapCodaRow:
     def test_slides_url_fallback_column(self):
         out = map_coda_row({"Slides URL": "https://alt.example"})
         assert out["slides_url"] == "https://alt.example"
+
+    def test_link_labels_do_not_enter_url_fields(self):
+        out = map_coda_row(
+            {
+                "Slides": "#023",
+                "Slides URL": "https://slides.example",
+                "Paper link": "Embodied skillful performance",
+            }
+        )
+        assert out["slides_url"] == "https://slides.example"
+        assert out["slides_label"] == "#023"
+        assert out["paper_title"] == "Embodied skillful performance"
+        assert "paper_link" not in out
+
+    def test_placeholder_links_are_omitted(self):
+        out = map_coda_row({"Slides": "n/a", "Paper link": "n/a"})
+        assert "slides_url" not in out
+        assert "slides_label" not in out
+        assert "paper_link" not in out
+        assert "paper_title" not in out
 
     def test_abstract_lands_in_summaries(self):
         out = map_coda_row({"Abstract": "An abstract."})
@@ -176,8 +199,14 @@ class TestMergeEnrichment:
 
     def test_sessions_seed_only_never_overwrite(self):
         seed = [{"index": 1, "session_name": "abcdefghijk_sess01", "start": "0:00:00"}]
-        edited = [{"index": 1, "session_name": "abcdefghijk_sess01", "start": "0:00:00",
-                   "guests": ["Hand Edit"]}]
+        edited = [
+            {
+                "index": 1,
+                "session_name": "abcdefghijk_sess01",
+                "start": "0:00:00",
+                "guests": ["Hand Edit"],
+            }
+        ]
         seeded, changed = merge_enrichment(self.BASE, {"sessions": seed})
         assert changed and seeded["sessions"] == seed
         kept, changed2 = merge_enrichment(dict(self.BASE, sessions=edited), {"sessions": seed})
@@ -193,13 +222,24 @@ class TestMergeEnrichment:
         assert not changed2
 
     def test_part_slides_label_never_replaces_url(self):
-        meta = dict(self.BASE, parts=[{"video_id": "abcdefghijk",
-                                       "slides_url": "https://docs.google.com/x"}])
+        meta = dict(
+            self.BASE,
+            parts=[{"video_id": "abcdefghijk", "slides_url": "https://docs.google.com/x"}],
+        )
         new, changed = merge_enrichment(
             meta, {}, part_updates={"abcdefghijk": {"slides_url": "#035.1"}}
         )
         assert not changed
         assert new["parts"][0]["slides_url"] == "https://docs.google.com/x"
+
+    def test_invalid_owned_links_are_normalized_without_data_loss(self):
+        meta = dict(self.BASE, slides_url="#023", paper_link="Paper title")
+        new, changed = merge_enrichment(meta, {})
+        assert changed
+        assert "slides_url" not in new
+        assert new["slides_label"] == "#023"
+        assert "paper_link" not in new
+        assert new["paper_title"] == "Paper title"
 
     def test_part_updates_target_by_video_id(self):
         new, changed = merge_enrichment(

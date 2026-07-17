@@ -9,7 +9,6 @@ ActiveInferenceJournal ``docs/SCHEMA.md`` (Enrichment fields v2.1).
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
 
 # Keys this module owns in metadata.json. Merging only ever sets these;
 # foreign keys are never touched or removed.
@@ -21,7 +20,9 @@ ENRICH_KEYS = (
     "description",
     "github",
     "slides_url",
+    "slides_label",
     "paper_link",
+    "paper_title",
     "doi",
     "zenodo",
     "keywords",
@@ -48,7 +49,9 @@ CANONICAL_ORDER = (
     "description",
     "github",
     "slides_url",
+    "slides_label",
     "paper_link",
+    "paper_title",
     "doi",
     "zenodo",
     "keywords",
@@ -61,14 +64,25 @@ CANONICAL_ORDER = (
 )
 
 # Fields that may attach per-part when multiple Coda rows map to one item.
-PER_PART_KEYS = ("title", "date", "slides_url", "paper_link", "doi", "zenodo")
+PER_PART_KEYS = (
+    "title",
+    "date",
+    "slides_url",
+    "slides_label",
+    "paper_link",
+    "paper_title",
+    "doi",
+    "zenodo",
+)
 
 # Journal-owned fields: enrichment seeds them when absent but NEVER overwrites —
 # the journal repo is their source of truth and hand-edits there must stick.
 SEED_ONLY_KEYS = ("sessions",)
 
 # Name suffixes/credentials that a naive comma-split would sever.
-_NAME_SUFFIX = re.compile(r"^(?:Psy\.?\s?D\.?|Ph\.?\s?D\.?|M\.?\s?D\.?|Jr\.?|Sr\.?|Esq\.?|[IVX]{2,3})$", re.I)
+_NAME_SUFFIX = re.compile(
+    r"^(?:Psy\.?\s?D\.?|Ph\.?\s?D\.?|M\.?\s?D\.?|Jr\.?|Sr\.?|Esq\.?|[IVX]{2,3})$", re.I
+)
 
 # Canonical spellings for people who appear under multiple names across sources.
 NAME_ALIASES = {
@@ -79,11 +93,32 @@ NAME_ALIASES = {
 _CURLY = str.maketrans({"“": '"', "”": '"', "„": '"', "‘": "'", "’": "'"})
 
 
-def _clean(value) -> str:
+def _clean(value: object) -> str:
     return value.strip() if isinstance(value, str) else ""
 
 
-def split_names(raw) -> list[str]:
+_PLACEHOLDERS = {"", "n/a", "na", "none", "null", "-"}
+
+
+def _is_url(value: str) -> bool:
+    return value.startswith(("http://", "https://"))
+
+
+def _is_placeholder(value: str) -> bool:
+    return value.casefold() in _PLACEHOLDERS
+
+
+def _link_and_label(primary: object, fallback: object = "") -> tuple[str, str]:
+    """Split a source cell into a real URL and an optional display label."""
+    primary, fallback = _clean(primary), _clean(fallback)
+    url = primary if _is_url(primary) else fallback if _is_url(fallback) else ""
+    label = primary if primary and not _is_url(primary) and not _is_placeholder(primary) else ""
+    if not label and fallback and not _is_url(fallback) and not _is_placeholder(fallback):
+        label = fallback
+    return url, label
+
+
+def split_names(raw: object) -> list[str]:
     """Split a comma-separated name list, re-joining credential suffixes."""
     names: list[str] = []
     for token in _clean(raw).split(","):
@@ -97,7 +132,7 @@ def split_names(raw) -> list[str]:
     return [NAME_ALIASES.get(name, name) for name in names]
 
 
-def _iso_date(raw) -> str:
+def _iso_date(raw: object) -> str:
     text = _clean(raw)
     if not text:
         return ""
@@ -107,11 +142,11 @@ def _iso_date(raw) -> str:
         return ""
 
 
-def map_coda_row(values: dict) -> dict:
+def map_coda_row(values: dict[str, object]) -> dict[str, object]:
     """Extract the curated enrichment fields from one Coda row's ``values``."""
     out: dict = {}
 
-    def put(key: str, value) -> None:
+    def put(key: str, value: object) -> None:
         if value:
             out[key] = value
 
@@ -123,8 +158,21 @@ def map_coda_row(values: dict) -> dict:
     put("guests", split_names(values.get("Guests")))
     put("other_participants", split_names(values.get("Other Participants")))
     put("github", _clean(values.get("Github")))
-    put("slides_url", _clean(values.get("Slides")) or _clean(values.get("Slides URL")))
-    put("paper_link", _clean(values.get("Paper link")))
+
+    slides_url, slides_label = _link_and_label(values.get("Slides"), values.get("Slides URL"))
+    put("slides_url", slides_url)
+    put("slides_label", slides_label)
+
+    paper = _clean(values.get("Paper link"))
+    paper_url = _clean(values.get("Paper URL"))
+    if _is_url(paper):
+        put("paper_link", paper)
+    elif _is_url(paper_url):
+        put("paper_link", paper_url)
+        if paper and not _is_placeholder(paper):
+            put("paper_title", paper)
+    elif paper and not _is_placeholder(paper):
+        put("paper_title", paper)
     put("doi", _clean(values.get("DOI")))
     put("zenodo", _clean(values.get("Zenodo Link")))
     put("keywords", [k.strip() for k in _clean(values.get("Keywords")).split(",") if k.strip()])
@@ -150,7 +198,7 @@ def map_coda_row(values: dict) -> dict:
     return out
 
 
-def prefer_url(primary, fallback) -> str:
+def prefer_url(primary: object, fallback: object) -> str:
     """Return primary if it's an http(s) URL, else fallback if it is, else primary."""
     primary, fallback = _clean(primary), _clean(fallback)
     if primary.startswith(("http://", "https://")):
@@ -158,6 +206,20 @@ def prefer_url(primary, fallback) -> str:
     if fallback.startswith(("http://", "https://")):
         return fallback
     return primary
+
+
+def _normalize_owned_links(meta: dict) -> None:
+    """Keep URL fields URL-only while preserving old labels/titles."""
+    for link_key, label_key in (
+        ("slides_url", "slides_label"),
+        ("paper_link", "paper_title"),
+    ):
+        value = _clean(meta.get(link_key))
+        if not value or _is_url(value):
+            continue
+        if not meta.get(label_key) and not _is_placeholder(value):
+            meta[label_key] = value
+        meta.pop(link_key, None)
 
 
 @dataclass
@@ -210,16 +272,20 @@ def parse_split_file(text: str) -> SplitResult:
     blocks.sort(key=lambda b: int(b.get("episode", 0)))
 
     if len(chapters) != len(blocks):
-        raise ValueError(f"split file mismatch: {len(chapters)} chapters vs {len(blocks)} CREATE blocks")
+        raise ValueError(
+            f"split file mismatch: {len(chapters)} chapters vs {len(blocks)} CREATE blocks"
+        )
     if not blocks:
         raise ValueError("split file contains no CREATE session blocks")
 
     video_id = blocks[0].get("session_name", "").split("_sess")[0]
     sessions = []
-    for chapter, block in zip(chapters, blocks):
+    for chapter, block in zip(chapters, blocks, strict=True):
         expected_prefix = f"{video_id}_sess"
         if not block.get("session_name", "").startswith(expected_prefix):
-            raise ValueError(f"session_name {block.get('session_name')!r} does not match video {video_id!r}")
+            raise ValueError(
+                f"session_name {block.get('session_name')!r} does not match video {video_id!r}"
+            )
         session = {
             "index": int(block["episode"]),
             "session_name": block["session_name"],
@@ -252,17 +318,16 @@ def _normalize_ws(text: str) -> str:
 
 def _common_description(blocks: list[dict]) -> str:
     stripped = {
-        _normalize_ws(_SESSION_LINE.sub("", block.get("description", "")))
-        for block in blocks
+        _normalize_ws(_SESSION_LINE.sub("", block.get("description", ""))) for block in blocks
     }
     return stripped.pop() if len(stripped) == 1 else ""
 
 
 def merge_enrichment(
-    meta: dict,
-    enrichment: dict,
-    part_updates: Optional[dict] = None,
-    fill_parts: Optional[list[dict]] = None,
+    meta: dict[str, object],
+    enrichment: dict[str, object],
+    part_updates: dict[str, dict[str, object]] | None = None,
+    fill_parts: list[dict[str, object]] | None = None,
     replace_parts: bool = False,
 ) -> tuple[dict, bool]:
     """
@@ -286,16 +351,30 @@ def merge_enrichment(
     if fill_parts and (replace_parts or not new.get("parts")):
         new["parts"] = fill_parts
 
+    parts = [dict(p) for p in new.get("parts", [])]
     if part_updates:
-        parts = [dict(p) for p in new.get("parts", [])]
         for part in parts:
             for key, value in part_updates.get(part.get("video_id", ""), {}).items():
                 if key == "slides_url":
                     # A display label must never replace a real URL.
-                    value = prefer_url(value, part.get(key, ""))
+                    if not _is_url(_clean(value)):
+                        if (
+                            value
+                            and not part.get("slides_label")
+                            and not _is_url(_clean(part.get("slides_url", "")))
+                        ):
+                            part["slides_label"] = value
+                        continue
+                elif key == "paper_link" and not _is_url(_clean(value)):
+                    if value and not part.get("paper_title") and not _is_placeholder(_clean(value)):
+                        part["paper_title"] = value
+                    continue
                 if value:
                     part[key] = value
-        new["parts"] = parts
+    for part in parts:
+        _normalize_owned_links(part)
+    new["parts"] = parts
+    _normalize_owned_links(new)
 
     ordered = {key: new[key] for key in CANONICAL_ORDER if key in new}
     ordered.update({key: value for key, value in new.items() if key not in ordered})

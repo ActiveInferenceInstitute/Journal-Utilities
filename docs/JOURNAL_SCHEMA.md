@@ -16,8 +16,10 @@ docs/                                               # technical documentation
 INDEX.json  INDEX.md  README.md                     # top level
 ```
 
-Every channel video is represented (idempotent build from the JU channel manifest +
-transcripts); uncategorized videos live under `<namespace>/Other/<video_id>/`.
+Every non-duplicate channel video is represented (idempotent build from the JU channel
+manifest + transcripts); deliberate secondary copies carry `duplicate_of` and are
+excluded from coverage counts. Uncategorized videos live under
+`<namespace>/Other/<video_id>/`.
 
 ## Per-item folder
 
@@ -52,9 +54,27 @@ data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
 }
 ```
 
+## Enrichment fields
+
+`scripts/enrich_metadata.py` owns the enrichment fields in `metadata.json` and keeps
+URL fields URL-only. Non-URL Coda display text is preserved as `slides_label` or
+`paper_title`; placeholder values such as `n/a` are omitted. `duplicate_of` identifies
+a deliberate secondary copy whose video ID is also present on the canonical item.
+
+The derived indexes are regenerated with:
+
+```bash
+python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal
+python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal --check
+```
+
+`INDEX.json` contains `count`, `videos` (part records, including deliberate duplicates),
+`unique_videos`, and item records.
+
 ## Top-level
 
-- `INDEX.json` — machine index: every item + parts + paths + flags.
+- `INDEX.json` — machine index: every item + parts + paths + flags, including record and
+  unique-video counts.
 - `INDEX.md` — human index grouped by series.
 - `SCHEMA.md` — this spec (mirrored into the journal repo).
 - `sources/` — registry of channels/sources (channel id → series rules) so other
@@ -71,6 +91,8 @@ data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
   `Transcripts/Prose/`/`Prose/`→`assets/prose/`, `Appendices/`→`assets/appendices/`,
   `Bibliographic Information/`→`assets/bibliography/`. `pdf/odt/zip` → `assets/` by type.
 - `Audio/*.m4a` → moved to the `audio` branch as `audio/<video_id>.64k.m4a`; removed from `main`.
-- **Invariant:** every non-placeholder source file is accounted for (moved or
+- **Coverage invariant:** every non-duplicate channel video is a part in exactly one
+  canonical item; `duplicate_of` records are excluded from coverage reconciliation.
+- **File invariant:** every non-placeholder source file is accounted for (moved or
   intentionally dropped). The converter's `--dry-run` reports any unmapped file.
 ```
