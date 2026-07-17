@@ -139,6 +139,7 @@ def _video_id(name: str) -> str:
     stem = re.sub(r"\.(simple\.)?(json|txt|srt)$", "", name)
     m = (
         re.search(r"\[([A-Za-z0-9_-]{11})\]", stem)  # symposium: "... [hW9IiOujS1E]_0"
+        or re.search(r"^([A-Za-z0-9_-]{11})_sess\d+\b", stem)
         or re.search(r"_youtube_([A-Za-z0-9_-]{11})\b", stem)
         or re.search(r"_([A-Za-z0-9_-]{11})$", stem)
         or re.search(r"_([A-Za-z0-9_-]{11})\b", stem)
@@ -368,7 +369,7 @@ def main() -> int:
         return 0
 
     plan = analyze(journal)
-    print(f"=== ActiveInferenceJournal v2 refactor — DRY RUN ===")
+    print("=== ActiveInferenceJournal v2 refactor — DRY RUN ===")
     print(f"journal: {journal}")
     print(f"items: {plan['items']}   total files: {plan['total_files']}")
     print("by category:")

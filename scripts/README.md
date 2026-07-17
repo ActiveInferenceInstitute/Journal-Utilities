@@ -108,3 +108,13 @@ python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal -
 `enrich_metadata.py` is dry-run by default and preserves journal-owned
 `sessions[]`. `generate_journal_indexes.py` derives `INDEX.json` and `INDEX.md`
 from canonical metadata, including duplicate and unique-video counts.
+
+For split-file items whose merged transcript sections need rebuilding:
+
+```bash
+python scripts/repair_split_transcripts.py --journal ../ActiveInferenceJournal --utilities .
+python scripts/repair_split_transcripts.py --journal ../ActiveInferenceJournal --utilities . --check
+```
+
+The repair is idempotent and writes only when complete `<video_id>_sessNN`
+source pairs are available.

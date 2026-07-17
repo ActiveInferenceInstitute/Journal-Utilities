@@ -71,6 +71,10 @@ python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal -
 `INDEX.json` contains `count`, `videos` (part records, including deliberate duplicates),
 `unique_videos`, and item records.
 
+Split-file transcript records use their session identity (`<video_id>_sessNN`) in both
+the `transcript.txt` headings and `transcript.json` `video_id` fields. Repair derived
+outputs with `scripts/repair_split_transcripts.py` when source session pairs are present.
+
 ## Top-level
 
 - `INDEX.json` — machine index: every item + parts + paths + flags, including record and
