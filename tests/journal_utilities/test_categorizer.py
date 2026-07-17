@@ -127,6 +127,18 @@ class TestCategorizeName:
         assert series == "2022 Symposium on Robotics"
         assert episode is None
 
+    def test_symposium_ordinal_2025(self):
+        category, series, _ = categorize_name(
+            "5th Applied Active Inference Symposium (Part 2, Nov 13, 2025) ~ (Full reupload)", False)
+        assert category == "Applied Active Inference Symposium/2025"
+        assert series == "part 2"
+
+    def test_symposium_ordinal_2024(self):
+        category, series, _ = categorize_name(
+            "4th Applied Active Inference Symposium (Part 1, Nov 13, 2024) ~ Full Upload", False)
+        assert category == "Applied Active Inference Symposium/2024"
+        assert series == "part 1"
+
     # Special patterns tests
     def test_social_sciences(self):
         category, series, episode = categorize_name("Active Inference for the Social Sciences 2023", True)

@@ -46,6 +46,7 @@ UNIQUE_EVENT_PATTERNS = {
 YOUTUBE_TITLE_PATTERNS = {
     'symposium_2021': r'Prof\. Karl Friston ~ Applied Active Inference Symposium',
     'symposium_2022': r'2nd Applied Active Inference Symposium',
+    'symposium_ordinal': r'(\d+)(?:st|nd|rd|th) Applied Active Inference Symposium \(Part (\d+)',
     'bookstream': r'(Active Inference)? ?(?:~.*~)? ?BookStream #?(\d+)\.(\d+)',
     'social_sciences': r'(Active Inference for (?:the )?Social Sciences 2023|ActInf Social Sciences 2023)',
     'physics_info': r'Physics as Information Processing',
@@ -122,6 +123,15 @@ def _match_symposium(name: str, patterns: dict) -> EventCategory:
             result.series = f"part {match.group(2)}"
             return result
     
+    # "Nth Applied Active Inference Symposium (Part P, ...)" — the 3rd (2023)
+    # onward use ordinal titles; 1st/2021 and 2nd/2022 keep their bespoke rules.
+    if 'symposium_ordinal' in patterns:
+        match = re.search(patterns['symposium_ordinal'], name)
+        if match and int(match.group(1)) >= 3:
+            result.category = f"Applied Active Inference Symposium/{2020 + int(match.group(1))}"
+            result.series = f"part {match.group(2)}"
+            return result
+
     if 'symposium_2021' in patterns:
         match = re.search(patterns['symposium_2021'], name)
         if match:
