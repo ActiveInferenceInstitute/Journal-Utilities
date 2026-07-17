@@ -7,6 +7,7 @@ Focus: transcripts and audio (per user requirement).
 """
 
 import json
+import os
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -29,6 +30,13 @@ from journal_utilities.download.downloader import (
 # A known short Active Inference video for real download tests
 # "Generalized Coordinates in RxInfer.jl" — 9 min, has auto-captions
 KNOWN_VIDEO_ID = "qUJK1IDxKzg"
+
+# YouTube blocks requests from cloud-provider IPs (GitHub Actions runners),
+# so live-download tests can never pass in CI — run them locally only.
+live_youtube = pytest.mark.skipif(
+    os.environ.get("CI", "").lower() == "true",
+    reason="live YouTube download — blocked from CI runner IPs",
+)
 
 
 # ---------------------------------------------------------------------------
@@ -296,6 +304,7 @@ class TestDownloadManifest:
 # Real transcript download (network required)
 # ---------------------------------------------------------------------------
 
+@live_youtube
 class TestRealTranscriptDownload:
     """Real transcript download tests using yt-dlp and youtube_transcript_api."""
 
@@ -339,6 +348,7 @@ class TestRealTranscriptDownload:
 # Real audio download (network required)
 # ---------------------------------------------------------------------------
 
+@live_youtube
 class TestRealAudioDownload:
     """Real audio download tests using yt-dlp (mocked for stability)."""
 
@@ -383,6 +393,7 @@ class TestRealAudioDownload:
 # Real combined download (network required)
 # ---------------------------------------------------------------------------
 
+@live_youtube
 class TestRealDownloadAll:
     """Real download_all coordinator tests."""
 
