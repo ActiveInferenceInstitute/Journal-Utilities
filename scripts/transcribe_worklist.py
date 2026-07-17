@@ -141,6 +141,20 @@ def main() -> int:
     wav_dir = args.work_dir / "wav"
     wav_dir.mkdir(exist_ok=True)
 
+    # ctranslate2 dlopens cuDNN by soname; pip-installed nvidia wheels are not
+    # on the loader path, so preload them (RTLD_GLOBAL) or the whisper encoder
+    # aborts with "Unable to load libcudnn_cnn.so.9".
+    import ctypes
+    import site
+
+    for sp in site.getsitepackages():
+        for pattern in ("nvidia/cublas/lib/libcublas*.so*", "nvidia/cudnn/lib/libcudnn*.so.9"):
+            for lib in sorted(Path(sp).glob(pattern)):
+                try:
+                    ctypes.CDLL(str(lib), mode=ctypes.RTLD_GLOBAL)
+                except OSError:
+                    pass
+
     # Heavy import deferred so dry runs work without GPU deps loaded.
     from journal_utilities.transcribe.transcribe import TranscriptionService
 
