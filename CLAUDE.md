@@ -30,7 +30,8 @@ drops before any in-place apply). Audio is split to the journal's `audio` branch
   it is now gitignored and purged from history. **Never use `--cookies-from-browser`**
   into a tracked path; never commit `cookies.txt`.
 - **Enumeration:** `channel.py` unions the `/videos` + `/streams` + `/shorts` tabs (the
-  `UU...` uploads playlist truncates at ~100). Full channel = ~729 videos.
+  `UU...` uploads playlist truncates at ~100). The saved channel manifest is the live
+  count; do not hardcode corpus totals in documentation.
 - `timeout` is not on macOS (use `gtimeout` or none). For transcript-only work, a
   lightweight venv (`yt-dlp` + `youtube-transcript-api`) is enough — `whisperx` is only
   for diarization.
@@ -40,8 +41,7 @@ drops before any in-place apply). Audio is split to the journal's `audio` branch
 ### Environment Setup
 
 ```bash
-uv venv && source .venv/bin/activate
-uv pip install -e ".[dev]"
+uv sync --all-extras
 ```
 
 ### Running Tests
@@ -55,13 +55,14 @@ uv run pytest tests/journal_utilities/rag/ -v   # Entity extraction (RAG)
 ### Pipeline Runner (run.py)
 
 ```bash
-python run.py --help           # Show all commands
-python run.py config           # Display current configuration
-python run.py export           # Export transcripts (formats from config.ini)
-python run.py download         # Download from YouTube (options from config.ini)
-python run.py serve            # Start web interface
-python run.py test             # Run test suite
-python run.py full             # Run full pipeline (download → export)
+uv run python run.py --help           # Show all commands
+uv run python run.py config           # Display current configuration
+uv run python run.py export           # Export transcripts (formats from config.ini)
+uv run python run.py download         # Download from YouTube (options from config.ini)
+uv run python run.py serve            # Start web interface
+uv run python run.py test             # Run test suite
+uv run python run.py full             # Run full pipeline (download → export)
+uv run python run.py journal-check    # Validate sibling ActiveInferenceJournal (read-only)
 ```
 
 ### YouTube Channel Download

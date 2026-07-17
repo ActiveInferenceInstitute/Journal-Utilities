@@ -90,7 +90,7 @@ Some secrets are better kept in a `.env` file (not committed to git).
 
 ### `[pipeline]`
 
-Controls the default pipeline steps (`python run.py` with no subcommand).
+Controls the default pipeline steps (`uv run python run.py` with no subcommand).
 
 | Key | Default | Description |
 | :--- | :--- | :--- |
@@ -99,4 +99,4 @@ Controls the default pipeline steps (`python run.py` with no subcommand).
 | `export` | `true` | Export transcripts to configured formats. |
 | `test` | `true` | Run the test suite. |
 | `serve` | `true` | Start the web interface (final step). |
-| `test_strict` | `false` | If `true`, abort the pipeline on test failures. |
+| `test_strict` | `true` | If `true`, abort the pipeline on test failures; set `false` only for diagnostics. |

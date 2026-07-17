@@ -75,6 +75,35 @@ Split-file transcript records use their session identity (`<video_id>_sessNN`) i
 the `transcript.txt` headings and `transcript.json` `video_id` fields. Repair derived
 outputs with `scripts/repair_split_transcripts.py` when source session pairs are present.
 
+## Reproducible maintenance sequence
+
+Run the stages from the Journal-Utilities checkout with the sibling journal path
+explicitly named:
+
+```bash
+# 1. Preview enrichment; add --apply only after reviewing the report.
+python scripts/enrich_metadata.py --journal ../ActiveInferenceJournal
+python scripts/enrich_metadata.py --journal ../ActiveInferenceJournal --apply
+
+# 2. Rebuild complete split-session artifacts and derived indexes.
+python scripts/repair_split_transcripts.py \
+  --journal ../ActiveInferenceJournal --utilities .
+python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal
+
+# 3. Read-only release gate.
+python scripts/validate_journal.py \
+  --journal ../ActiveInferenceJournal \
+  --manifest data/output/channel_videos.json
+```
+
+The final gate is deliberately non-mutating. It verifies that metadata remains
+the source of truth for both indexes, every duplicate target exists, canonical
+video IDs are unique, split transcript records have stable identities, manifest
+coverage has no missing videos, enrichment URL fields contain real URLs, and
+the journal `main` checkout contains neither credentials nor audio. Use
+`--strict-manifest` when the manifest has just been freshly enumerated and
+canonical extras must also fail the check.
+
 ## Top-level
 
 - `INDEX.json` — machine index: every item + parts + paths + flags, including record and

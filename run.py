@@ -4,18 +4,20 @@ Journal-Utilities — Top-level pipeline runner.
 
 Reads ``config.ini`` for all pipeline settings and exposes subcommands:
 
-    python run.py config       Show current configuration
-    python run.py export       Export transcripts (formats from config.ini)
-    python run.py download     Download from YouTube (options from config.ini)
-    python run.py serve        Start the web interface
-    python run.py test         Run the test suite
-    python run.py full         Run the full pipeline
+    uv run python run.py config        Show current configuration
+    uv run python run.py export        Export transcripts (formats from config.ini)
+    uv run python run.py download      Download from YouTube (options from config.ini)
+    uv run python run.py serve         Start the web interface
+    uv run python run.py test          Run the test suite
+    uv run python run.py full          Run the full pipeline
+    uv run python run.py journal-check Validate a sibling ActiveInferenceJournal checkout
 """
 
 from __future__ import annotations
 
 import argparse
 import configparser
+import json
 import logging
 import os
 import signal
@@ -56,9 +58,11 @@ def _bootstrap_via_uv() -> None:
         return  # uv not installed — fall through and hope for the best
 
     cmd = [uv, "run", "python", str(Path(__file__).resolve()), *sys.argv[1:]]
-    logging.basicConfig(level=logging.INFO,
-                        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-                        datefmt="%H:%M:%S")
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        datefmt="%H:%M:%S",
+    )
     logger_boot = logging.getLogger("journal_utilities.run")
     logger_boot.info("Re-executing under uv for dependency resolution …")
     result = subprocess.run(cmd, cwd=PROJECT_ROOT)
@@ -94,7 +98,9 @@ def load_config(path: Path = CONFIG_PATH) -> configparser.ConfigParser:
     return config
 
 
-def get_bool(config: configparser.ConfigParser, section: str, key: str, fallback: bool = False) -> bool:
+def get_bool(
+    config: configparser.ConfigParser, section: str, key: str, fallback: bool = False
+) -> bool:
     """Read a boolean value from config with a fallback."""
     try:
         return config.getboolean(section, key, fallback=fallback)
@@ -237,9 +243,9 @@ def cmd_download(config: configparser.ConfigParser, _args: argparse.Namespace) -
     print(f"Running download_channel with args: {argv}")
     try:
         return download_main(argv)
-    except SystemExit as e:
-        return e.code
-    except Exception as e:
+    except SystemExit as exc:
+        return exc.code
+    except Exception:
         logger.exception("Download script failed")
         return 1
 
@@ -260,7 +266,9 @@ def _free_port(port: int) -> bool:
     try:
         result = subprocess.run(
             ["lsof", "-ti", f":{port}"],
-            capture_output=True, text=True, timeout=5,
+            capture_output=True,
+            text=True,
+            timeout=5,
         )
         pids = result.stdout.strip().split()
         if not pids:
@@ -275,6 +283,7 @@ def _free_port(port: int) -> bool:
 
         # Brief wait for cleanup
         import time as _t
+
         _t.sleep(0.5)
         return not _port_in_use(port)
     except Exception as exc:
@@ -285,6 +294,7 @@ def _free_port(port: int) -> bool:
 def cmd_serve(config: configparser.ConfigParser, _args: argparse.Namespace) -> int:
     """Start the web interface."""
     import uvicorn
+
     from journal_utilities.interface.app import create_app
 
     host = get_str(config, "interface", "host", "0.0.0.0")
@@ -314,7 +324,7 @@ def cmd_serve(config: configparser.ConfigParser, _args: argparse.Namespace) -> i
         return 0
     except KeyboardInterrupt:
         return 0
-    except Exception as e:
+    except Exception:
         logger.exception("Web interface failed")
         return 1
 
@@ -350,6 +360,35 @@ def cmd_full(config: configparser.ConfigParser, _args: argparse.Namespace) -> in
     return 0
 
 
+def cmd_journal_check(_config: configparser.ConfigParser, args: argparse.Namespace) -> int:
+    """Run the read-only integrity gate for ActiveInferenceJournal."""
+    from scripts.repair_split_transcripts import repair_journal
+    from scripts.validate_journal import print_report, validate_journal
+
+    utilities = args.utilities.resolve()
+    journal = args.journal.resolve()
+    manifest = (args.manifest or utilities / "data/output/channel_videos.json").resolve()
+
+    print(f"Journal: {journal}")
+    print(f"Utilities: {utilities}")
+    print(f"Manifest: {manifest}\n")
+    report = validate_journal(journal, manifest, args.strict_manifest)
+    print_report(report)
+    if not report.ok:
+        return 1
+
+    try:
+        stale_transcripts = repair_journal(journal, utilities, check=True)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"error: split transcript check failed: {exc}", file=sys.stderr)
+        return 1
+    if stale_transcripts:
+        print("split transcript validation: FAIL", file=sys.stderr)
+        return 1
+    print("split transcript validation: PASS")
+    return 0
+
+
 def cmd_default(config: configparser.ConfigParser, args: argparse.Namespace) -> int:
     """Default pipeline: config → validate → export → test → serve.
 
@@ -358,20 +397,20 @@ def cmd_default(config: configparser.ConfigParser, args: argparse.Namespace) -> 
     with full terminal logging, real validation, and a clickable URL.
 
     Pipeline steps are individually configurable via ``[pipeline]``
-    in ``config.ini``.  A test failure is non-blocking — the web
-    interface will still start.
+    in ``config.ini``. Test failures block the web interface by default;
+    set ``test_strict=false`` only for an intentional diagnostic run.
     """
     import time as _time
 
     t0 = _time.time()
 
     # ── Pipeline step flags (all default to True) ─────────────────
-    run_config   = get_bool(config, "pipeline", "config",   fallback=True)
+    run_config = get_bool(config, "pipeline", "config", fallback=True)
     run_validate = get_bool(config, "pipeline", "validate", fallback=True)
-    run_export   = get_bool(config, "pipeline", "export",   fallback=True)
-    run_tests    = get_bool(config, "pipeline", "test",     fallback=True)
-    run_serve    = get_bool(config, "pipeline", "serve",    fallback=True)
-    test_strict  = get_bool(config, "pipeline", "test_strict", fallback=False)
+    run_export = get_bool(config, "pipeline", "export", fallback=True)
+    run_tests = get_bool(config, "pipeline", "test", fallback=True)
+    run_serve = get_bool(config, "pipeline", "serve", fallback=True)
+    test_strict = get_bool(config, "pipeline", "test_strict", fallback=True)
 
     print("╔══════════════════════════════════════════════════════════════╗")
     print("║       Journal-Utilities — Default Pipeline                  ║")
@@ -553,6 +592,32 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("serve", help="Start the web interface")
     subparsers.add_parser("test", help="Run the test suite")
     subparsers.add_parser("full", help="Run the full pipeline (download → export)")
+    journal_check = subparsers.add_parser(
+        "journal-check", help="Validate a sibling ActiveInferenceJournal checkout"
+    )
+    journal_check.add_argument(
+        "--journal",
+        type=Path,
+        default=PROJECT_ROOT.parent / "ActiveInferenceJournal",
+        help="ActiveInferenceJournal checkout (default: %(default)s)",
+    )
+    journal_check.add_argument(
+        "--utilities",
+        type=Path,
+        default=PROJECT_ROOT,
+        help="Journal-Utilities checkout containing the manifest (default: %(default)s)",
+    )
+    journal_check.add_argument(
+        "--manifest",
+        type=Path,
+        default=None,
+        help="Override the channel manifest path",
+    )
+    journal_check.add_argument(
+        "--strict-manifest",
+        action="store_true",
+        help="Treat canonical journal IDs absent from the manifest as errors",
+    )
 
     return parser
 
@@ -564,6 +629,7 @@ COMMAND_MAP = {
     "serve": cmd_serve,
     "test": cmd_test,
     "full": cmd_full,
+    "journal-check": cmd_journal_check,
 }
 
 
@@ -577,18 +643,20 @@ def main(argv: list[str] | None = None) -> int:
 
     # Configure logging
     log_level = args.log_level or get_str(config, "general", "log_level", "INFO")
-    
+
     # Setup root logger with both StreamHandler and FileHandler
     root_logger = logging.getLogger()
     root_logger.setLevel(getattr(logging, log_level.upper(), logging.INFO))
-    
-    formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s", datefmt="%H:%M:%S")
-    
+
+    formatter = logging.Formatter(
+        "%(asctime)s [%(levelname)s] %(name)s: %(message)s", datefmt="%H:%M:%S"
+    )
+
     # Console handler
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
     root_logger.addHandler(console_handler)
-    
+
     # File handler (repo-wide log.txt)
     file_handler = logging.FileHandler(PROJECT_ROOT / "log.txt", mode="a", encoding="utf-8")
     file_handler.setFormatter(formatter)

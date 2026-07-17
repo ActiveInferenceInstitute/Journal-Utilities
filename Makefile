@@ -1,4 +1,7 @@
-.PHONY: help install install-dev clean test lint format db-start db-stop transcribe fetch-coda import-sessions fetch-metadata copy-to-journal extract-entities enumerate-channel download-transcripts download-audio download-video download-all
+.PHONY: help install install-dev clean test lint format db-start transcribe fetch-coda import-sessions fetch-metadata copy-to-journal extract-entities enumerate-channel download-transcripts download-audio download-video download-all journal-enrich journal-enrich-apply journal-index journal-repair journal-check
+
+JOURNAL_DIR ?= ../ActiveInferenceJournal
+MANIFEST ?= data/output/channel_videos.json
 
 # Load .env file if it exists
 ifneq (,$(wildcard .env))
@@ -18,6 +21,7 @@ help:
 	@echo "  make test         - Run tests"
 	@echo "  make lint         - Run linter (ruff)"
 	@echo "  make format       - Format code with black"
+	@echo "  make journal-check - Validate the sibling journal (read-only)"
 	@echo ""
 	@echo "Database:"
 	@echo "  make db-start     - Start SurrealDB"
@@ -38,6 +42,13 @@ help:
 	@echo "  make download-audio       - Download audio (MP3) for all channel videos"
 	@echo "  make download-video       - Download video for all channel videos"
 	@echo "  make download-all         - Download transcripts, audio, and video"
+	@echo ""
+	@echo "Journal v2 maintenance (JOURNAL_DIR=$(JOURNAL_DIR)):"
+	@echo "  make journal-enrich       - Preview metadata enrichment (dry run)"
+	@echo "  make journal-enrich-apply - Apply metadata enrichment explicitly"
+	@echo "  make journal-repair       - Rebuild complete split transcripts"
+	@echo "  make journal-index        - Regenerate INDEX.json and INDEX.md"
+	@echo "  make journal-check        - Run the complete read-only integrity gate"
 
 install:
 	uv sync
@@ -53,14 +64,14 @@ clean:
 	rm -rf build dist *.egg-info
 
 test:
-	. .venv/bin/activate && python -m pytest tests/
+	uv run pytest tests/
 
 lint:
-	. .venv/bin/activate && ruff check src/ tests/
+	uv run ruff check src/ tests/
 
 format:
-	. .venv/bin/activate && black src/ tests/
-	. .venv/bin/activate && ruff check --fix src/ tests/
+	uv run black src/ tests/
+	uv run ruff check --fix src/ tests/
 
 db-start:
 	surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
@@ -78,20 +89,23 @@ fetch-coda:
 	@echo "Data saved to data/input/livestream_fulldata_table.json"
 
 import-sessions:
-	@echo "Importing sessions from Coda JSON to database..."
-	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step import
+	@echo "The legacy database import target is retired."
+	@echo "Use: uv run python scripts/enrich_metadata.py --journal $(JOURNAL_DIR)"
+	@exit 2
 
 fetch-metadata:
-	@echo "Fetching YouTube metadata for sessions..."
-	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step metadata
+	@echo "The legacy database metadata target is retired."
+	@echo "Use: make enumerate-channel followed by make journal-enrich"
+	@exit 2
 
 transcribe:
-	@echo "Starting transcription pipeline..."
-	. .venv/bin/activate && cd src/journal_utilities && python transcribe.py
+	@echo "Starting local transcription pipeline..."
+	uv run python scripts/transcribe_missing.py
 
 copy-to-journal:
-	@echo "Copying transcripts to journal repository..."
-	. .venv/bin/activate && cd src/journal_utilities && python ingest_db_create_wav.py --step copy
+	@echo "The legacy database copy target is retired."
+	@echo "Use: make journal-repair journal-index journal-check"
+	@exit 2
 
 extract-entities:
 	@echo "Extracting entities from transcripts using Cohere AI..."
@@ -99,24 +113,39 @@ extract-entities:
 		echo "Error: COHERE_API_KEY not found in .env file"; \
 		exit 1; \
 	fi
-	. .venv/bin/activate && python -m journalrag.main
+	uv run python -m journalrag.main
 
 enumerate-channel:
 	@echo "Enumerating videos on the Active Inference channel..."
-	. .venv/bin/activate && python scripts/download_channel.py --enumerate-only
+	uv run python scripts/download_channel.py --enumerate-only
 
 download-transcripts:
 	@echo "Downloading transcripts for all channel videos..."
-	. .venv/bin/activate && python scripts/download_channel.py --transcripts --resume
+	uv run python scripts/download_channel.py --transcripts --resume
 
 download-audio:
 	@echo "Downloading audio (MP3) for all channel videos..."
-	. .venv/bin/activate && python scripts/download_channel.py --audio --resume
+	uv run python scripts/download_channel.py --audio --resume
 
 download-video:
 	@echo "Downloading video for all channel videos..."
-	. .venv/bin/activate && python scripts/download_channel.py --video --resume
+	uv run python scripts/download_channel.py --video --resume
 
 download-all:
 	@echo "Downloading transcripts, audio, and video for all channel videos..."
-	. .venv/bin/activate && python scripts/download_channel.py --transcripts --audio --video --resume
+	uv run python scripts/download_channel.py --transcripts --audio --video --resume
+
+journal-enrich:
+	uv run python scripts/enrich_metadata.py --journal $(JOURNAL_DIR) --manifest $(MANIFEST)
+
+journal-enrich-apply:
+	uv run python scripts/enrich_metadata.py --journal $(JOURNAL_DIR) --manifest $(MANIFEST) --apply
+
+journal-repair:
+	uv run python scripts/repair_split_transcripts.py --journal $(JOURNAL_DIR) --utilities .
+
+journal-index:
+	uv run python scripts/generate_journal_indexes.py --journal $(JOURNAL_DIR)
+
+journal-check:
+	uv run python run.py journal-check --journal $(JOURNAL_DIR) --utilities . --manifest $(MANIFEST)

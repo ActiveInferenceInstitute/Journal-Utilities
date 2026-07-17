@@ -180,6 +180,23 @@ class TestBuildParser:
         args = parser.parse_args(["full"])
         assert args.command == "full"
 
+    def test_parser_journal_check_command(self):
+        parser = build_parser()
+        args = parser.parse_args(
+            [
+                "journal-check",
+                "--journal",
+                "/tmp/journal",
+                "--manifest",
+                "/tmp/manifest.json",
+                "--strict-manifest",
+            ]
+        )
+        assert args.command == "journal-check"
+        assert args.journal == Path("/tmp/journal")
+        assert args.manifest == Path("/tmp/manifest.json")
+        assert args.strict_manifest is True
+
     def test_parser_custom_config_path(self):
         parser = build_parser()
         args = parser.parse_args(["--config", "/tmp/my.ini", "config"])
@@ -232,6 +249,18 @@ class TestDefaultPipeline:
         assert "Step 1/5" in captured.out
         assert "[general]" in captured.out
         assert "[download]" in captured.out
+
+    def test_default_pipeline_fails_closed_on_test_error(self, config, monkeypatch):
+        """A failing test step must not start the web interface by default."""
+        import argparse
+        import run
+
+        args = argparse.Namespace(command=None, config=None, log_level=None)
+        monkeypatch.setattr(run, "cmd_export", lambda cfg, a: 0)
+        monkeypatch.setattr(run, "cmd_test", lambda cfg, a: 7)
+        monkeypatch.setattr(run, "cmd_serve", lambda cfg, a: pytest.fail("serve started"))
+
+        assert run.cmd_default(config, args) == 7
 
     def test_default_validates_data(self, config, capsys, monkeypatch):
         """Validation step (Step 2/5) should report on data directories."""

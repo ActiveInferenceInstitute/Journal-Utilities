@@ -1,0 +1,30 @@
+name: Test Journal-Utilities
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync --all-extras --dev --frozen
+
+      - name: Run tests
+        run: uv run pytest tests/ -q
+
+      - name: Lint the journal integrity gate
+        run: uv run ruff check scripts/validate_journal.py

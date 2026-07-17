@@ -109,6 +109,22 @@ python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal -
 `sessions[]`. `generate_journal_indexes.py` derives `INDEX.json` and `INDEX.md`
 from canonical metadata, including duplicate and unique-video counts.
 
+Use the combined read-only integrity gate before committing or publishing a
+journal update:
+
+```bash
+python scripts/validate_journal.py \
+  --journal ../ActiveInferenceJournal \
+  --manifest data/output/channel_videos.json
+```
+
+The gate checks metadata/path consistency, URL-only enrichment fields, derived
+indexes, duplicate targets and canonical ID uniqueness, transcript JSON shape,
+manifest coverage, and the no-audio/no-credentials rule for the journal's
+`main` branch. `--strict-manifest` also rejects canonical IDs that are absent
+from the supplied manifest; the default warning is useful when the manifest is
+older than the journal and should be re-enumerated first.
+
 For split-file items whose merged transcript sections need rebuilding:
 
 ```bash

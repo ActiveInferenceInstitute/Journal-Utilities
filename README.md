@@ -7,8 +7,8 @@
 **A modular, config-driven pipeline for processing the [Active Inference Institute](https://www.youtube.com/@ActiveInference) video library.**
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org)
-[![Tests](https://img.shields.io/badge/tests-389%20passed-brightgreen)](#testing)
-[![Coverage](https://img.shields.io/badge/coverage-78%25-yellow)](#testing)
+[![Tests](https://img.shields.io/badge/tests-pytest-brightgreen)](#testing)
+[![Coverage](https://img.shields.io/badge/coverage-pytest-yellow)](#testing)
 [![License](https://img.shields.io/badge/license-see%20repo-lightgrey)](LICENSE)
 
 *Download · Transcribe · Extract · Export · Browse · Chat*
@@ -36,7 +36,7 @@ graph LR
     subgraph Serve
         C --> G[🌐 Web Interface]
         E --> G
-        G -->|Ollama RAG| H[� Chat]
+        G -->|Ollama RAG| H[Chat]
     end
 
     style A fill:#e63946,color:#fff
@@ -44,7 +44,7 @@ graph LR
     style H fill:#2a9d8f,color:#fff
 ```
 
-> **One command** runs the full pipeline: `python run.py`
+> **One command** runs the configured application pipeline: `uv run python run.py`
 > **One file** controls all options: `config.ini` — [see reference →](docs/configuration.md)
 
 ---
@@ -57,7 +57,7 @@ graph LR
 
 ### 📥 Download & Transcribe
 
-Enumerate 695+ videos from the Active Inference channel. Download transcripts, audio, and video with cookie auth, rate limiting, and resume. Transcribe locally on Apple Silicon or GPU.
+Enumerate the Active Inference channel from a saved manifest. Download transcripts, audio, and video with cookie auth, rate limiting, and resume. Transcribe locally on Apple Silicon or GPU.
 
 **→** [Download Guide](docs/youtube_download.md) · [Transcription Engines](docs/transcription.md) · [YouTube Module](docs/youtube.md)
 
@@ -102,22 +102,22 @@ Cohere AI entity extraction (people, concepts, theories, organizations) and rela
 # 1. Clone & install
 git clone https://github.com/ActiveInferenceInstitute/Journal-Utilities.git
 cd Journal-Utilities
-uv venv && source .venv/bin/activate
-uv pip install -e ".[dev,interface,export]"
+uv sync --all-extras
 
 # 2. Run the default pipeline (Config → Validate → Export → Test → Serve)
-python run.py
+uv run python run.py
 ```
 
 ### Pipeline Commands
 
 ```bash
-python run.py config       # Show current configuration
-python run.py download     # Download from YouTube
-python run.py export       # Export transcripts to all enabled formats
-python run.py test         # Run 389-test suite
-python run.py serve        # Launch web UI at http://localhost:8000
-python run.py full         # Full pipeline: download → export
+uv run python run.py config          # Show current configuration
+uv run python run.py download        # Download from YouTube
+uv run python run.py export          # Export transcripts to all enabled formats
+uv run python run.py test            # Run the pytest suite
+uv run python run.py serve           # Launch web UI at http://localhost:8000
+uv run python run.py full            # Full pipeline: download → export
+uv run python run.py journal-check   # Read-only journal integrity gate
 ```
 
 ---
@@ -131,6 +131,7 @@ graph TB
         S1["scripts/download_channel.py"]
         S2["scripts/transcribe_missing.py"]
         S3["scripts/scaffold_youtube_courses.py"]
+        S4["scripts/validate_journal.py"]
     end
 
     subgraph "src/journal_utilities/"
@@ -152,7 +153,7 @@ graph TB
         YT_API["YouTube (yt-dlp)"]
     end
 
-    RUN --> EX & IF & DL
+    RUN --> EX & IF & DL & S4
     S1 --> YT & DL
     S2 --> TR
     S3 --> RN
@@ -183,7 +184,7 @@ Journal-Utilities/
 │   ├── export/                   #   Multi-format transcript export
 │   └── utils/                    #   Shared utilities
 ├── scripts/                      # CLI tools
-├── tests/                        # 389 tests (pytest)
+├── tests/                        # Pytest suite
 ├── data/                         # Input, output, database storage
 ├── docs/                         # 10 module guides
 ├── run.py                        # Pipeline runner
@@ -221,9 +222,32 @@ and [`docs/REFACTOR_READINESS.md`](docs/REFACTOR_READINESS.md) for the refactor 
 ## 🧪 Testing
 
 ```bash
-python run.py test                         # Via pipeline runner
-uv run pytest tests/ -v --cov=src          # With coverage report
+uv run pytest tests/ -v --cov=src         # Full suite with coverage
+uv run python run.py journal-check         # Journal corpus integrity gate
 ```
+
+Test counts and coverage are intentionally not embedded in this README because
+they change as the suite and corpus evolve. The commands above and CI output are
+the live status.
+
+## Journal v2 maintenance
+
+Journal-Utilities is the code-side source of truth for the generated
+ActiveInferenceJournal layout. The maintenance sequence is explicit and safe to
+repeat:
+
+```bash
+uv run python scripts/enrich_metadata.py --journal ../ActiveInferenceJournal
+uv run python scripts/enrich_metadata.py --journal ../ActiveInferenceJournal --apply
+uv run python scripts/repair_split_transcripts.py --journal ../ActiveInferenceJournal --utilities .
+uv run python scripts/generate_journal_indexes.py --journal ../ActiveInferenceJournal
+uv run python run.py journal-check
+```
+
+Enrichment is dry-run by default; only the command with `--apply` writes metadata.
+The final `journal-check` command is read-only and blocks handoff when metadata,
+indexes, transcript identities, duplicate handling, coverage, or the `main`
+branch's no-audio/no-credentials boundary is inconsistent.
 
 ## 🔧 Environment
 

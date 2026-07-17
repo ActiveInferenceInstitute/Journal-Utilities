@@ -20,6 +20,12 @@ Journal-Utilities is a modular, config-driven system for processing the Active I
 | **Render** | `src/journal_utilities/render/` | `renderer.py` | [docs/render.md](docs/render.md) |
 | **Interface** | `src/journal_utilities/interface/` | `app.py`, `chat_engine.py` | [docs/web_interface.md](docs/web_interface.md) |
 
+The generated journal boundary is maintained by the scripts in `scripts/`. Use
+`enrich_metadata.py` for explicit metadata enrichment, then
+`repair_split_transcripts.py`, `generate_journal_indexes.py`, and finally the
+read-only `validate_journal.py` gate. The sibling checkout and channel manifest
+must be passed explicitly when operating outside the default layout.
+
 ## 2. Agent Guidelines
 
 ### General Rules
@@ -56,9 +62,7 @@ Journal-Utilities is a modular, config-driven system for processing the Active I
 We use `uv` for dependency management.
 
 ```bash
-uv venv
-source .venv/bin/activate
-uv pip install -e ".[dev]"
+uv sync --all-extras
 ```
 
 ### Running the App
@@ -66,8 +70,9 @@ uv pip install -e ".[dev]"
 Always use `run.py` as the entry point.
 
 ```bash
-python run.py full       # Run full pipeline
-python run.py serve      # Start web UI
+uv run python run.py full       # Run full pipeline
+uv run python run.py serve      # Start web UI
+uv run python run.py journal-check  # Validate sibling journal (read-only)
 ```
 
 ## 4. Documentation Standards
@@ -118,12 +123,13 @@ src/journal_utilities/
 
 | Task | Command | Main File |
 | :--- | :--- | :--- |
-| Show config | `python run.py config` | `run.py` + `config.ini` |
-| Export transcripts | `python run.py export` | `export/exporter.py` |
-| Download content | `python run.py download` | `downloader.py` |
-| Start web interface | `python run.py serve` | `interface/app.py` |
-| Run full pipeline | `python run.py full` | `run.py` |
-| Run tests | `python run.py test` | pytest |
+| Show config | `uv run python run.py config` | `run.py` + `config.ini` |
+| Export transcripts | `uv run python run.py export` | `export/exporter.py` |
+| Download content | `uv run python run.py download` | `downloader.py` |
+| Start web interface | `uv run python run.py serve` | `interface/app.py` |
+| Run full pipeline | `uv run python run.py full` | `run.py` |
+| Run tests | `uv run python run.py test` | pytest |
+| Check sibling journal | `uv run python run.py journal-check` | `scripts/validate_journal.py` |
 | Enumerate channel | `python scripts/download_channel.py --enumerate-only` | `channel.py` |
 | Local Whisper | `python scripts/transcribe_missing.py` | `transcriber.py` |
 | Entity extraction | `make extract-entities` | `rag/main.py` |

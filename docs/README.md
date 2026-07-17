@@ -24,7 +24,7 @@ module- and workflow-level guides.
 
 | Doc | Covers |
 | --- | --- |
-| [`JOURNAL_SCHEMA.md`](JOURNAL_SCHEMA.md) | The ActiveInferenceJournal v2 schema + source-namespaced layout (`scripts/refactor_journal.py`). |
+| [`JOURNAL_SCHEMA.md`](JOURNAL_SCHEMA.md) | The ActiveInferenceJournal v2 schema, source-namespaced layout, and maintenance gate. |
 | [`REFACTOR_READINESS.md`](REFACTOR_READINESS.md) | Coverage, the local-LLM stack, and the refactor/verification process. |
 
 ## Collaboration

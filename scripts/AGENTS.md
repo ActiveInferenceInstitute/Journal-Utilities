@@ -10,6 +10,13 @@ CLI tools over `src/journal_utilities/`. See [`README.md`](README.md) for usage.
 - `refactor_journal.py` — build the ActiveInferenceJournal v2 schema (source-namespaced,
   `data/video/activeinferenceinstitute/`); `--build <dir>` stages out-of-place and audits
   for zero data loss before any in-place apply. See [`../docs/JOURNAL_SCHEMA.md`](../docs/JOURNAL_SCHEMA.md).
+- `enrich_metadata.py` — preview or explicitly apply Coda/session/manifest enrichment;
+  dry-run is the default and journal-owned `sessions[]` are preserved.
+- `generate_journal_indexes.py` — derive `INDEX.json` and `INDEX.md` from canonical
+  `metadata.json` records.
+- `repair_split_transcripts.py` — rebuild complete split-session transcript artifacts;
+  `--check` is read-only.
+- `validate_journal.py` — run the combined read-only integrity gate before handoff.
 
 ## Conventions
 - `PYTHONPATH=src` + the project venv. `timeout` is absent on macOS (use `gtimeout`/none).
