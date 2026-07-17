@@ -74,6 +74,27 @@ def test_validates_metadata_indexes_duplicates_and_manifest(tmp_path: Path):
     assert report.counts["missing_manifest_videos"] == 0
 
 
+def test_session_linked_talk_uploads_count_as_covered(tmp_path: Path):
+    """A per-talk upload's manifest id is covered via sessions[].video_id on the
+    canonical item; the upload's own item carries duplicate_of."""
+    journal = tmp_path / "journal"
+    utilities = tmp_path / "utilities"
+    _write_item(journal, "Series/Symposium", ["video00001a"])
+    meta_path = journal / SRC / "Series/Symposium/metadata.json"
+    metadata = json.loads(meta_path.read_text(encoding="utf-8"))
+    metadata["sessions"] = [{"index": 1, "session_name": "video00001a_sess01",
+                             "start": "0:00:00", "video_id": "talkvideo0b"}]
+    meta_path.write_text(json.dumps(metadata), encoding="utf-8")
+    _write_item(journal, "Other/Talk", ["talkvideo0b"], duplicate_of="Series/Symposium")
+    update_indexes(journal)
+    manifest = _write_manifest(utilities, ["video00001a", "talkvideo0b"])
+
+    report = validate_journal(journal, manifest)
+
+    assert report.ok, report.errors
+    assert report.counts["missing_manifest_videos"] == 0
+
+
 def test_rejects_stale_indexes_and_blank_split_identity(tmp_path: Path):
     journal = tmp_path / "journal"
     _write_item(journal, "Series/Item", ["video00001a"], split_record=True)

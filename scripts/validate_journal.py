@@ -361,7 +361,16 @@ def validate_journal(
                 for part in _parts(metadata)
                 if isinstance(part, dict) and isinstance(part.get("video_id"), str)
             }
-            missing = sorted(manifest_ids - canonical_ids)
+            # Per-talk uploads are canonical via the linking session entry
+            # (sessions[].video_id); their own items carry duplicate_of.
+            session_ids = {
+                session.get("video_id")
+                for _, metadata in records
+                if not metadata.get("duplicate_of")
+                for session in (metadata.get("sessions") or [])
+                if isinstance(session, dict) and isinstance(session.get("video_id"), str)
+            }
+            missing = sorted(manifest_ids - canonical_ids - session_ids)
             extras = sorted(canonical_ids - manifest_ids)
             report.counts["missing_manifest_videos"] = len(missing)
             report.counts["manifest_extras"] = len(extras)
