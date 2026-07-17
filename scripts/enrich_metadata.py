@@ -23,6 +23,7 @@ import logging
 import sys
 from collections import defaultdict
 from pathlib import Path
+from typing import Optional
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
@@ -101,6 +102,16 @@ def manifest_part(video: dict) -> dict:
     return part
 
 
+def find_secondary_item(vid: str, canonical: str, items: dict) -> Optional[str]:
+    """Locate the non-canonical item carrying this video id (slug-named Other/ dup)."""
+    for rel, entry in items.items():
+        if rel == canonical:
+            continue
+        if any(p.get("video_id") == vid for p in entry["meta"].get("parts", [])):
+            return rel
+    return None
+
+
 def process_split_files(split_dir: Path, items: dict, manifest: dict, report: dict) -> dict[str, dict]:
     """Parse *_split.txt files -> {item_rel: {enrichment, fill_parts}}; mark Other/ duplicates."""
     pending: dict[str, dict] = {}
@@ -123,8 +134,8 @@ def process_split_files(split_dir: Path, items: dict, manifest: dict, report: di
              "parts_filled": bool(fill)}
         )
 
-        duplicate = f"Other/{result.video_id}"
-        if duplicate in items:
+        duplicate = find_secondary_item(result.video_id, target, items)
+        if duplicate:
             pending[duplicate] = {
                 "enrichment": {"duplicate_of": target, "enriched_from": ["split_file"]},
                 "fill_parts": None,
@@ -192,8 +203,8 @@ def process_curated_parts(items: dict, manifest: dict, pending: dict, report: di
             "replace_parts": True,
             "overrides": {"sessions": CURATED_SESSIONS[rel]} if rel in CURATED_SESSIONS else {},
         }
-        duplicate = f"Other/{vid}"
-        if duplicate in items:
+        duplicate = find_secondary_item(vid, rel, items)
+        if duplicate:
             pending[duplicate] = {
                 "enrichment": {"duplicate_of": rel, "enriched_from": ["curated"]},
                 "fill_parts": None,
