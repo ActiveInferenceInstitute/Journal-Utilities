@@ -322,7 +322,12 @@ def _build_uncovered(journal: Path, out_dir: Path, titles: dict, item_paths: lis
         if cat and ser:
             series, item = cat, ser
         else:
-            series, item = "Other", vid
+            from journal_utilities.utils.naming import slugify_title
+
+            series = "Other"
+            item = slugify_title(v.get("title", "")) or vid
+            if (out_dir / SRC_PREFIX / series / item).exists():
+                item = f"{item}_{vid}"
         dest = out_dir / SRC_PREFIX / series / item
         dest.mkdir(parents=True, exist_ok=True)
         meta = {
