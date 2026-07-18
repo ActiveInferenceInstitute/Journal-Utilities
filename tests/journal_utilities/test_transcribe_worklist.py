@@ -35,6 +35,18 @@ class TestBuildWorklist:
         assert [w["rel"] for w in work] == ["A/needs_it"]
         assert work[0]["vids"] == ["vid00000001"]
 
+    def test_private_unlisted_never_transcribed(self, tmp_path):
+        _make_item(tmp_path, "A/empty_parts", [])
+        _make_item(tmp_path, "A/all_private", ["vidprivate1"])
+        _make_item(tmp_path, "A/mixed", ["vidprivate1", "vid00000001"])
+        (tmp_path / SRC_PREFIX / "private_videos.json").write_text(
+            json.dumps({"videos": [{"video_id": "vidprivate1"}]}))
+        excluded = []
+        work = build_worklist(tmp_path, excluded)
+        assert [w["rel"] for w in work] == ["A/mixed"]
+        assert work[0]["vids"] == ["vid00000001"]
+        assert excluded == ["A/all_private", "A/empty_parts"]
+
 
 class TestWriteJournalTranscript:
     def _cache(self, out_dir: Path, vid: str, text: str) -> None:

@@ -41,15 +41,26 @@ logger = logging.getLogger("transcribe_worklist")
 SRC_PREFIX = "data/video/activeinferenceinstitute"
 
 
-def build_worklist(journal: Path, no_video: list = None) -> list[dict]:
+def load_private_ids(journal: Path) -> set[str]:
+    """Video ids registered as private/unlisted — excluded from transcription."""
+    path = journal / SRC_PREFIX / "private_videos.json"
+    if not path.exists():
+        return set()
+    videos = json.loads(path.read_text(encoding="utf-8")).get("videos", [])
+    return {v["video_id"] for v in videos if v.get("video_id")}
+
+
+def build_worklist(journal: Path, excluded: list = None) -> list[dict]:
     """Items lacking transcript.txt (excluding duplicates and future streams).
 
-    Items with no known video id (private/unlisted content) are appended to
-    ``no_video`` — their audio must be sourced manually.
+    Private/unlisted content is never transcribed: video ids registered in
+    private_videos.json are dropped, and items left with no public video are
+    appended to ``excluded``.
     """
     from transcription_status import item_status
 
-    no_video = no_video if no_video is not None else []
+    excluded = excluded if excluded is not None else []
+    private_ids = load_private_ids(journal)
     today = date.today().isoformat()
     work = []
     for meta_path in sorted((journal / SRC_PREFIX).rglob("metadata.json")):
@@ -62,11 +73,12 @@ def build_worklist(journal: Path, no_video: list = None) -> list[dict]:
         if max(filter(None, dates), default="") > today:
             continue  # scheduled — nothing to transcribe yet
         rel = str(meta_path.parent.relative_to(journal / SRC_PREFIX))
-        vids = [p["video_id"] for p in meta.get("parts", []) if p.get("video_id")]
+        vids = [p["video_id"] for p in meta.get("parts", [])
+                if p.get("video_id") and p["video_id"] not in private_ids]
         if vids:
             work.append({"rel": rel, "dir": meta_path.parent, "vids": vids})
         else:
-            no_video.append(rel)
+            excluded.append(rel)
     return work
 
 
@@ -115,16 +127,16 @@ def main() -> int:
     load_dotenv(REPO / ".env")
     import os
 
-    no_video: list = []
-    worklist = build_worklist(args.journal, no_video)
+    excluded: list = []
+    worklist = build_worklist(args.journal, excluded)
     total_vids = sum(len(w["vids"]) for w in worklist)
     print(f"worklist: {len(worklist)} items / {total_vids} videos")
     for w in worklist:
         cached = sum(1 for v in w["vids"] if (args.work_dir / f"{v}.simple.txt").exists())
         print(f"  {w['rel']}  ({len(w['vids'])} video(s), {cached} cached)")
-    if no_video:
-        print(f"no known video ({len(no_video)} items — audio must be sourced manually):")
-        for rel in no_video:
+    if excluded:
+        print(f"excluded ({len(excluded)} items — private/unlisted, no transcription by policy):")
+        for rel in excluded:
             print(f"  {rel}")
     if not args.run:
         print("\ndry run — pass --run to transcribe")
