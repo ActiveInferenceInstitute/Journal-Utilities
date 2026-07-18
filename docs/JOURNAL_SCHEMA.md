@@ -27,8 +27,8 @@ excluded from coverage counts. Uncategorized videos live under
 data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
   metadata.json        # canonical record (see below) — single source of truth
   README.md            # generated human nav: title(s), date, links, contents
-  transcript.txt       # clean text (per part: "## Part N" headers when multi-part)
-  transcript.json      # timestamped segments (array; part-tagged)
+  transcript.txt       # derived text view ("## <video_id>" headers when multi-part)
+  transcript.json      # raw timestamped segments (array; part-tagged) — see "Transcripts"
   captions/            # original-language *.srt
   translations/        # translated *.srt (one per language) — preserved verbatim
   assets/
@@ -53,6 +53,35 @@ data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
   ]
 }
 ```
+
+## Transcripts — raw vs derived
+
+`transcript.json` is the **immutable raw layer**; `transcript.txt` is a
+**derived view**. Human speaker names live only in `metadata.json`.
+
+- **`transcript.json`** — raw diarization output: an array of
+  `{"video_id", "segments"}` blocks, each segment
+  `{start, end, text, speaker}` in seconds. Speaker labels stay machine
+  labels (`SPEAKER_NN`) forever — never rewritten with human names, so
+  re-mapping is always possible (two labels identified as the same person
+  remain distinguishable). Legacy AssemblyAI items carry that tool's response
+  verbatim inside the block instead; treat those as frozen.
+- **`parts[].speakers`** (metadata.json, journal-owned) — the only place human
+  speaker identifications are recorded: `{"SPEAKER_NN": "Name", ...}` per video.
+- **`transcript.txt`** — canonical human-facing text, regenerated from
+  `transcript.json` + `parts[].speakers`; unmapped labels remain `SPEAKER_NN`.
+  Multi-part items use `## <video_id>` headers; split sessions
+  `## <video_id>_sessNN`. Items without diarization keep their YouTube-caption
+  text until WhisperX runs; original captions always remain under `captions/`.
+
+Provenance is encoded by file shape — no metadata flag:
+
+| Files present | Meaning |
+|---|---|
+| `transcript.json` with `speaker` fields in segments | WhisperX-diarized |
+| `parts[].speakers` non-empty | names mapped by a human |
+| `assets/csv/*.sentences.csv` (± AssemblyAI-shaped transcript.json) | legacy AssemblyAI diarization |
+| `transcript.txt` only | YouTube captions (not yet diarized) |
 
 ## Enrichment fields
 
