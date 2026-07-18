@@ -57,7 +57,7 @@ graph LR
 
 ### 📥 Download & Transcribe
 
-Enumerate the Active Inference channel from a saved manifest. Download transcripts, audio, and video with cookie auth, rate limiting, and resume. Transcribe locally on Apple Silicon or GPU.
+Enumerate the Active Inference channel from a saved manifest. Download transcripts, audio, and video (cookie-free by default) with rate limiting and resume. Transcribe locally on Apple Silicon or GPU with speaker diarization.
 
 **→** [Download Guide](docs/youtube_download.md) · [Transcription Engines](docs/transcription.md) · [YouTube Module](docs/youtube.md)
 
@@ -129,9 +129,10 @@ graph TB
     subgraph "CLI Layer"
         RUN["run.py — Pipeline Runner"]
         S1["scripts/download_channel.py"]
-        S2["scripts/transcribe_missing.py"]
+        S2["scripts/transcribe_missing.py<br/>scripts/transcribe_worklist.py"]
         S3["scripts/scaffold_youtube_courses.py"]
         S4["scripts/validate_journal.py"]
+        S5["scripts/speaker_cues.py<br/>scripts/apply_speaker_names.py"]
     end
 
     subgraph "src/journal_utilities/"
@@ -248,6 +249,31 @@ Enrichment is dry-run by default; only the command with `--apply` writes metadat
 The final `journal-check` command is read-only and blocks handoff when metadata,
 indexes, transcript identities, duplicate handling, coverage, or the `main`
 branch's no-audio/no-credentials boundary is inconsistent.
+
+## 🎙️ Transcription & speaker naming
+
+Journal transcripts follow a **raw vs derived** design (see
+[`docs/JOURNAL_SCHEMA.md`](docs/JOURNAL_SCHEMA.md)): `transcript.json` is the
+immutable raw WhisperX diarization (`SPEAKER_NN` labels, never rewritten),
+human speaker names live only in `metadata.json` `parts[].speakers`, and
+`transcript.txt` is regenerated from the two. Private/unlisted videos are
+never transcribed. All commands are dry-run by default.
+
+```bash
+# corpus status: diarized / captions-only / excluded / scheduled
+uv run python scripts/transcription_status.py
+
+# WhisperX + diarization for items missing transcripts (GPU, resumable)
+uv run python scripts/transcribe_worklist.py            # plan
+uv run python scripts/transcribe_worklist.py --run
+
+# identify speakers: timestamped YouTube links per SPEAKER_NN
+uv run python scripts/speaker_cues.py                   # items still needing names
+uv run python scripts/speaker_cues.py --item TextbookGroup/Namjoshi2026/Cohort_1/Session_024
+
+# record parts[].speakers in the item's metadata.json, then regenerate transcript.txt
+uv run python scripts/apply_speaker_names.py --item <item> --apply
+```
 
 ## 🔧 Environment
 
