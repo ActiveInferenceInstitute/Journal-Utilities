@@ -23,7 +23,6 @@ import logging
 import sys
 from collections import defaultdict
 from pathlib import Path
-from typing import Optional
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
@@ -102,7 +101,7 @@ def manifest_part(video: dict) -> dict:
     return part
 
 
-def find_secondary_item(vid: str, canonical: str, items: dict) -> Optional[str]:
+def find_secondary_item(vid: str, canonical: str, items: dict) -> str | None:
     """Locate the non-canonical item carrying this video id (slug-named Other/ dup)."""
     for rel, entry in items.items():
         if rel == canonical:

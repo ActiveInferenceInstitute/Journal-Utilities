@@ -9,9 +9,9 @@ import json
 import logging
 import re
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from journal_utilities.youtube.categorizer import categorize_name
 
@@ -29,16 +29,16 @@ class VideoRecord:
     id: str
     title: str = ""
     upload_date: str = ""
-    duration: Optional[float] = None
+    duration: float | None = None
     description: str = ""
-    view_count: Optional[int] = None
-    category: Optional[str] = None
-    series: Optional[str] = None
-    episode: Optional[str] = None
-    transcript_path: Optional[str] = None
-    transcript_size: Optional[int] = None
-    audio_path: Optional[str] = None
-    audio_size: Optional[int] = None
+    view_count: int | None = None
+    category: str | None = None
+    series: str | None = None
+    episode: str | None = None
+    transcript_path: str | None = None
+    transcript_size: int | None = None
+    audio_path: str | None = None
+    audio_size: int | None = None
     has_transcript: bool = False
     has_audio: bool = False
 
@@ -108,8 +108,14 @@ class SearchIndex:
         for token in set(tokens):
             self._index[token].add(video_id)
 
-    def search(self, query: str, limit: int = 20) -> list[SearchResult]:
-        """Search for videos matching a query."""
+    def search(self, query: str, limit: int | None = 20) -> list[SearchResult]:
+        """Search for videos matching a query.
+
+        Args:
+            query: Search text.
+            limit: Max results, or ``None``/``0`` for all ranked results (used
+                to report an accurate total for pagination).
+        """
         query_tokens = self._tokenize(query)
         if not query_tokens:
             return []
@@ -123,7 +129,9 @@ class SearchIndex:
                 scores[vid] += idf
 
         # Sort by score descending
-        ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:limit]
+        ranked = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+        if limit:
+            ranked = ranked[:limit]
 
         results = []
         for video_id, score in ranked:
@@ -132,7 +140,7 @@ class SearchIndex:
 
         return results
 
-    def get_transcript(self, video_id: str) -> Optional[str]:
+    def get_transcript(self, video_id: str) -> str | None:
         """Get the full transcript text for a video."""
         return self._transcripts.get(video_id)
 
@@ -151,7 +159,9 @@ class SearchIndex:
 
     def _tokenize(self, text: str) -> list[str]:
         """Simple tokenizer: lowercase, split on non-alphanumeric."""
-        return [w for w in re.findall(r"[a-z0-9]+", text.lower()) if len(w) > 2]
+        # >=2 (not >2) so the /api/search min_length=2 boundary and this
+        # tokenizer agree — otherwise 2-char queries (e.g. "AI") return nothing.
+        return [w for w in re.findall(r"[a-z0-9]+", text.lower()) if len(w) >= 2]
 
     def _extract_snippet(self, video_id: str, query_tokens: list[str], length: int = 200) -> str:
         """Extract a snippet containing query terms."""
@@ -190,9 +200,11 @@ class SearchIndex:
         best_pos = 0
         best_count = 0
 
-        # Sliding window to find densest region
+        # Sliding window to find densest region. The final window is included
+        # so a dense region at the very end of a long transcript isn't missed.
         step = chunk_size // 4
-        for pos in range(0, len(text) - chunk_size, step):
+        last_start = max(0, len(text) - chunk_size)
+        for pos in range(0, last_start + 1, step):
             window = text_lower[pos : pos + chunk_size]
             count = sum(window.count(t) for t in query_tokens)
             if count > best_count:
@@ -210,7 +222,7 @@ class SearchIndex:
 class DataLoader:
     """Loads and indexes all project data for the web interface."""
 
-    def __init__(self, data_dir: Optional[Path] = None) -> None:
+    def __init__(self, data_dir: Path | None = None) -> None:
         self.data_dir = data_dir or self._find_data_dir()
         self.project_root = self._find_project_root()
         self.videos: dict[str, VideoRecord] = {}
@@ -336,7 +348,7 @@ class DataLoader:
         except (json.JSONDecodeError, OSError) as exc:
             logger.warning("Failed to load download manifest: %s", exc)
 
-    def _resolve_path(self, relative_path: str) -> Optional[Path]:
+    def _resolve_path(self, relative_path: str) -> Path | None:
         """Resolve a manifest-relative path to absolute."""
         # Paths in manifest are like "data/output/transcripts/ABC.txt"
         candidate = self.project_root / relative_path
@@ -392,14 +404,14 @@ class DataLoader:
 
         logger.info("Indexed %d transcripts for search", indexed)
 
-    def get_video(self, video_id: str) -> Optional[VideoRecord]:
+    def get_video(self, video_id: str) -> VideoRecord | None:
         """Get a single video record."""
         return self.videos.get(video_id)
 
     def get_all_videos(
         self,
-        category: Optional[str] = None,
-        has_transcript: Optional[bool] = None,
+        category: str | None = None,
+        has_transcript: bool | None = None,
         sort_by: str = "upload_date",
         reverse: bool = True,
         offset: int = 0,
@@ -416,10 +428,24 @@ class DataLoader:
 
         total = len(records)
 
-        # Sort
-        def sort_key(r: VideoRecord) -> Any:
+        # Sort. Only known sort keys are accepted (the client passes an
+        # arbitrary attribute name — anything else silently fell back to "").
+        sort_fields = {
+            "upload_date", "title", "category", "video_id",
+            "duration", "view_count", "transcript_size", "audio_size",
+        }
+        numeric_fields = {"duration", "view_count", "transcript_size", "audio_size"}
+        if sort_by not in sort_fields:
+            sort_by = "upload_date"
+
+        def sort_key(r: VideoRecord) -> Any:  # noqa: ANN401 - heterogeneous record fields
             val = getattr(r, sort_by, "")
-            return val or ""
+            # Coerce numeric fields to a number so records with missing values
+            # never trigger a str-vs-number TypeError during sort; missing
+            # numerics are pinned to 0 (last when reverse=True).
+            if sort_by in numeric_fields:
+                return val if val is not None else 0
+            return val if val is not None else ""
 
         records.sort(key=sort_key, reverse=reverse)
 

@@ -1,7 +1,7 @@
 """Cohere-based entity extraction using JSON Schema mode."""
 
-from collections.abc import Mapping
 import json
+from collections.abc import Mapping
 from typing import Any
 
 import cohere

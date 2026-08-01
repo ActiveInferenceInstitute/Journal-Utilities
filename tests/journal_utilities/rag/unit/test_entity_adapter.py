@@ -2,13 +2,19 @@
 Unit tests for EntityAdapter conversion functions.
 """
 
-import pytest
 from journal_utilities.rag.adapters.entity_adapter import EntityAdapter
-from journal_utilities.rag.models.entities import (
-    Concept, Researcher, Citation, TechnicalTerm,
-    CoreEntities, ConceptCategory, ResearcherRole, CitationType, TermDomain
-)
 from journal_utilities.rag.models import Entity
+from journal_utilities.rag.models.entities import (
+    Citation,
+    CitationType,
+    Concept,
+    ConceptCategory,
+    CoreEntities,
+    Researcher,
+    ResearcherRole,
+    TechnicalTerm,
+    TermDomain,
+)
 
 
 class TestConvertCoreEntities:
@@ -23,9 +29,9 @@ class TestConvertCoreEntities:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) == 0
 
     def test_convert_concepts(self):
@@ -44,9 +50,9 @@ class TestConvertCoreEntities:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) >= 1
         concept_entity = next((e for e in entities if e.name == "Active Inference"), None)
         assert concept_entity is not None
@@ -67,9 +73,9 @@ class TestConvertCoreEntities:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) >= 1
         researcher_entity = next((e for e in entities if e.name == "Karl Friston"), None)
         assert researcher_entity is not None
@@ -91,9 +97,9 @@ class TestConvertCoreEntities:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) >= 1
         citation_entity = next((e for e in entities if "Free Energy Principle" in e.name), None)
         assert citation_entity is not None
@@ -114,9 +120,9 @@ class TestConvertCoreEntities:
             ],
             key_insights=[]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) >= 1
         term_entity = next((e for e in entities if e.name == "Variational Free Energy"), None)
         assert term_entity is not None
@@ -131,9 +137,9 @@ class TestConvertCoreEntities:
             technical_terms=[],
             key_insights=["Active Inference unifies perception and action"]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         assert len(entities) >= 1
         # The adapter names insights as "Insight 1", "Insight 2", etc.
         insight_entity = next((e for e in entities if e.name == "Insight 1"), None)
@@ -151,12 +157,12 @@ class TestConvertCoreEntities:
             technical_terms=[TechnicalTerm(term="Term1", explanation="Exp1", domain=TermDomain.NEUROSCIENCE)],
             key_insights=["Insight1"]
         )
-        
+
         entities = EntityAdapter.convert_core_entities(core)
-        
+
         # Should have at least 5 entities (one of each type)
         assert len(entities) >= 5
-        
+
         types = {e.type for e in entities}
         assert "concept" in types
         assert "researcher" in types
@@ -177,9 +183,9 @@ class TestExtractRelationships:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         relationships = EntityAdapter.extract_relationships(core)
-        
+
         assert len(relationships) == 0
 
     def test_extract_relationships_from_concepts(self):
@@ -198,9 +204,9 @@ class TestExtractRelationships:
             technical_terms=[],
             key_insights=[]
         )
-        
+
         relationships = EntityAdapter.extract_relationships(core)
-        
+
         # Should have 2 relationships from related_concepts
         assert len(relationships) >= 2
 
@@ -218,7 +224,7 @@ class TestEntityModel:
             mentions=3,
             context=["ctx1", "ctx2"]
         )
-        
+
         assert entity.name == "Test Entity"
         assert entity.type == "concept"
         assert entity.confidence == 0.95
@@ -234,7 +240,7 @@ class TestEntityModel:
             mentions=1,
             context=[]
         )
-        
+
         assert entity.description == ""
         assert entity.metadata == {}
 
@@ -248,6 +254,6 @@ class TestEntityModel:
             context=["test"],
             metadata={"source": "transcript", "importance": "high"}
         )
-        
+
         assert entity.metadata["source"] == "transcript"
         assert entity.metadata["importance"] == "high"

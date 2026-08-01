@@ -5,6 +5,14 @@ Preparation status for the ActiveInferenceJournal v2 refactor + mega-push. Read 
 
 _Last validated: 2026-06-29._
 
+> **Historical snapshot.** This page records refactor-readiness state as of
+> 2026-06-29. The hardcoded corpus counts below are a point-in-time audit and
+> drift by design — see `docs/AGENTS.md` ("do not hardcode counts"). The
+> converter has since moved to **content-based item detection + passthrough +
+> an idempotent uncovered-video coverage pass** (see `scripts/refactor_journal.py`
+> and `docs/JOURNAL_SCHEMA.md`), so the BLOCKER section below no longer applies
+> to the current code.
+
 ## Coverage — Institute channel (UCbPq2w41ZaJSWtpCq4BE6Dg)
 
 | Metric | Value |
@@ -39,7 +47,7 @@ private (`WrixYErQot0`, `jhIzOXA1ZFg`, `t2TgSuYH-K8`). Being transcribed via `ml
 | WhisperX | not installed | GPU diarization (optional) |
 | Cohere | needs `COHERE_API_KEY` | entity/relationship graph (optional) |
 
-## ⚠️ BLOCKER before in-place apply — converter coverage gap
+## ⚠️ BLOCKER before in-place apply — converter coverage gap *(historical — see note above)*
 
 The converter's `find_items` only matches `<Series>_<number>` folders. Full-journal
 reconciliation (10,987 files total vs. 9,263 captured) found **1,725 files it does NOT

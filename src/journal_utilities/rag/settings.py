@@ -1,6 +1,5 @@
 """Settings management for JournalRAG."""
 
-from typing import Literal
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -22,7 +21,9 @@ class Settings(BaseSettings):
     debug: bool = False
 
     # Cohere API
-    cohere_api_key: str = Field(..., description="Cohere API key")
+    # Optional (empty default) so importing this module never crashes without a
+    # secret; consumers validate the value when they actually call the API.
+    cohere_api_key: str = Field(default="", description="Cohere API key")
     cohere_model: str = Field(
         default="command-a-03-2025",
         description="Cohere model to use",
@@ -33,7 +34,7 @@ class Settings(BaseSettings):
     surrealdb_namespace: str = Field(default="active_inference", description="SurrealDB namespace")
     surrealdb_database: str = Field(default="journal", description="SurrealDB database")
     surrealdb_username: str = Field(default="root", description="SurrealDB username")
-    surrealdb_password: str = Field(..., description="SurrealDB password")
+    surrealdb_password: str = Field(default="", description="SurrealDB password")
 
     # Processing
     batch_size: int = Field(default=10, description="Batch size for processing transcripts")

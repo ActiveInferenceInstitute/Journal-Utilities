@@ -9,13 +9,13 @@ import datetime
 import json
 import logging
 import os
-import re
-from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from ..youtube.categorizer import categorize_name
-from .database import DatabaseClient, DatabaseConfig
 from ..youtube.youtube import extract_youtube_id, is_video_private
+from .database import DatabaseClient, DatabaseConfig
+
+logger = logging.getLogger(__name__)
 
 
 async def insert_missing_sessions_from_json(
@@ -25,7 +25,7 @@ async def insert_missing_sessions_from_json(
     db_password: str,
     db_name: str,
     db_namespace: str
-) -> dict:
+) -> dict[str, Any]:
     """
     Read through Coda JSON export and create new sessions with audit trail.
 
@@ -47,17 +47,17 @@ async def insert_missing_sessions_from_json(
         name=db_name,
         namespace=db_namespace
     )
-    
+
     async with DatabaseClient(config) as db:
         # Generate unique import run ID
         import_run_id = f"import_{datetime.datetime.now().isoformat()}_{os.path.basename(coda_json)}"
-        stats = {"total": 0, "inserted": 0, "skipped": 0, "failed": 0, "errors": []}
+        stats: dict[str, Any] = {"total": 0, "inserted": 0, "skipped": 0, "failed": 0, "errors": []}
 
         logging.info(f"Starting import run: {import_run_id}")
 
         # Read JSON file
         try:
-            with open(coda_json, 'r') as jsonfile:
+            with open(coda_json) as jsonfile:
                 data = json.load(jsonfile)
         except Exception as e:
             logging.error(f"Failed to read JSON file {coda_json}: {e}")
@@ -83,11 +83,27 @@ async def insert_missing_sessions_from_json(
             values = row.get('values', {})
             youtube_url = values.get('YouTube', '')
 
+            if not youtube_url:
+                # No YouTube URL — there is no video id to import. Record it in
+                # the audit trail so no row is silently dropped (provenance).
+                logger.info("Row without YouTube URL skipped: %s", row.get("name", ""))
+                await db.create('import_audit', {
+                    'import_run_id': import_run_id,
+                    'timestamp': datetime.datetime.now().isoformat(),
+                    'source_file': coda_json,
+                    'operation': 'parse_youtube_id',
+                    'status': 'skipped',
+                    'error_message': 'No YouTube URL',
+                    'data_attempted': {'name': row.get("name", "")}
+                })
+                stats["skipped"] += 1
+                continue
+
             if youtube_url:
                 youtube_id = extract_youtube_id(youtube_url)
-                
+
                 if not youtube_id:
-                    print(f"No valid YouTube ID found: {youtube_url}")
+                    logger.info("No valid YouTube ID found: %s", youtube_url)
                     await db.create('import_audit', {
                         'import_run_id': import_run_id,
                         'timestamp': datetime.datetime.now().isoformat(),
@@ -139,7 +155,7 @@ async def insert_missing_sessions_from_json(
                             new_session['scheduled_date'] = scheduled_date
 
                         record = await db.create('session', new_session)
-                        print(f"Inserted new session from JSON: {youtube_id}")
+                        logger.info("Inserted new session from JSON: %s", youtube_id)
 
                         await db.create('import_audit', {
                             'import_run_id': import_run_id,
@@ -153,7 +169,7 @@ async def insert_missing_sessions_from_json(
                         })
                         stats["inserted"] += 1
                     else:
-                        print(f"Session already exists: {youtube_id}")
+                        logger.info("Session already exists: %s", youtube_id)
 
                         await db.create('import_audit', {
                             'import_run_id': import_run_id,
@@ -168,20 +184,20 @@ async def insert_missing_sessions_from_json(
                         stats["skipped"] += 1
 
                 except Exception as e:
-                    logging.error(f"Failed to process session {youtube_id}: {e}")
+                    logger.error("Failed to process session %s: %s", youtube_id, e)
                     await db.create('import_audit', {
                         'import_run_id': import_run_id,
                         'timestamp': datetime.datetime.now().isoformat(),
                         'source_file': coda_json,
                         'operation': 'insert',
-                        'session_name': youtube_id if 'youtube_id' in locals() else 'unknown',
+                        'session_name': youtube_id,
                         'status': 'failed',
                         'error_message': str(e),
                         'data_attempted': values
                     })
                     stats["failed"] += 1
                     stats["errors"].append({
-                        'youtube_id': youtube_id if 'youtube_id' in locals() else 'unknown',
+                        'youtube_id': youtube_id,
                         'error': str(e)
                     })
 
@@ -195,13 +211,9 @@ async def insert_missing_sessions_from_json(
             'result_data': stats
         })
 
-        logging.info(f"Import run {import_run_id} completed: {stats}")
-        print(f"\nImport Summary:")
-        print(f"  Total processed: {stats['total']}")
-        print(f"  Inserted: {stats['inserted']}")
-        print(f"  Skipped: {stats['skipped']}")
-        print(f"  Failed: {stats['failed']}")
-        if stats['errors']:
-            print(f"  Errors: {stats['errors']}")
+        logger.info("Import run %s completed: %s", import_run_id, stats)
+        logger.info("Import summary — total: %d, inserted: %d, skipped: %d, failed: %d%s",
+                    stats['total'], stats['inserted'], stats['skipped'], stats['failed'],
+                    f"; errors: {stats['errors']}" if stats['errors'] else "")
 
         return stats

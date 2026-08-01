@@ -12,9 +12,8 @@ import re
 import subprocess
 import time
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -25,9 +24,9 @@ class VideoInfo:
     id: str
     title: str = ""
     upload_date: str = ""
-    duration: Optional[float] = None
+    duration: float | None = None
     description: str = ""
-    view_count: Optional[int] = None
+    view_count: int | None = None
     url: str = ""
 
     def __post_init__(self) -> None:
@@ -48,15 +47,15 @@ class ChannelManifest:
         if not self.channel_url and self.channel_id:
             self.channel_url = f"https://www.youtube.com/channel/{self.channel_id}"
         if not self.enumerated_at:
-            self.enumerated_at = datetime.now(timezone.utc).isoformat()
+            self.enumerated_at = datetime.now(UTC).isoformat()
 
 
 def enumerate_channel_videos(
     channel_id: str,
-    max_videos: Optional[int] = None,
-    date_after: Optional[str] = None,
-    date_before: Optional[str] = None,
-    output_path: Optional[Path] = None,
+    max_videos: int | None = None,
+    date_after: str | None = None,
+    date_before: str | None = None,
+    output_path: Path | None = None,
 ) -> ChannelManifest:
     """
     Enumerate all videos from a YouTube channel using yt-dlp.
@@ -94,6 +93,9 @@ def enumerate_channel_videos(
         "--dump-json",
         "--no-warnings",
         "--ignore-errors",
+        # Modern browser User-Agent avoids YouTube 403s during scraping (AGENTS.md).
+        "--user-agent",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     ]
     if date_after:
         base_cmd.extend(["--dateafter", date_after])
@@ -149,7 +151,7 @@ def enumerate_channel_videos(
     return manifest
 
 
-def _parse_video_entry(entry: dict) -> Optional[VideoInfo]:
+def _parse_video_entry(entry: dict) -> VideoInfo | None:
     """Parse a single yt-dlp JSON entry into a VideoInfo."""
     video_id = entry.get("id") or entry.get("url")
     if not video_id:

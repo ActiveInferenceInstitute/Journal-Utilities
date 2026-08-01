@@ -7,14 +7,11 @@ routes: stats, videos, transcripts, search, categories, and chat.
 
 import json
 from pathlib import Path
-from typing import Any
-from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
 from fastapi.testclient import TestClient
 
 from journal_utilities.interface.app import create_app
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -387,17 +384,32 @@ class TestSearchEndpointAdditional:
 class TestChatEndpointsAdditional:
     """Additional chat endpoint tests."""
 
-    def test_chat_with_valid_message_and_mock(self, test_client: TestClient):
-        """POST /api/chat with a valid message returns a response."""
-        with patch("journal_utilities.interface.app.ChatEngine") as MockCE:
-            # Even without Ollama, the endpoint should handle gracefully
-            resp = test_client.post(
-                "/api/chat",
-                json={
-                    "session_id": "test_session",
-                    "message": "What is active inference?",
-                },
-            )
-            # Should return 200 (success) or 503 (Ollama down), not 500
-            assert resp.status_code in (200, 503)
+    def test_chat_with_valid_message_returns_response(self, test_client: TestClient):
+        """POST /api/chat with a valid message returns a graceful response.
+
+        With no Ollama reachable the endpoint returns 200 with a sanitized
+        generic error — it must not leak raw exception detail.
+        """
+        resp = test_client.post(
+            "/api/chat",
+            json={
+                "session_id": "test_session",
+                "message": "What is active inference?",
+            },
+        )
+        assert resp.status_code == 200
+        body = resp.json()
+        assert "response" in body
+        # Internal exception text (host/port/connection) must never be echoed.
+        assert "Connection" not in body.get("response", "")
+        assert "http" not in body.get("response", "").lower()
+
+    def test_chat_rejects_oversized_message(self, test_client: TestClient):
+        """An over-long message is rejected (413), not forwarded to Ollama."""
+        resp = test_client.post(
+            "/api/chat",
+            json={"session_id": "s", "message": "x" * 40_000},
+        )
+        assert resp.status_code == 413
+
 

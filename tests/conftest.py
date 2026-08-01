@@ -1,6 +1,5 @@
 """Shared pytest configuration and fixtures for all test packages."""
 
-import os
 from pathlib import Path
 
 import pytest

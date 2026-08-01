@@ -31,10 +31,15 @@ uv pip install -e ".[interface]"
 | Method | Path | Purpose |
 | --- | --- | --- |
 | `GET` | `/api/videos` | Paginated video list (search, filter, sort) |
-| `GET` | `/api/videos/{id}` | Video detail with transcript |
+| `GET` | `/api/videos/{id}` | Video detail |
+| `GET` | `/api/transcripts/{video_id}` | Transcript text for a video |
+| `GET` | `/api/audio/{video_id}` | Audio stream with Range support |
 | `GET` | `/api/categories` | Category list with counts |
+| `GET` | `/api/search` | Full-text search across transcripts |
 | `GET` | `/api/stats` | Library statistics |
-| `POST` | `/api/chat` | Chat message to Ollama |
+| `POST` | `/api/chat` | Chat message to Ollama (non-streaming) |
+| `POST` | `/api/chat/stream` | Chat message to Ollama (SSE streaming) |
+| `POST` | `/api/chat/clear` | Clear a chat session |
 | `GET` | `/api/chat/status` | Ollama health check |
 
 ## Data Flow

@@ -3,15 +3,15 @@ Extended tests for YouTube utilities with higher coverage.
 """
 
 import json
-import pytest
 from pathlib import Path
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock, patch
+
+import pytest
 
 from journal_utilities.youtube.youtube import (
     YOUTUBE_ID_PATTERN,
     extract_youtube_id,
     is_video_private,
-    mark_video_private,
 )
 
 
@@ -73,7 +73,7 @@ class TestYoutubeIdPattern:
             "not a url",
             "",
         ]
-        
+
         for url in invalid_urls:
             match = YOUTUBE_ID_PATTERN.search(url)
             assert match is None, f"Should not match: {url}"
@@ -128,7 +128,7 @@ class TestIsVideoPrivate:
             mock_file = MagicMock()
             mock_file.exists.return_value = False
             mock_path.return_value.__truediv__.return_value = mock_file
-            
+
             # Should return False by default
             result = is_video_private("dQw4w9WgXcQ")
             assert result is False
@@ -139,15 +139,14 @@ class TestIsVideoPrivate:
         private_file.write_text(json.dumps({
             "private_video_ids": ["abc123", "xyz789"]
         }))
-        
+
         with patch.object(Path, "__new__", return_value=tmp_path / "youtube.py"):
             with patch("journal_utilities.youtube.youtube.Path") as mock_path:
                 mock_file = tmp_path / "private_videos.json"
                 mock_path.return_value.__truediv__.return_value = mock_file
                 mock_path.return_value.parent.__truediv__.return_value = mock_file
-                
+
                 # Mock the file reading
-                original_path = Path(__file__).parent
                 with patch("builtins.open", create=True) as mock_open:
                     mock_open.return_value.__enter__.return_value.read.return_value = json.dumps({
                         "private_video_ids": ["abc123", "xyz789"]
@@ -159,7 +158,7 @@ class TestIsVideoPrivate:
         private_file.write_text(json.dumps({
             "private_video_ids": ["abc123", "xyz789"]
         }))
-        
+
         # Since we're mocking, we test the logic directly
         # The function should return False for videos not in the list
 

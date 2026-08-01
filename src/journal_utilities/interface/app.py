@@ -8,10 +8,11 @@ transcripts, audio streaming, search, and LLM chat.
 import logging
 import mimetypes
 import os
-from collections.abc import AsyncIterator
+import re
+from collections.abc import AsyncIterator, Iterator
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -29,8 +30,12 @@ logger = logging.getLogger(__name__)
 
 STATIC_DIR = Path(__file__).parent / "static"
 
+# Upper bound on a single chat message; the body is otherwise read unbounded
+# and forwarded to Ollama (memory + LLM-cost DoS).
+MAX_MESSAGE_LENGTH = 32_000
 
-def create_app(data_dir: Optional[Path] = None) -> FastAPI:
+
+def create_app(data_dir: Path | None = None) -> FastAPI:
     """Create and configure the FastAPI application."""
     # Initialize data loader and chat engine
     loader = DataLoader(data_dir=data_dir)
@@ -52,11 +57,14 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
         lifespan=lifespan,
     )
 
-    # CORS for development
+    # CORS for development. The SPA uses no cookies/credentials, so
+    # allow_credentials must stay False — a wildcard origin with credentials is
+    # both rejected by browsers and an unrestricted cross-origin attack surface
+    # if this is ever bound beyond localhost.
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
-        allow_credentials=True,
+        allow_credentials=False,
         allow_methods=["*"],
         allow_headers=["*"],
     )
@@ -72,27 +80,30 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
 
     @app.get("/api/videos")
     async def get_videos(
-        category: Optional[str] = None,
-        has_transcript: Optional[bool] = None,
+        category: str | None = None,
+        has_transcript: bool | None = None,
         sort_by: str = "upload_date",
         reverse: bool = True,
         offset: int = 0,
         limit: int = Query(default=50, le=200),
-        q: Optional[str] = None,
+        q: str | None = None,
     ) -> dict[str, Any]:
         """Get paginated, filterable list of videos."""
         if q:
-            # Search mode
-            results = loader.search_index.search(q, limit=limit)
+            # Search mode: honor the same offset/limit pagination as listing and
+            # report the true result count (not the page size).
+            all_results = loader.search_index.search(q, limit=None)
+            total = len(all_results)
+            page = all_results[offset : offset + limit]
             video_dicts = []
-            for r in results:
+            for r in page:
                 video = loader.get_video(r.video_id)
                 if video:
                     d = video.to_dict()
                     d["search_score"] = r.score
                     d["search_snippet"] = r.snippet
                     video_dicts.append(d)
-            return {"videos": video_dicts, "total": len(video_dicts), "query": q}
+            return {"videos": video_dicts, "total": total, "query": q, "offset": offset, "limit": limit}
 
         # Normal listing
         records, total = loader.get_all_videos(
@@ -130,7 +141,7 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
             try:
                 text = Path(record.transcript_path).read_text(encoding="utf-8")
             except OSError:
-                raise HTTPException(status_code=500, detail="Failed to read transcript")
+                raise HTTPException(status_code=500, detail="Failed to read transcript") from None
 
         return {
             "video_id": video_id,
@@ -153,16 +164,40 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
         file_size = audio_path.stat().st_size
         content_type = mimetypes.guess_type(str(audio_path))[0] or "audio/mpeg"
 
-        # Handle Range requests for seeking
+        # Handle Range requests for seeking. Only single byte ranges are
+        # supported; suffix ranges ("bytes=-N") and open-ended ranges are
+        # normalized, and out-of-bounds requests are clamped so the computed
+        # Content-Length/Content-Range can never go negative or malformed.
         range_header = request.headers.get("range")
         if range_header:
-            ranges = range_header.replace("bytes=", "").split("-")
-            start = int(ranges[0]) if ranges[0] else 0
-            end = int(ranges[1]) if ranges[1] else file_size - 1
+            m = re.match(r"bytes=(\d*)-(\d*)", range_header.strip())
+            if not m:
+                raise HTTPException(status_code=416, detail="Unsupported range request")
+            start_s, end_s = m.groups()
+            try:
+                if not start_s and not end_s:
+                    start, end = 0, file_size - 1
+                elif not start_s:  # suffix range: last N bytes
+                    length = int(end_s)
+                    start = max(0, file_size - length)
+                    end = file_size - 1
+                else:
+                    start = int(start_s)
+                    end = int(end_s) if end_s else file_size - 1
+            except ValueError:
+                raise HTTPException(status_code=416, detail="Invalid range header") from None
+            if start >= file_size:
+                raise HTTPException(
+                    status_code=416,
+                    detail=f"Requested range start {start} >= size {file_size}",
+                    headers={"Content-Range": f"bytes */{file_size}"},
+                )
+            start = max(start, 0)
             end = min(end, file_size - 1)
+            end = max(end, start)
             content_length = end - start + 1
 
-            def iter_range() -> Any:
+            def iter_range() -> Iterator[bytes]:
                 with open(audio_path, "rb") as f:
                     f.seek(start)
                     remaining = content_length
@@ -186,7 +221,7 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
             )
 
         # Full file
-        def iter_file() -> Any:
+        def iter_file() -> Iterator[bytes]:
             with open(audio_path, "rb") as f:
                 while True:
                     data = f.read(8192)
@@ -253,6 +288,8 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
 
         if not message.strip():
             raise HTTPException(status_code=400, detail="Message cannot be empty")
+        if len(message) > MAX_MESSAGE_LENGTH or len(session_id) > 200:
+            raise HTTPException(status_code=413, detail="Message or session id too long")
 
         return await chat_engine.chat(session_id, message, use_rag=use_rag)
 
@@ -266,6 +303,8 @@ def create_app(data_dir: Optional[Path] = None) -> FastAPI:
 
         if not message.strip():
             raise HTTPException(status_code=400, detail="Message cannot be empty")
+        if len(message) > MAX_MESSAGE_LENGTH or len(session_id) > 200:
+            raise HTTPException(status_code=413, detail="Message or session id too long")
 
         return StreamingResponse(
             chat_engine.chat_stream(session_id, message, use_rag=use_rag),

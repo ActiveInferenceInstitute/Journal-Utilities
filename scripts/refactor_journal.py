@@ -3,13 +3,16 @@
 
 DRY-RUN by default: classifies every file in every item folder into its v2 target
 (or an intentional placeholder-drop), and reports an audit so we can prove zero
-data loss before applying. ``--apply`` performs the moves with ``git mv`` (history
-preserved), builds metadata.json / README.md / transcript.txt, and routes audio to
-a side list for the ``audio`` branch.
+data loss before applying. Applying is done **out-of-place** with ``--build <dir>``
+(a safe staging copy with history-preserving classification + passthrough + an
+idempotent uncovered-video pass), then the maintained workflow validates the tree
+(``validate_journal.py``) before it is swapped in. ``--apply`` is intentionally not
+a silent in-place move — pass it and the tool refuses with guidance rather than
+pretending to do nothing.
 
 Usage:
-    python scripts/refactor_journal.py --journal ../ActiveInferenceJournal            # dry-run
-    python scripts/refactor_journal.py --journal ../ActiveInferenceJournal --apply
+    python scripts/refactor_journal.py --journal ../ActiveInferenceJournal            # dry-run audit
+    python scripts/refactor_journal.py --journal ../ActiveInferenceJournal --build /tmp/v2
 """
 
 from __future__ import annotations
@@ -18,6 +21,7 @@ import argparse
 import collections
 import json
 import re
+import sys
 from pathlib import Path
 
 PLACEHOLDERS = {"blank_document.txt", "blank.txt"}
@@ -195,13 +199,16 @@ def build_item(item: Path, journal: Path, out_dir: Path, titles: dict, audio_out
                 seg = json.loads(f.read_text(encoding="utf-8", errors="replace"))
                 transcript_json.append({"video_id": vid, "segments": seg})
             except json.JSONDecodeError:
-                _copy(f, _unique(dest / "assets" / "notes", f.name, relparts)); moved += 1
+                _copy(f, _unique(dest / "assets" / "notes", f.name, relparts))
+                moved += 1
         elif cat == "AUDIO":
             ao = audio_out / rel / f.name
             ao.parent.mkdir(parents=True, exist_ok=True)
-            _copy(f, ao); audio_files.append(f.name)
+            _copy(f, ao)
+            audio_files.append(f.name)
         else:  # captions / translations / assets/*
-            _copy(f, _unique(dest / cat, f.name, relparts)); moved += 1
+            _copy(f, _unique(dest / cat, f.name, relparts))
+            moved += 1
 
     cat_, ser_, ep_ = categorize_name(titles.get(next(iter(parts), ""), "") or item.name, is_unique_event_name=False)
     meta = {
@@ -354,7 +361,8 @@ def main() -> int:
     ap.add_argument("--journal", type=Path, default=Path(__file__).resolve().parent.parent.parent / "ActiveInferenceJournal")
     ap.add_argument("--build", type=Path, default=None, help="build v2 staging tree at this path (out-of-place)")
     ap.add_argument("--audio-out", type=Path, default=None, help="collect audio files here (for the audio branch)")
-    ap.add_argument("--apply", action="store_true", help="(gated) perform moves; default is dry-run audit")
+    ap.add_argument("--apply", action="store_true",
+                    help="DEPRECATED: in-place apply is not performed; use --build + validation")
     ap.add_argument("--report", type=Path, default=None, help="write full JSON plan here")
     args = ap.parse_args()
 
@@ -388,7 +396,13 @@ def main() -> int:
         args.report.write_text(json.dumps(plan, indent=2), encoding="utf-8")
         print(f"full plan -> {args.report}")
     if args.apply:
-        print("\n--apply is gated until UNMAPPED==0 and the plan is reviewed.")
+        print(
+            "\n--apply is not implemented: in-place conversion is intentionally staged "
+            "out-of-place with --build <dir>, then validated. Refusing (exit 1) so this "
+            "is never a silent no-op.",
+            file=sys.stderr,
+        )
+        return 1
     return 0
 
 

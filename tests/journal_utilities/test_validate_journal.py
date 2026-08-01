@@ -6,7 +6,6 @@ from pathlib import Path
 from scripts.generate_journal_indexes import update_indexes
 from scripts.validate_journal import validate_journal
 
-
 SRC = Path("data/video/activeinferenceinstitute")
 
 

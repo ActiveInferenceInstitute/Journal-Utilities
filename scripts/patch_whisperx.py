@@ -5,12 +5,11 @@ Patch WhisperX for compatibility with pyannote.audio 4.0+
 This script updates WhisperX's diarization and VAD modules to use the 'token'
 parameter instead of the deprecated 'use_auth_token' parameter.
 """
-import os
 import sys
 from pathlib import Path
 
 
-def find_whisperx_path():
+def find_whisperx_path() -> Path:
     """Find the installed WhisperX package path."""
     try:
         import whisperx
@@ -21,7 +20,7 @@ def find_whisperx_path():
         sys.exit(1)
 
 
-def patch_file(file_path, replacements):
+def patch_file(file_path: Path, replacements: list[tuple[str, str]]) -> bool:
     """Apply text replacements to a file."""
     if not file_path.exists():
         print(f"Warning: {file_path} not found, skipping...")
@@ -42,7 +41,7 @@ def patch_file(file_path, replacements):
         return False
 
 
-def main():
+def main() -> int:
     print("WhisperX Compatibility Patcher")
     print("=" * 50)
 
@@ -92,7 +91,10 @@ def main():
         pyc_file.unlink()
     for pycache_dir in whisperx_path.rglob("__pycache__"):
         if pycache_dir.is_dir():
-            pycache_dir.rmdir()
+            # rmdir() raises on non-empty dirs (stray .pyo/etc.) and would crash
+            # the whole patch mid-run; rmtree(ignore_errors=True) is robust.
+            import shutil
+            shutil.rmtree(pycache_dir, ignore_errors=True)
 
     print("\n" + "=" * 50)
     if patches_applied > 0:

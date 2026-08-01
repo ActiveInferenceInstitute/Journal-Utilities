@@ -3,10 +3,10 @@ Test suite for importer module with mocks.
 """
 
 import json
-import pytest
-from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock, patch
 from datetime import datetime
+from unittest.mock import AsyncMock, patch
+
+import pytest
 
 from journal_utilities.data.importer import insert_missing_sessions_from_json
 
@@ -35,7 +35,7 @@ class TestInsertMissingSessionsFromJson:
                 }
             ]
         }
-        
+
         json_file = tmp_path / "test_coda.json"
         json_file.write_text(json.dumps(data))
         return str(json_file)
@@ -62,7 +62,7 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         assert stats["total"] == 2
         assert stats["inserted"] == 2
         assert stats["failed"] == 0
@@ -72,7 +72,7 @@ class TestInsertMissingSessionsFromJson:
         """Test skipping existing sessions."""
         # Return existing session for first query
         mock_db_client.query = AsyncMock(return_value=[{"id": "session:existing"}])
-        
+
         with patch("journal_utilities.importer.DatabaseClient", return_value=mock_db_client):
             stats = await insert_missing_sessions_from_json(
                 sample_coda_json,
@@ -82,7 +82,7 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         assert stats["total"] == 2
         assert stats["skipped"] == 2
         assert stats["inserted"] == 0
@@ -100,10 +100,10 @@ class TestInsertMissingSessionsFromJson:
                 }
             ]
         }
-        
+
         json_file = tmp_path / "invalid.json"
         json_file.write_text(json.dumps(data))
-        
+
         with patch("journal_utilities.importer.DatabaseClient", return_value=mock_db_client):
             stats = await insert_missing_sessions_from_json(
                 str(json_file),
@@ -113,7 +113,7 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         assert stats["total"] == 1
         assert stats["failed"] == 1
 
@@ -129,7 +129,7 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         # Should return empty stats when file read fails
         assert stats["total"] == 0
 
@@ -145,10 +145,10 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         # Should have created audit records
         create_calls = mock_db_client.create.call_args_list
-        
+
         # At least: 2 session inserts + 2 audit records + 1 summary
         assert len(create_calls) >= 5
 
@@ -156,14 +156,14 @@ class TestInsertMissingSessionsFromJson:
     async def test_categorizes_events(self, sample_coda_json, mock_db_client):
         """Test that events are properly categorized."""
         captured_sessions = []
-        
+
         async def capture_create(table, data):
             if table == 'session':
                 captured_sessions.append(data)
             return {"id": f"{table}:test"}
-        
+
         mock_db_client.create = capture_create
-        
+
         with patch("journal_utilities.importer.DatabaseClient", return_value=mock_db_client):
             await insert_missing_sessions_from_json(
                 sample_coda_json,
@@ -173,7 +173,7 @@ class TestInsertMissingSessionsFromJson:
                 "db",
                 "ns"
             )
-        
+
         assert len(captured_sessions) == 2
         assert captured_sessions[0]['category'] == 'Livestream'
         assert captured_sessions[1]['category'] == 'GuestStream'
@@ -195,10 +195,10 @@ class TestJsonParsing:
     async def test_handles_empty_items(self, tmp_path, mock_db_client):
         """Test handling of empty items array."""
         data = {"items": []}
-        
+
         json_file = tmp_path / "empty.json"
         json_file.write_text(json.dumps(data))
-        
+
         with patch("journal_utilities.importer.DatabaseClient", return_value=mock_db_client):
             stats = await insert_missing_sessions_from_json(
                 str(json_file),
@@ -208,7 +208,7 @@ class TestJsonParsing:
                 "db",
                 "ns"
             )
-        
+
         assert stats["total"] == 0
 
     @pytest.mark.asyncio
@@ -222,10 +222,10 @@ class TestJsonParsing:
                 }
             }
         ]
-        
+
         json_file = tmp_path / "list.json"
         json_file.write_text(json.dumps(data))
-        
+
         with patch("journal_utilities.importer.DatabaseClient", return_value=mock_db_client):
             stats = await insert_missing_sessions_from_json(
                 str(json_file),
@@ -235,7 +235,7 @@ class TestJsonParsing:
                 "db",
                 "ns"
             )
-        
+
         assert stats["total"] == 1
 
 
@@ -245,10 +245,10 @@ class TestDateParsing:
     def test_parses_iso_date(self):
         """Test parsing ISO format dates."""
         from datetime import datetime
-        
+
         date_str = "2025-01-15T10:00:00.000-08:00"
         parsed = datetime.fromisoformat(date_str)
-        
+
         assert parsed.year == 2025
         assert parsed.month == 1
         assert parsed.day == 15
@@ -256,11 +256,11 @@ class TestDateParsing:
     def test_handles_invalid_date(self):
         """Test handling of invalid dates."""
         date_str = "invalid-date"
-        
+
         try:
             datetime.fromisoformat(date_str)
             parsed = True
         except ValueError:
             parsed = False
-        
+
         assert parsed is False

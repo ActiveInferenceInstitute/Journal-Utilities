@@ -291,6 +291,16 @@ class EntityAdapter:
         if extracted.detailed:
             entities.extend(cls.convert_detailed_analysis(extracted.detailed))
 
+        # Stamp the transcript source onto every entity so the graph layer can
+        # scope merges per transcript — preventing "Insight 1" (or a truncated
+        # formula name) from one video silently merging with another's (M10).
+        source = getattr(extracted.core, "source", None)
+        if source:
+            for entity in entities:
+                meta = dict(entity.metadata)
+                meta.setdefault("source", source)
+                entity.metadata = meta
+
         relationships = cls.extract_relationships(extracted.core)
 
         return entities, relationships

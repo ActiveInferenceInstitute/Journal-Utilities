@@ -2,7 +2,8 @@
 
 ## Test Suite Overview
 
-272 tests across unit and integration suites.
+The suite is a live snapshot (currently ~466 passing, 3 API-gated skips); run
+`uv run pytest tests/ -q` for the current count.
 
 ## Running Tests
 

@@ -11,10 +11,9 @@ import re
 import subprocess
 import time
 from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -32,10 +31,10 @@ class DownloadResult:
     video_id: str
     asset_type: str  # "transcript", "audio", "video"
     status: DownloadStatus
-    path: Optional[str] = None
-    error: Optional[str] = None
+    path: str | None = None
+    error: str | None = None
     duration_seconds: float = 0.0
-    file_size_bytes: Optional[int] = None
+    file_size_bytes: int | None = None
 
     @property
     def file_size_str(self) -> str:
@@ -67,7 +66,7 @@ class VideoDownloadSummary:
 
     def __post_init__(self) -> None:
         if not self.timestamp:
-            self.timestamp = datetime.now(timezone.utc).isoformat()
+            self.timestamp = datetime.now(UTC).isoformat()
 
 
 # ---------------------------------------------------------------------------
@@ -76,8 +75,8 @@ class VideoDownloadSummary:
 
 
 def _ytdlp_base_cmd(
-    cookies_from_browser: Optional[str] = None,
-    cookies_file: Optional[Path] = None,
+    cookies_from_browser: str | None = None,
+    cookies_file: Path | None = None,
 ) -> list[str]:
     """Build the base yt-dlp command with optional cookies.
 
@@ -89,6 +88,10 @@ def _ytdlp_base_cmd(
         "--no-warnings",
         "--fragment-retries", "3",
         "--retry-sleep", "fragment:exp=1:10",
+        # A modern browser User-Agent is required on every yt-dlp call to
+        # avoid YouTube 403s (see AGENTS.md) — not just on the audio path.
+        "--user-agent",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     ]
     if cookies_from_browser:
         cmd.extend(["--cookies-from-browser", cookies_from_browser])
@@ -104,9 +107,9 @@ def _ytdlp_base_cmd(
 def download_transcript(
     video_id: str,
     output_dir: Path,
-    languages: Optional[list[str]] = None,
+    languages: list[str] | None = None,
     skip_existing: bool = True,
-    cookies_from_browser: Optional[str] = None,
+    cookies_from_browser: str | None = None,
 ) -> DownloadResult:
     """
     Download video transcript (subtitles).
@@ -128,13 +131,13 @@ def download_transcript(
     output_dir = Path(output_dir)
     transcript_dir = output_dir / "transcripts"
     transcript_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Check for cookies.txt in parent dir
-    cookies_file = output_dir.parent / "cookies.txt"
-    if not cookies_file.exists():
-        cookies_file = output_dir / "cookies.txt"
-    if not cookies_file.exists():
-        cookies_file = None
+
+    # Check for cookies.txt in the parent dir, then the output dir.
+    cookies_file: Path | None = None
+    for candidate in (output_dir.parent / "cookies.txt", output_dir / "cookies.txt"):
+        if candidate.exists():
+            cookies_file = candidate
+            break
 
     if languages is None:
         languages = ["en"]
@@ -178,12 +181,12 @@ def _download_transcript_ytdlp(
     video_id: str,
     transcript_dir: Path,
     languages: list[str],
-    cookies_from_browser: Optional[str] = None,
-    cookies_file: Optional[Path] = None,
+    cookies_from_browser: str | None = None,
+    cookies_file: Path | None = None,
 ) -> DownloadResult:
     """Download transcript via yt-dlp."""
     url = f"https://www.youtube.com/watch?v={video_id}"
-    
+
     # yt-dlp's --sub-lang expects comma-separated
     lang_str = ",".join(languages)
 
@@ -202,7 +205,7 @@ def _download_transcript_ytdlp(
     ])
 
     logger.debug("yt-dlp transcript cmd: %s", " ".join(cmd))
-    
+
     try:
         proc = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
     except subprocess.TimeoutExpired:
@@ -224,22 +227,15 @@ def _download_transcript_ytdlp(
             error=f"No subtitle files produced. stderr: {proc.stderr[:300]}",
         )
 
-    # Convert strongest match to text
-    # Prefer non-auto-generated if available? yt-dlp marks auto as .en.vtt usually?
-    best_file = found[0]
-    
+    # Convert the strongest match to text. Prefer a manual subtitle over an
+    # auto-generated one so the pick is deterministic (glob order is
+    # filesystem-dependent).
+    best_file = _pick_transcript_vtt(found)
+
     try:
-        text_content = _convert_vtt_to_text(best_file)
-        
-        # Save as .txt
         final_path = transcript_dir / f"{video_id}.txt"
-        final_path.write_text(text_content, encoding="utf-8")
-        
-        # Save raw vtt -> json/metadata? 
-        # For now just text is what we want for RAG.
-        # But we might want to keep the vtt?
-        # The code above converts it.
-        
+        # _convert_vtt_to_text writes the converted text to final_path itself.
+        _convert_vtt_to_text(best_file, final_path)
         return DownloadResult(
             video_id=video_id,
             asset_type="transcript",
@@ -266,9 +262,10 @@ def _download_transcript_api(
     ``.fetch()`` and ``.list()`` methods.
     """
     try:
-        from youtube_transcript_api import YouTubeTranscriptApi
-        import requests
         import http.cookiejar
+
+        import requests
+        from youtube_transcript_api import YouTubeTranscriptApi
     except ImportError:
         return DownloadResult(
             video_id=video_id,
@@ -286,7 +283,9 @@ def _download_transcript_api(
                 session = requests.Session()
                 cj = http.cookiejar.MozillaCookieJar(cookies_path)
                 cj.load(ignore_discard=True, ignore_expires=True)
-                session.cookies = cj
+                # MozillaCookieJar is a CookieJar, not a RequestsCookieJar;
+                # requests accepts it at runtime, but the types differ.
+                session.cookies = cj  # type: ignore[assignment]
                 logger.debug("Loaded cookies for transcript API from %s", cookies_path)
             except Exception as e:
                 logger.warning("Failed to load cookies from %s: %s", cookies_path, e)
@@ -341,6 +340,18 @@ def _download_transcript_api(
         )
 
 
+def _pick_transcript_vtt(files: list[Path]) -> Path:
+    """Return the best (deterministic) VTT to convert.
+
+    Prefers a manual subtitle over an auto-generated one (`.auto.`/`.orig.`),
+    otherwise falls back to a name-sorted pick so the choice never depends on
+    filesystem glob order.
+    """
+    manual = [p for p in files if ".auto." not in p.name and ".orig." not in p.name]
+    pool = manual or files
+    return sorted(pool, key=lambda p: p.name)[0]
+
+
 def _convert_vtt_to_text(vtt_path: Path, txt_path: Path) -> None:
     """Convert a VTT subtitle file to plain text, stripping timestamps and formatting."""
     lines: list[str] = []
@@ -361,7 +372,6 @@ def _convert_vtt_to_text(vtt_path: Path, txt_path: Path) -> None:
             continue
 
         # Remove HTML-like tags (e.g. <c>, </c>, <00:00:01.234>)
-        import re
         clean = re.sub(r"<[^>]+>", "", line)
         clean = clean.strip()
 
@@ -381,8 +391,8 @@ def download_audio(
     output_dir: Path,
     audio_format: str = "mp3",
     skip_existing: bool = True,
-    cookies_from_browser: Optional[str] = None,
-    cookies_file: Optional[Path] = None,
+    cookies_from_browser: str | None = None,
+    cookies_file: Path | None = None,
 ) -> DownloadResult:
     """
     Download audio from a YouTube video.
@@ -401,7 +411,7 @@ def download_audio(
     output_dir = Path(output_dir)
     audio_dir = output_dir / "audio"
     audio_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Check for cookies.txt
     if cookies_file is None:
         potential_cookies_file = output_dir.parent / "cookies.txt"
@@ -434,29 +444,28 @@ def download_audio(
         "-x",
         "--audio-format", audio_format,
         "--audio-quality", "0",
-        "--user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
         "-o", str(audio_dir / "%(id)s.%(ext)s"),
         url,
     ])
 
     cmd_base = list(cmd)
-    
+
     try:
         # Attempt 1: Try 'web' player client first (Progressive HTTP preferred)
         cmd_web = list(cmd_base)
         cmd_web.extend(["--extractor-args", "youtube:player_client=web"])
         logger.debug("Attempt 1 (web client): %s", " ".join(cmd_web))
-        
+
         proc = subprocess.run(cmd_web, check=False, timeout=600)
-        
+
         if proc.returncode != 0:
             logger.warning("Web client download failed (exit code %d). Falling back to ios client.", proc.returncode)
-            
+
             # Attempt 2: Fallback to ios client
             cmd_ios = list(cmd_base)
             cmd_ios.extend(["--extractor-args", "youtube:player_client=ios"])
             logger.debug("Attempt 2 (ios client): %s", " ".join(cmd_ios))
-            
+
             proc = subprocess.run(cmd_ios, check=False, timeout=600)
 
             if proc.returncode != 0:
@@ -466,9 +475,9 @@ def download_audio(
                 cmd_default = list(cmd_base)
                 cmd_default.append("--abort-on-unavailable-fragments")
                 logger.debug("Attempt 3 (default client): %s", " ".join(cmd_default))
-                
+
                 proc = subprocess.run(cmd_default, check=False, timeout=600)
- 
+
     except subprocess.TimeoutExpired:
         return DownloadResult(
             video_id=video_id,
@@ -495,9 +504,21 @@ def download_audio(
     found = list(audio_dir.glob(f"{video_id}.*"))
     actual_path = str(audio_path) if audio_path.exists() else (str(found[0]) if found else None)
 
-    logger.info("Downloaded audio: %s in %.1fs", Path(actual_path).name if actual_path else video_id, elapsed)
-    
+    # A non-zero exit is caught above, but yt-dlp can also exit 0 without
+    # producing a file (e.g. output elsewhere, .part only). Never report
+    # SUCCESS for a missing/empty artifact.
     size = _get_file_size(Path(actual_path)) if actual_path else 0
+    if not actual_path or size <= 0:
+        logger.error("Audio download produced no file for %s", video_id)
+        return DownloadResult(
+            video_id=video_id,
+            asset_type="audio",
+            status=DownloadStatus.FAILED,
+            error="yt-dlp exited 0 but produced no audio file",
+            duration_seconds=elapsed,
+        )
+
+    logger.info("Downloaded audio: %s in %.1fs", Path(actual_path).name, elapsed)
     res = DownloadResult(
         video_id=video_id,
         asset_type="audio",
@@ -506,8 +527,7 @@ def download_audio(
         duration_seconds=elapsed,
         file_size_bytes=size,
     )
-    if actual_path:
-        logger.info("  -> %s (%s)", Path(actual_path).name, res.file_size_str)
+    logger.info("  -> %s (%s)", Path(actual_path).name, res.file_size_str)
     return res
 
 
@@ -528,8 +548,8 @@ def download_video(
     output_dir: Path,
     quality: str = "best",
     skip_existing: bool = True,
-    cookies_from_browser: Optional[str] = None,
-    cookies_file: Optional[Path] = None,
+    cookies_from_browser: str | None = None,
+    cookies_file: Path | None = None,
 ) -> DownloadResult:
     """
     Download video from YouTube.
@@ -548,7 +568,7 @@ def download_video(
     output_dir = Path(output_dir)
     video_dir = output_dir / "video"
     video_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Check for cookies.txt
     if cookies_file is None:
         potential_cookies_file = output_dir.parent / "cookies.txt"
@@ -586,7 +606,7 @@ def download_video(
     ])
 
     logger.debug("yt-dlp video cmd: %s", " ".join(cmd))
-    
+
     try:
         # Stream output to terminal for user visibility
         proc = subprocess.run(cmd, check=False, timeout=900)
@@ -614,9 +634,18 @@ def download_video(
     found = list(video_dir.glob(f"{video_id}.*"))
     actual_path = str(video_path) if video_path.exists() else (str(found[0]) if found else None)
 
-    logger.info("Downloaded video: %s in %.1fs", Path(actual_path).name if actual_path else video_id, elapsed)
-    
     size = _get_file_size(Path(actual_path)) if actual_path else 0
+    if not actual_path or size <= 0:
+        logger.error("Video download produced no file for %s", video_id)
+        return DownloadResult(
+            video_id=video_id,
+            asset_type="video",
+            status=DownloadStatus.FAILED,
+            error="yt-dlp exited 0 but produced no video file",
+            duration_seconds=elapsed,
+        )
+
+    logger.info("Downloaded video: %s in %.1fs", Path(actual_path).name, elapsed)
     res = DownloadResult(
         video_id=video_id,
         asset_type="video",
@@ -625,8 +654,7 @@ def download_video(
         duration_seconds=elapsed,
         file_size_bytes=size,
     )
-    if actual_path:
-        logger.info("  -> %s (%s)", Path(actual_path).name, res.file_size_str)
+    logger.info("  -> %s (%s)", Path(actual_path).name, res.file_size_str)
     return res
 
 
@@ -642,9 +670,9 @@ def download_all(
     video: bool = True,
     audio_format: str = "mp3",
     video_quality: str = "best",
-    transcript_languages: Optional[list[str]] = None,
+    transcript_languages: list[str] | None = None,
     skip_existing: bool = True,
-    cookies_from_browser: Optional[str] = None,
+    cookies_from_browser: str | None = None,
 ) -> VideoDownloadSummary:
     """
     Download transcript, audio, and/or video for a single YouTube video.
@@ -723,7 +751,7 @@ def save_download_manifest(
     path.parent.mkdir(parents=True, exist_ok=True)
 
     data = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": datetime.now(UTC).isoformat(),
         "total_videos": len(summaries),
         "downloads": [
             {

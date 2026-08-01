@@ -31,20 +31,18 @@ from pathlib import Path
 # Ensure project root is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from journal_utilities.youtube.channel import (
-    enumerate_channel_videos,
-    load_channel_manifest,
-    save_channel_manifest,
-)
 from journal_utilities.download.downloader import (
     DownloadStatus,
     VideoDownloadSummary,
-    download_transcript,
     download_audio,
+    download_transcript,
     download_video,
     save_download_manifest,
 )
-
+from journal_utilities.youtube.channel import (
+    enumerate_channel_videos,
+    load_channel_manifest,
+)
 
 # Active Inference Institute channel ID
 DEFAULT_CHANNEL_ID = "UCbPq2w41ZaJSWtpCq4BE6Dg"
@@ -241,7 +239,6 @@ def main(argv: list[str] | None = None) -> int:
         summary = VideoDownloadSummary(video_id=video.id)
 
         # 1. Download Transcript
-        transcript_status = None
         if args.transcripts:
             res = download_transcript(
                 video_id=video.id,
@@ -251,14 +248,13 @@ def main(argv: list[str] | None = None) -> int:
                 cookies_from_browser=args.cookies_from_browser,
             )
             summary.results.append(res)
-            transcript_status = res.status
-            
+
             details = ""
             if res.status in (DownloadStatus.SUCCESS, DownloadStatus.SKIPPED) and res.file_size_str:
                 details = f" ({res.file_size_str})"
             elif res.error:
                 details = f" ({res.error})"
-            
+
             logger.info("Transcript for %s: %s%s", video.id, res.status.value, details)
 
         # 2. Download Audio (Conditional)
@@ -272,7 +268,7 @@ def main(argv: list[str] | None = None) -> int:
                 cookies_from_browser=args.cookies_from_browser,
             )
             summary.results.append(res)
-            
+
             details = ""
             if res.status in (DownloadStatus.SUCCESS, DownloadStatus.SKIPPED) and res.file_size_str:
                 details = f" ({res.file_size_str})"
@@ -291,7 +287,7 @@ def main(argv: list[str] | None = None) -> int:
                 cookies_from_browser=args.cookies_from_browser,
             )
             summary.results.append(res)
-            
+
             details = ""
             if res.status in (DownloadStatus.SUCCESS, DownloadStatus.SKIPPED) and res.file_size_str:
                 details = f" ({res.file_size_str})"
@@ -318,7 +314,7 @@ def main(argv: list[str] | None = None) -> int:
         logger.info("Phase 2.5: Local Whisper Transcription")
         logger.info("=" * 60)
         try:
-            from journal_utilities.transcriber import transcribe_missing
+            from journal_utilities.transcribe.transcriber import transcribe_missing
 
             audio_dir = args.output_dir / "audio"
             transcript_dir = args.output_dir / "transcripts"

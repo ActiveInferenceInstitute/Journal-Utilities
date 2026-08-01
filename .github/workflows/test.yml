@@ -26,5 +26,11 @@ jobs:
       - name: Run tests
         run: uv run pytest tests/ -q
 
+      - name: Lint (ruff)
+        run: uv run ruff check src/ tests/ scripts/
+
+      - name: Type check (mypy)
+        run: uv run mypy src
+
       - name: Lint the journal integrity gate
         run: uv run ruff check scripts/validate_journal.py

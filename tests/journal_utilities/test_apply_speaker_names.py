@@ -7,8 +7,13 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(REPO / "scripts"))
 
-from apply_speaker_names import (SALVAGE_NAME, has_speaker_structure, load_blocks,
-                                 process_item, render_txt)
+from apply_speaker_names import (
+    SALVAGE_NAME,
+    has_speaker_structure,
+    load_blocks,
+    process_item,
+    render_txt,
+)
 
 
 def _blocks(vid="vid00000001", speakers=("SPEAKER_00", "SPEAKER_01")):

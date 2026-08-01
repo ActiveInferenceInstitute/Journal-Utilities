@@ -25,5 +25,9 @@ def slugify_title(title: str, max_len: int = MAX_SLUG_LEN) -> str:
     text = "".join(c for c in text if not unicodedata.combining(c))
     text = re.sub(r"[^A-Za-z0-9]+", "_", text).strip("_")
     if len(text) > max_len:
-        text = text[:max_len].rsplit("_", 1)[0]
+        cut = text[:max_len]
+        # Prefer cutting at a word boundary (the previous underscore); when the
+        # slice has no underscore at all (one very long token), hard-truncate
+        # instead of collapsing the entire slug to "".
+        text = cut.rsplit("_", 1)[0] if "_" in cut else cut
     return text.strip("_")

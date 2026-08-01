@@ -34,7 +34,7 @@ SRC_PREFIX = "data/video/activeinferenceinstitute"
 SALVAGE_NAME = "youtube_captions.txt"
 
 
-def load_blocks(tj_path: Path):
+def load_blocks(tj_path: Path) -> list | None:
     """Parse transcript.json; None when absent or not whisperx block format."""
     if not tj_path.exists():
         return None

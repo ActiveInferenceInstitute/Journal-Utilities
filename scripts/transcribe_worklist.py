@@ -194,7 +194,7 @@ def main() -> int:
                 logger.info("journal transcript written: %s", item["rel"])
         except subprocess.CalledProcessError as exc:
             logger.error("audio download failed for %s: %s — skipping item", item["rel"], exc)
-        except (IOError, RuntimeError) as exc:
+        except (OSError, RuntimeError) as exc:
             logger.error("transcription failed for %s: %s — skipping item", item["rel"], exc)
 
     print("\ndone — review the journal diff, then commit. Remember:")

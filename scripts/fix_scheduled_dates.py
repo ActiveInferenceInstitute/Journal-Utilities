@@ -3,14 +3,15 @@ Script to fix scheduled_date fields in the database that are stored as strings
 instead of proper datetime objects.
 """
 import asyncio
-import os
 import datetime
-from surrealdb import AsyncSurreal
+import os
+
 from dotenv import load_dotenv
+from surrealdb import AsyncSurreal
 
-load_dotenv('.env')
+load_dotenv()  # searches upward from this file, unlike a CWD-relative '.env'
 
-async def fix_scheduled_dates():
+async def fix_scheduled_dates() -> None:
     """Update all scheduled_date fields from string format to datetime format."""
     db_url = os.getenv("DB_URL")
     db_user = os.getenv('DB_USER')
@@ -44,10 +45,10 @@ async def fix_scheduled_dates():
                     # Parse and update
                     dt = datetime.datetime.fromisoformat(date_str)
 
-                    # Update the record with proper datetime
-                    update_result = await db.query(
-                        f"UPDATE {session_id} SET scheduled_date = $date",
-                        {"date": dt}
+                    # Update the record with proper datetime (parameterized)
+                    await db.query(
+                        "UPDATE $id SET scheduled_date = $date",
+                        {"id": session_id, "date": dt}
                     )
                     print(f"Updated {session_id}: {scheduled_date_str} -> {dt.isoformat()}")
                     updated_count += 1

@@ -1,6 +1,8 @@
 # Tests
 
-Test suite for Journal-Utilities (272 tests).
+Test suite for Journal-Utilities (currently 466 passed / 3 skipped). The count
+is a live snapshot of the suite — run `uv run pytest tests/ -q` for the current
+number; it is intentionally not kept hardcoded elsewhere in the docs.
 
 ## Running Tests
 
@@ -27,16 +29,29 @@ tests/
 ├── images/                              # Test images
 ├── journal_utilities/                   # Pipeline + download tests
 │   ├── conftest.py                      # Transcript fixtures
+│   ├── test_apply_speaker_names.py      # Journal transcript derivation
+│   ├── test_app.py                      # FastAPI endpoints
 │   ├── test_audit_functions.py          # Import audit trail
 │   ├── test_categorizer.py              # Event categorization
 │   ├── test_channel.py                  # Channel enumeration
+│   ├── test_chat_engine.py              # Ollama chat engine
+│   ├── test_coda_client.py              # Coda API client
+│   ├── test_data_loader.py              # Video manifest / search
 │   ├── test_database.py                 # Database client
 │   ├── test_downloader.py               # Download logic
+│   ├── test_enrichment.py               # Metadata enrichment
+│   ├── test_exporter.py                 # Multi-format export
 │   ├── test_importer.py                 # Session import
+│   ├── test_journal_indexes.py          # INDEX.json / INDEX.md derivation
+│   ├── test_naming.py                   # Slug generation
 │   ├── test_playlist.py                 # Playlist enumeration
 │   ├── test_renderer.py                 # Course scaffolding
+│   ├── test_run.py                      # run.py pipeline runner
 │   ├── test_transcribe.py               # WhisperX transcription
+│   ├── test_transcribe_worklist.py      # Journal transcription worklist
 │   ├── test_transcriber.py              # Local Whisper transcription
+│   ├── test_transcript_repair.py        # Split-transcript repair
+│   ├── test_validate_journal.py         # Journal integrity gate
 │   ├── test_youtube.py                  # YouTube URL utilities
 │   └── rag/                             # Entity extraction tests
 │       ├── conftest.py                  # Entity model fixtures
@@ -62,6 +77,7 @@ tests/
 - Playlist management
 - Course scaffolding and rendering
 - YouTube URL parsing and categorization
+- Journal index derivation, transcript repair, and the integrity gate
 
 ### Integration Tests (Require API Keys)
 
@@ -76,8 +92,7 @@ uv run pytest tests/journal_utilities/rag/integration/ -v -s
 
 ## Coverage
 
-272 tests covering:
-
-- 12 journal_utilities tests (download, transcription, categorization, etc.)
-- 5 RAG unit tests (models, extractors, pipeline, adapters, DB client)
-- Integration tests (Cohere extraction pipeline)
+The suite runs with coverage against `src` by default
+(`--cov=src --cov-report=term-missing`). Per-package line coverage changes as
+the suite evolves; run `uv run pytest tests/ --cov-report=term-missing` to see
+the live numbers.

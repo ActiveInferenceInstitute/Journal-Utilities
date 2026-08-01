@@ -10,10 +10,9 @@ import json
 import logging
 import subprocess
 import time
-from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from .channel import VideoInfo, _parse_video_entry
 
@@ -48,7 +47,7 @@ class PlaylistManifest:
         if not self.channel_url and self.channel_id:
             self.channel_url = f"https://www.youtube.com/channel/{self.channel_id}"
         if not self.enumerated_at:
-            self.enumerated_at = datetime.now(timezone.utc).isoformat()
+            self.enumerated_at = datetime.now(UTC).isoformat()
 
 
 # ---------------------------------------------------------------------------
@@ -58,7 +57,7 @@ class PlaylistManifest:
 
 def enumerate_playlists(
     channel_id: str,
-    max_playlists: Optional[int] = None,
+    max_playlists: int | None = None,
 ) -> list[PlaylistInfo]:
     """Enumerate all playlists from a YouTube channel.
 
@@ -84,6 +83,9 @@ def enumerate_playlists(
         "--dump-json",
         "--no-warnings",
         "--ignore-errors",
+        # Modern browser User-Agent avoids YouTube 403s during scraping (AGENTS.md).
+        "--user-agent",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     ]
 
     if max_playlists:
@@ -94,12 +96,18 @@ def enumerate_playlists(
     logger.debug("Running command: %s", " ".join(cmd))
     start_time = time.monotonic()
 
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        # Mirror channel.py: a slow/unresponsive endpoint should log and
+        # continue rather than abort the whole run.
+        logger.warning("yt-dlp timed out enumerating playlists for %s", playlists_url)
+        return []
 
     elapsed = time.monotonic() - start_time
     logger.info(
@@ -143,7 +151,7 @@ def enumerate_playlists(
 
 def enumerate_playlist_videos(
     playlist_url: str,
-    max_videos: Optional[int] = None,
+    max_videos: int | None = None,
 ) -> list[VideoInfo]:
     """Enumerate all videos in a YouTube playlist.
 
@@ -167,6 +175,9 @@ def enumerate_playlist_videos(
         "--dump-json",
         "--no-warnings",
         "--ignore-errors",
+        # Modern browser User-Agent avoids YouTube 403s during scraping (AGENTS.md).
+        "--user-agent",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     ]
 
     if max_videos:
@@ -174,12 +185,16 @@ def enumerate_playlist_videos(
 
     cmd.append(playlist_url)
 
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        timeout=300,
-    )
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300,
+        )
+    except subprocess.TimeoutExpired:
+        logger.warning("yt-dlp timed out enumerating playlist %s", playlist_url)
+        return []
 
     if result.returncode != 0 and not result.stdout.strip():
         logger.error("yt-dlp stderr: %s", result.stderr)

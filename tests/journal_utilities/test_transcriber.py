@@ -1,9 +1,6 @@
 """Tests for the local Whisper transcriber module."""
 
-import tempfile
 from pathlib import Path
-
-import pytest
 
 from journal_utilities.transcribe.transcriber import (
     TranscriptionStatus,
@@ -148,7 +145,7 @@ class TestTranscribeMissing:
 
     def test_batch_execution(self, tmp_path: Path) -> None:
         """Test that batch function orchestrates transcription correctly."""
-        from unittest.mock import MagicMock, patch
+        from unittest.mock import patch
 
         from journal_utilities.transcribe.transcriber import (
             TranscriptionResult,
@@ -164,8 +161,8 @@ class TestTranscribeMissing:
         (audio_dir / "1.mp3").write_text("fake")
         (audio_dir / "2.mp3").write_text("fake")
 
-        # Mock the individual transcribe_audio function
-        with patch("journal_utilities.transcriber.transcribe_audio") as mock_transcribe:
+        # Mock the individual transcribe_audio function (canonical module path)
+        with patch("journal_utilities.transcribe.transcriber.transcribe_audio") as mock_transcribe:
             # Configure mock to return success
             mock_transcribe.return_value = TranscriptionResult(
                 video_id="id", status=TranscriptionStatus.SUCCESS, duration_seconds=1.0

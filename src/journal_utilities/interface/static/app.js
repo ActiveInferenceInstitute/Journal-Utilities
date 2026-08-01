@@ -78,6 +78,12 @@ function escapeHtml(str) {
     return div.innerHTML;
 }
 
+/** Video IDs are interpolated into inline JS/href/attribute contexts; only
+ *  canonical YouTube ids ([A-Za-z0-9_-]{11}) are safe to accept there. */
+function safeVideoId(id) {
+    return /^[A-Za-z0-9_-]{11}$/.test(String(id || '')) ? String(id) : '';
+}
+
 /** Shorten hierarchical category names for display. */
 function shortCategoryName(name) {
     if (!name) return '';
@@ -91,9 +97,11 @@ function shortCategoryName(name) {
     return display;
 }
 
-// Simple markdown-to-HTML for chat
+// Simple markdown-to-HTML for chat. Escape FIRST so any raw HTML the model
+// emits (or that arrives via transcript context) can never execute; the
+// markdown transforms then only wrap already-escaped content in tags.
 function renderMarkdown(text) {
-    return text
+    return escapeHtml(text == null ? '' : String(text))
         .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
         .replace(/`([^`]+)`/g, '<code>$1</code>')
         .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
@@ -286,9 +294,9 @@ function renderVideoGrid(videos, isSearch) {
     }
 
     grid.innerHTML = videos.map(v => `
-        <article class="video-card" onclick="showVideoDetail('${v.id}')" tabindex="0"
+        <article class="video-card" onclick="showVideoDetail('${safeVideoId(v.id)}')" tabindex="0"
                  role="button" aria-label="View ${escapeHtml(v.title || v.id)}"
-                 data-video-id="${v.id}">
+                 data-video-id="${safeVideoId(v.id)}">
             <div class="video-card__thumb">
                 <img src="${v.thumbnail_url}" alt="" loading="lazy"
                      onerror="this.style.display='none'">
@@ -408,7 +416,7 @@ async function loadVideoDetail(videoId) {
                 <div class="video-detail__main">
                     <!-- YouTube embed -->
                     <div class="video-player">
-                        <iframe src="https://www.youtube.com/embed/${videoId}"
+                        <iframe src="https://www.youtube.com/embed/${safeVideoId(videoId)}"
                                 title="${escapeHtml(video.title || videoId)}"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
@@ -463,7 +471,7 @@ async function loadVideoDetail(videoId) {
                             </a>
                         </div>
                         ${video.has_transcript ? `<div class="meta-card__row">
-                            <a href="#" onclick="askAboutVideo('${videoId}'); return false;"
+                            <a href="#" onclick="askAboutVideo('${safeVideoId(videoId)}'); return false;"
                                style="color:var(--accent-warm);">
                                 💬 Ask AI about this video
                             </a>
@@ -640,8 +648,8 @@ async function sendChatMessage() {
                     if (data.type === 'context' && data.video_ids?.length) {
                         contextIds = data.video_ids;
                         const ctxHtml = contextIds.map(id =>
-                            `<span class="chat-context-tag" onclick="showVideoDetail('${id}')"
-                                   title="View source">📄 ${id}</span>`
+                            `<span class="chat-context-tag" onclick="showVideoDetail('${safeVideoId(id)}')"
+                                   title="View source">📄 ${escapeHtml(safeVideoId(id))}</span>`
                         ).join('');
                         msgEl.innerHTML = `<div class="chat-message__context">${ctxHtml}</div>`;
                     }

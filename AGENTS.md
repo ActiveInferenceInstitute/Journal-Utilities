@@ -147,7 +147,9 @@ All pipeline options live in `config.ini` (plaintext INI format):
 
 ## Testing
 
-- Tests use real methods (no mocks) wherever possible
+- Tests prefer real methods and real fixtures; mocks are reserved for external
+  I/O that can't run in CI (live SurrealDB, Cohere API, Ollama, GPU/WhisperX,
+  network downloads). See `tests/AGENTS.md`.
 - Run: `uv run pytest tests/ -v`
 - Coverage: `uv run pytest tests/ -v --cov=src --cov-report=term-missing`
 

@@ -9,7 +9,7 @@ Focus: transcripts and audio (per user requirement).
 import json
 import os
 from pathlib import Path
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -17,15 +17,14 @@ from journal_utilities.download.downloader import (
     DownloadResult,
     DownloadStatus,
     VideoDownloadSummary,
+    _convert_vtt_to_text,
     download_all,
     download_audio,
     download_transcript,
     download_video,
     load_download_manifest,
     save_download_manifest,
-    _convert_vtt_to_text,
 )
-
 
 # A known short Active Inference video for real download tests
 # "Generalized Coordinates in RxInfer.jl" — 9 min, has auto-captions
@@ -338,6 +337,44 @@ class TestRealTranscriptDownload:
             result2 = download_transcript(KNOWN_VIDEO_ID, tmp_path, skip_existing=True)
             assert result2.status == DownloadStatus.SKIPPED
 
+    def test_download_transcript_ytdlp_success_branch(self, tmp_path: Path):
+        """The yt-dlp subtitle path converts a real VTT to .txt.
+
+        Regression for the one-arg `_convert_vtt_to_text(best_file)` TypeError
+        (M1) that made this primary branch always fail and silently fall back
+        to the transcript API.
+        """
+        video_id = KNOWN_VIDEO_ID
+        transcript_dir = tmp_path / "transcripts"
+        transcript_dir.mkdir()
+        (transcript_dir / f"{video_id}.en.vtt").write_text(
+            "WEBVTT\n\n00:00:00.000 --> 00:00:02.000\n<v Speaker 0>Hello world</v>\n\n"
+            "00:00:02.000 --> 00:00:04.000\nTesting subtitles\n",
+            encoding="utf-8",
+        )
+        with patch("journal_utilities.download.downloader.subprocess.run") as mock_run:
+            mock_run.return_value.returncode = 0
+            mock_run.return_value.stderr = ""
+            result = download_transcript(video_id, tmp_path, skip_existing=False)
+
+        assert result.status == DownloadStatus.SUCCESS, result.error
+        assert result.path == str(transcript_dir / f"{video_id}.txt")
+        assert result.path is not None
+        txt = Path(result.path).read_text(encoding="utf-8")
+        assert "Hello world" in txt
+        assert "Testing subtitles" in txt
+
+    def test_pick_transcript_vtt_prefers_manual(self, tmp_path: Path):
+        """_pick_transcript_vtt deterministically prefers manual over auto subs."""
+        from journal_utilities.download.downloader import _pick_transcript_vtt
+
+        auto = tmp_path / f"{KNOWN_VIDEO_ID}.en.auto.vtt"
+        manual = tmp_path / f"{KNOWN_VIDEO_ID}.en.vtt"
+        auto.touch()
+        manual.touch()
+        assert _pick_transcript_vtt([auto, manual]) == manual
+        assert _pick_transcript_vtt([manual, auto]) == manual  # order-independent
+
     def test_download_transcript_invalid_id(self, tmp_path: Path):
         """Invalid video ID returns FAILED."""
         result = download_transcript("INVALID_ID_X", tmp_path, skip_existing=False)
@@ -357,12 +394,12 @@ class TestRealAudioDownload:
         with patch("journal_utilities.download.downloader.subprocess.run") as mock_run:
             # Mock successful execution
             mock_run.return_value.returncode = 0
-            
+
             # Create a dummy file to simulate download in the correct 'audio' subdirectory
             audio_dir = tmp_path / "audio"
             audio_dir.mkdir()
             expected_file = audio_dir / f"{KNOWN_VIDEO_ID}.mp3"
-            expected_file.touch()
+            expected_file.write_bytes(b"fake audio data")  # non-empty, like a real download
 
             result = download_audio(KNOWN_VIDEO_ID, tmp_path, audio_format="mp3", skip_existing=False)
 
@@ -374,16 +411,16 @@ class TestRealAudioDownload:
         """Second download of same audio should skip."""
         with patch("journal_utilities.download.downloader.subprocess.run") as mock_run:
             mock_run.return_value.returncode = 0
-            
+
             # Create dummy file
             audio_dir = tmp_path / "audio"
             audio_dir.mkdir(exist_ok=True)
             expected_file = audio_dir / f"{KNOWN_VIDEO_ID}.mp3"
-            expected_file.touch()
-            
+            expected_file.write_bytes(b"fake audio data")
+
             # First download (mocked success)
             download_audio(KNOWN_VIDEO_ID, tmp_path, audio_format="mp3", skip_existing=False)
-            
+
             # Second download (should skip)
             result2 = download_audio(KNOWN_VIDEO_ID, tmp_path, audio_format="mp3", skip_existing=True)
             assert result2.status == DownloadStatus.SKIPPED

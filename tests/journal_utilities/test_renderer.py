@@ -7,8 +7,6 @@ All tests use real methods and real file I/O — no mocks.
 import json
 from pathlib import Path
 
-import pytest
-
 from journal_utilities.render.renderer import (
     format_duration,
     format_upload_date,
@@ -16,7 +14,6 @@ from journal_utilities.render.renderer import (
     scaffold_course,
     slugify,
 )
-
 
 # ---------------------------------------------------------------------------
 # slugify

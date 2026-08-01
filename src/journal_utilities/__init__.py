@@ -1,6 +1,8 @@
 # Source package
 """Journal Utilities — Active Inference YouTube processing pipeline."""
 
+from typing import Any
+
 __version__ = "0.1.0"
 
 # ---------------------------------------------------------------------------
@@ -33,7 +35,7 @@ __all__ = [
 ]
 
 
-def __getattr__(name: str):
+def __getattr__(name: str) -> Any:  # noqa: ANN401 - dynamic module resolution is inherently Any
     if name in _SUBMODULE_MAP:
         pkg, mod = _SUBMODULE_MAP[name]
         import importlib

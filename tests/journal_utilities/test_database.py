@@ -4,9 +4,9 @@ Test suite for database module with mocks.
 These tests use mocks to avoid requiring a live SurrealDB instance.
 """
 
+from unittest.mock import AsyncMock, patch
+
 import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
-from datetime import datetime
 
 from journal_utilities.data.database import (
     DatabaseClient,
@@ -25,7 +25,7 @@ class TestDatabaseConfig:
         monkeypatch.delenv("DB_PASSWORD", raising=False)
         monkeypatch.delenv("DB_NAME", raising=False)
         monkeypatch.delenv("DB_NAMESPACE", raising=False)
-        
+
         config = DatabaseConfig()
         assert config.url == "ws://localhost:8080/rpc"
         assert config.user == "root"
@@ -40,7 +40,7 @@ class TestDatabaseConfig:
         monkeypatch.setenv("DB_PASSWORD", "testpass")
         monkeypatch.setenv("DB_NAME", "testdb")
         monkeypatch.setenv("DB_NAMESPACE", "testns")
-        
+
         config = DatabaseConfig.from_env()
         assert config.url == "ws://custom:9090/rpc"
         assert config.user == "testuser"
@@ -81,7 +81,7 @@ class TestDatabaseClient:
         with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             await client.connect()
-            
+
             mock_surreal.connect.assert_called_once()
             mock_surreal.signin.assert_called_once_with({
                 'username': 'testuser',
@@ -97,7 +97,7 @@ class TestDatabaseClient:
             client = DatabaseClient(config)
             await client.connect()
             await client.disconnect()
-            
+
             mock_surreal.close.assert_called_once()
             assert client._connected is False
 
@@ -105,11 +105,11 @@ class TestDatabaseClient:
     async def test_query(self, mock_surreal, config):
         """Test query execution."""
         mock_surreal.query.return_value = [{"id": "test:1", "name": "test"}]
-        
+
         with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             result = await client.query("SELECT * FROM test")
-            
+
             assert result == [{"id": "test:1", "name": "test"}]
             mock_surreal.query.assert_called_once()
 
@@ -117,11 +117,11 @@ class TestDatabaseClient:
     async def test_create(self, mock_surreal, config):
         """Test record creation."""
         mock_surreal.create.return_value = {"id": "test:new", "data": "value"}
-        
+
         with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             result = await client.create("test", {"data": "value"})
-            
+
             assert result == {"id": "test:new", "data": "value"}
             mock_surreal.create.assert_called_once_with("test", {"data": "value"})
 
@@ -131,7 +131,7 @@ class TestDatabaseClient:
         with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             async with DatabaseClient(config) as client:
                 assert client._connected is True
-            
+
             mock_surreal.close.assert_called_once()
 
     @pytest.mark.asyncio
@@ -140,9 +140,9 @@ class TestDatabaseClient:
         with patch("journal_utilities.data.database.AsyncSurreal", return_value=mock_surreal):
             client = DatabaseClient(config)
             assert client._connected is False
-            
+
             await client.query("SELECT * FROM test")
-            
+
             # Should have auto-connected
             mock_surreal.connect.assert_called_once()
 

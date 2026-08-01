@@ -13,11 +13,12 @@ import json
 import logging
 import re
 import time
-from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from collections.abc import Callable
+from dataclasses import dataclass
+from datetime import UTC, datetime
 from enum import Enum
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -44,10 +45,10 @@ class ExportResult:
     source_path: str
     format: ExportFormat
     status: str  # "success", "skipped", "failed"
-    output_path: Optional[str] = None
-    error: Optional[str] = None
+    output_path: str | None = None
+    error: str | None = None
     duration_seconds: float = 0.0
-    file_size_bytes: Optional[int] = None
+    file_size_bytes: int | None = None
 
     @property
     def file_size_str(self) -> str:
@@ -225,35 +226,51 @@ def _to_plaintext(text: str, dest: Path, title: str = "",
     dest.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def _yaml_escape(value: str) -> str:
+    """Escape a value for a double-quoted YAML scalar.
+
+    Titles and other metadata routinely contain quotes, backslashes, or
+    newlines — without escaping these the markdown export's YAML frontmatter
+    is malformed and downstream parsers mis-read it.
+    """
+    return (
+        value.replace("\\", "\\\\")
+        .replace('"', '\\"')
+        .replace("\n", "\\n")
+        .replace("\r", "\\r")
+        .replace("\t", "\\t")
+    )
+
+
 def _to_markdown(text: str, dest: Path, title: str = "",
                   metadata: dict[str, Any] | None = None) -> None:
     """Write Markdown with YAML frontmatter metadata."""
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     meta = metadata or {}
     display_title = meta.get("title", title)
 
     fm_lines = [
         "---",
-        f'title: "{display_title}"',
+        f'title: "{_yaml_escape(str(display_title))}"',
     ]
     if meta.get("category"):
-        fm_lines.append(f'category: "{meta["category"]}"')
+        fm_lines.append(f'category: "{_yaml_escape(str(meta["category"]))}"')
     if meta.get("series"):
-        fm_lines.append(f'series: "{meta["series"]}"')
+        fm_lines.append(f'series: "{_yaml_escape(str(meta["series"]))}"')
     if meta.get("episode"):
-        fm_lines.append(f'episode: "{meta["episode"]}"')
+        fm_lines.append(f'episode: "{_yaml_escape(str(meta["episode"]))}"')
     if meta.get("speakers"):
         fm_lines.append("speakers:")
         for speaker in meta["speakers"]:
-            fm_lines.append(f'  - "{speaker}"')
+            fm_lines.append(f'  - "{_yaml_escape(str(speaker))}"')
     if meta.get("duration"):
-        fm_lines.append(f'duration: "{meta["duration"]}"')
+        fm_lines.append(f'duration: "{_yaml_escape(str(meta["duration"]))}"')
     if meta.get("url"):
-        fm_lines.append(f'url: "{meta["url"]}"')
+        fm_lines.append(f'url: "{_yaml_escape(str(meta["url"]))}"')
     if meta.get("views") is not None:
         fm_lines.append(f'views: {meta["views"]}')
     if meta.get("date"):
-        fm_lines.append(f'date: "{meta["date"]}"')
+        fm_lines.append(f'date: "{_yaml_escape(str(meta["date"]))}"')
     fm_lines.append(f'exported_at: "{now}"')
     fm_lines.append("format: markdown")
     fm_lines.append("---")
@@ -267,7 +284,7 @@ def _to_markdown(text: str, dest: Path, title: str = "",
 def _to_json(text: str, dest: Path, title: str = "", source: str = "",
              metadata: dict[str, Any] | None = None) -> None:
     """Write structured JSON with metadata."""
-    now = datetime.now(timezone.utc).isoformat()
+    now = datetime.now(UTC).isoformat()
     meta = metadata or {}
     payload: dict[str, Any] = {
         "title": meta.get("title", title),
@@ -300,6 +317,14 @@ def _to_html(text: str, dest: Path, title: str = "",
         .replace("<", "&lt;")
         .replace(">", "&gt;")
     )
+    # Metadata values also flow into the HTML document — escape them too so a
+    # title/URL from upstream metadata can never inject markup into the export.
+    escaped_title = (
+        display_title.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
     paragraphs = "\n".join(
         f"<p>{line}</p>" if line.strip() else ""
         for line in escaped.split("\n")
@@ -323,14 +348,20 @@ def _to_html(text: str, dest: Path, title: str = "",
     url_link = ""
     if meta.get("url"):
         meta_url = meta["url"]
-        url_link = f'<div class="meta"><a href="{meta_url}">{meta_url}</a></div>'
+        escaped_url = (
+            meta_url.replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace('"', "&quot;")
+        )
+        url_link = f'<div class="meta"><a href="{escaped_url}">{escaped_url}</a></div>'
 
     html = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{display_title}</title>
+<title>{escaped_title}</title>
 <style>
   body {{
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -356,7 +387,7 @@ def _to_html(text: str, dest: Path, title: str = "",
 </style>
 </head>
 <body>
-<h1>{display_title}</h1>
+<h1>{escaped_title}</h1>
 <div class="meta">{meta_html}</div>
 {url_link}
 <article>
@@ -404,12 +435,12 @@ def _to_pdf(text: str, dest: Path, title: str = "",
     Raises ``ImportError`` if ``fpdf2`` is not installed.
     """
     try:
-        from fpdf import FPDF  # type: ignore[import-untyped]
+        from fpdf import FPDF
     except ImportError:
         raise ImportError(
             "PDF export requires 'fpdf2'. Install with: "
             "uv pip install fpdf2"
-        )
+        ) from None
 
     meta = metadata or {}
     display_title = meta.get("title", title)
@@ -454,7 +485,7 @@ def _to_pdf(text: str, dest: Path, title: str = "",
 # Public API
 # ---------------------------------------------------------------------------
 
-_FORMAT_WRITERS = {
+_FORMAT_WRITERS: dict[ExportFormat, Callable[..., None]] = {
     ExportFormat.PLAINTEXT: lambda text, dest, title, source, meta: _to_plaintext(text, dest, title, meta),
     ExportFormat.MARKDOWN: lambda text, dest, title, source, meta: _to_markdown(text, dest, title, meta),
     ExportFormat.JSON: lambda text, dest, title, source, meta: _to_json(text, dest, title, source, meta),
@@ -566,9 +597,9 @@ def export_single(
 def export_transcripts(
     transcript_dir: Path,
     output_dir: Path,
-    formats: Optional[list[ExportFormat]] = None,
+    formats: list[ExportFormat] | None = None,
     skip_existing: bool = True,
-    data_dir: Optional[Path] = None,
+    data_dir: Path | None = None,
 ) -> dict[str, list[ExportResult]]:
     """Batch-export all ``.txt`` transcripts to one or more formats.
 

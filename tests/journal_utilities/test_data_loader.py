@@ -7,7 +7,6 @@ with temporary directories — no mocks.
 
 import json
 from pathlib import Path
-from typing import Any
 
 import pytest
 
@@ -17,7 +16,6 @@ from journal_utilities.interface.data_loader import (
     SearchResult,
     VideoRecord,
 )
-
 
 # ---------------------------------------------------------------------------
 # VideoRecord tests

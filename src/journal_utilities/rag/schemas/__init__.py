@@ -1,10 +1,10 @@
 """
 JSON schemas for entity extraction from Active Inference transcripts.
 """
-from collections.abc import Mapping
 import json
+from collections.abc import Mapping
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 __all__ = ["load_core_schema", "load_detailed_schema", "SCHEMAS_DIR"]
 
@@ -20,7 +20,7 @@ def load_core_schema() -> Mapping[str, Any]:
     """
     schema_path = SCHEMAS_DIR / "active_inference_schema_core.json"
     with open(schema_path) as f:
-        return json.load(f)
+        return cast(Mapping[str, Any], json.load(f))
 
 
 def load_detailed_schema() -> Mapping[str, Any]:
@@ -32,4 +32,4 @@ def load_detailed_schema() -> Mapping[str, Any]:
     """
     schema_path = SCHEMAS_DIR / "active_inference_schema_detailed.json"
     with open(schema_path) as f:
-        return json.load(f)
+        return cast(Mapping[str, Any], json.load(f))

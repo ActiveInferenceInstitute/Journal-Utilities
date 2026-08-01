@@ -95,7 +95,7 @@ def plan_items(journal: Path, old: dict[str, dict], only_item: str = "") -> list
         elif not have:
             action = None
         elif len(have) < len(vids):
-            action = "skip (partial: %d/%d parts recovered)" % (len(have), len(vids))
+            action = f"skip (partial: {len(have)}/{len(vids)} parts recovered)"
         elif (item_dir / "transcript.json").exists():
             action = "skip (transcript.json already present)"
         else:
@@ -161,7 +161,7 @@ def main() -> int:
                 extract_to_cache(args.journal, args.commit, old, vid, args.work_dir)
             write_journal_transcript(p["dir"], p["vids"], args.work_dir)
             done += 1
-        except (subprocess.CalledProcessError, ValueError, IOError) as exc:
+        except (OSError, subprocess.CalledProcessError, ValueError) as exc:
             print(f"FAILED {p['rel']}: {exc}")
     print(f"\nwritten: {done}/{len(recover)} items — review the journal diff, "
           "then regenerate indexes + validate before committing")

@@ -9,6 +9,7 @@ ActiveInferenceJournal ``docs/SCHEMA.md`` (Enrichment fields v2.1).
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import cast
 
 # Keys this module owns in metadata.json. Merging only ever sets these;
 # foreign keys are never touched or removed.
@@ -351,7 +352,7 @@ def merge_enrichment(
     if fill_parts and (replace_parts or not new.get("parts")):
         new["parts"] = fill_parts
 
-    parts = [dict(p) for p in new.get("parts", [])]
+    parts = [dict(p) for p in cast(list, new.get("parts", []))]
     if part_updates:
         for part in parts:
             for key, value in part_updates.get(part.get("video_id", ""), {}).items():

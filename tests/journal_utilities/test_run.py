@@ -1,12 +1,13 @@
 """Tests for run.py — config loading and CLI argument parsing."""
 
 import configparser
+
+# Import the run.py module from the project root
+import sys
 from pathlib import Path
 
 import pytest
 
-# Import the run.py module from the project root
-import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from run import (
@@ -18,7 +19,6 @@ from run import (
     load_config,
     main,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -237,6 +237,7 @@ class TestDefaultPipeline:
     def test_default_shows_config(self, config, capsys, monkeypatch):
         """Config display (Step 1/5) should print all sections."""
         import argparse
+
         import run
         args = argparse.Namespace(command=None, config=None, log_level=None)
         # Monkeypatch heavy steps to keep the test fast
@@ -253,6 +254,7 @@ class TestDefaultPipeline:
     def test_default_pipeline_fails_closed_on_test_error(self, config, monkeypatch):
         """A failing test step must not start the web interface by default."""
         import argparse
+
         import run
 
         args = argparse.Namespace(command=None, config=None, log_level=None)
@@ -265,6 +267,7 @@ class TestDefaultPipeline:
     def test_default_validates_data(self, config, capsys, monkeypatch):
         """Validation step (Step 2/5) should report on data directories."""
         import argparse
+
         import run
         args = argparse.Namespace(command=None, config=None, log_level=None)
         monkeypatch.setattr(run, "cmd_export", lambda cfg, a: 0)

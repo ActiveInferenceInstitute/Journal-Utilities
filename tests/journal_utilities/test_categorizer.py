@@ -4,8 +4,7 @@ Test suite for the categorizer module.
 These tests verify pattern matching for all stream types.
 """
 
-import pytest
-from journal_utilities.youtube.categorizer import categorize_name, EventCategory
+from journal_utilities.youtube.categorizer import categorize_name
 
 
 class TestCategorizeName:

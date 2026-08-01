@@ -9,9 +9,9 @@ files produced by the downloader module.
 import json
 import logging
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ def slugify(title: str, max_length: int = 60) -> str:
     return slug
 
 
-def format_duration(seconds: Optional[float]) -> str:
+def format_duration(seconds: float | None) -> str:
     """Format a duration in seconds to a human-readable string.
 
     Args:
@@ -76,7 +76,7 @@ def format_duration(seconds: Optional[float]) -> str:
     return f"{minutes}:{secs:02d}"
 
 
-def format_upload_date(upload_date: Optional[str]) -> str:
+def format_upload_date(upload_date: str | None) -> str:
     """Format a yt-dlp ``upload_date`` (``YYYYMMDD``) to ``YYYY-MM-DD``.
 
     Args:
@@ -102,8 +102,8 @@ def render_module_md(
     video_title: str,
     video_id: str,
     transcript_text: str,
-    duration: Optional[float] = None,
-    upload_date: Optional[str] = None,
+    duration: float | None = None,
+    upload_date: str | None = None,
     playlist_title: str = "",
     transcript_method: str = "auto_caption",
 ) -> str:
@@ -178,18 +178,15 @@ def scaffold_course(
     course_dir = courses_dir / course_slug
     course_dir.mkdir(parents=True, exist_ok=True)
 
-    # Write course.json metadata
+    # Write course.json metadata (moved to after the module loop so last_updated
+    # only bumps when something was actually created — see end of function).
     course_json = course_dir / "course.json"
     course_meta = {
         "title": playlist_title,
         "slug": course_slug,
         "video_count": len(videos),
-        "last_updated": datetime.now(timezone.utc).isoformat(),
+        "last_updated": datetime.now(UTC).isoformat(),
     }
-    course_json.write_text(
-        json.dumps(course_meta, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
 
     transcripts_path = transcript_dir / "transcripts"
 
@@ -249,4 +246,20 @@ def scaffold_course(
         skipped,
         failed,
     )
+
+    # Only bump last_updated when a module was actually created this run, so
+    # scaffolding an already-built course isn't non-idempotent timestamp churn.
+    if created == 0:
+        try:
+            existing = json.loads(course_json.read_text(encoding="utf-8"))
+            previous = existing.get("last_updated")
+            if previous:
+                course_meta["last_updated"] = previous
+        except (OSError, json.JSONDecodeError):
+            pass
+    course_json.write_text(
+        json.dumps(course_meta, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
     return {"created": created, "skipped": skipped, "failed": failed, "modules": modules}

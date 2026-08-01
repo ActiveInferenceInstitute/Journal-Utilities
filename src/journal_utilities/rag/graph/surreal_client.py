@@ -1,7 +1,8 @@
 """SurrealDB client for storing entities and relationships."""
 
 from collections.abc import Mapping, Sequence
-from typing import Any
+from datetime import UTC, datetime
+from typing import Any, cast
 
 import structlog
 from surrealdb import Surreal
@@ -126,12 +127,22 @@ class SurrealDBClient:
             raise RuntimeError("Database not connected")
 
         try:
-            # Check if entity exists
+            # Check if entity exists. Generic/truncated names (e.g. "Insight 1")
+            # collide across transcripts, so merge is scoped to the entity's
+            # source when it is known — otherwise a "Insight 1" from two
+            # different videos would silently merge into one record (M10).
             entity_type = entity.type.value if hasattr(entity.type, "value") else entity.type
-            existing = await self.db.query(
-                "SELECT * FROM entity WHERE name = $name AND type = $type",
-                {"name": entity.name, "type": entity_type},
-            )
+            source = (entity.metadata or {}).get("source")
+            if source:
+                existing = await self.db.query(
+                    "SELECT * FROM entity WHERE name = $name AND type = $type AND source = $source",
+                    {"name": entity.name, "type": entity_type, "source": source},
+                )
+            else:
+                existing = await self.db.query(
+                    "SELECT * FROM entity WHERE name = $name AND type = $type",
+                    {"name": entity.name, "type": entity_type},
+                )
 
             if existing and existing[0]["result"]:
                 # Update existing entity
@@ -152,20 +163,20 @@ class SurrealDBClient:
                 return str(entity_id)
             else:
                 # Create new entity
-                from datetime import datetime, timezone
-                result = await self.db.create(
-                    "entity",
-                    {
-                        "name": entity.name,
-                        "type": entity_type,
-                        "description": entity.description,
-                        "confidence": entity.confidence,
-                        "mentions": entity.mentions,
-                        "context": entity.context,
-                        "metadata": entity.metadata,
-                        "created_at": datetime.now(timezone.utc).isoformat(),
-                    },
-                )
+                from datetime import datetime
+                payload = {
+                    "name": entity.name,
+                    "type": entity_type,
+                    "description": entity.description,
+                    "confidence": entity.confidence,
+                    "mentions": entity.mentions,
+                    "context": entity.context,
+                    "metadata": entity.metadata,
+                    "created_at": datetime.now(UTC).isoformat(),
+                }
+                if source:
+                    payload["source"] = source
+                result = await self.db.create("entity", payload)
                 entity_id = result[0]["id"]
                 logger.debug("Created entity", entity_id=entity_id)
                 return str(entity_id)
@@ -232,7 +243,7 @@ class SurrealDBClient:
                     "confidence": relationship.confidence,
                     "context": relationship.context,
                     "metadata": relationship.metadata,
-                    "created_at": relationship.created_at.isoformat(),
+                    "created_at": datetime.now(UTC).isoformat(),
                 },
             )
 
@@ -310,7 +321,7 @@ class SurrealDBClient:
                 )
 
             if result and result[0]["result"]:
-                return result[0]["result"][0]
+                return cast(dict[str, Any], result[0]["result"][0])
             return None
 
         except Exception as e:
@@ -334,7 +345,7 @@ class SurrealDBClient:
 
         try:
             result = await self.db.query(query, params or {})
-            return result
+            return cast(Sequence[Mapping[str, Any]], result)
         except Exception as e:
             logger.error("Query failed", query=query, error=str(e))
             raise
@@ -358,7 +369,7 @@ class SurrealDBClient:
             )
 
             if result and result[0]["result"]:
-                return result[0]["result"][0]
+                return cast(dict[str, Any], result[0]["result"][0])
             return None
 
         except Exception as e:

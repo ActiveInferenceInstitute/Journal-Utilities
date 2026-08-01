@@ -10,7 +10,7 @@ import logging
 import os
 from collections.abc import AsyncIterator
 from dataclasses import dataclass, field
-from typing import Any, Optional
+from typing import Any
 
 import httpx
 
@@ -24,6 +24,10 @@ OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "gemma3:4b")
 MAX_CONTEXT_CHARS = int(os.getenv("CHAT_MAX_CONTEXT", "8000"))
 MAX_HISTORY = int(os.getenv("CHAT_MAX_HISTORY", "10"))
+# Upper bound on in-memory chat sessions. session_id is client-supplied and
+# unbounded growth is a memory-exhaustion denial of service; when the cap is
+# reached the oldest session is evicted (FIFO).
+MAX_SESSIONS = int(os.getenv("CHAT_MAX_SESSIONS", "200"))
 
 SYSTEM_PROMPT = """You are an expert research assistant for the Active Inference Institute.
 You have deep knowledge of Active Inference, the Free Energy Principle, Bayesian brain theory, predictive coding, and related fields.
@@ -83,10 +87,10 @@ class ChatSession:
 class ChatEngine:
     """RAG-augmented chat engine using Ollama."""
 
-    def __init__(self, search_index: Any = None) -> None:
+    def __init__(self, search_index: Any = None) -> None:  # noqa: ANN401 - injected dependency
         self.search_index = search_index
         self.sessions: dict[str, ChatSession] = {}
-        self._ollama_available: Optional[bool] = None
+        self._ollama_available: bool | None = None
 
     async def check_ollama(self) -> dict[str, Any]:
         """Check if Ollama is available and list models.
@@ -99,25 +103,25 @@ class ChatEngine:
                 if resp.status_code == 200:
                     data = resp.json()
                     models = [m.get("name", "") for m in data.get("models", [])]
-                    
+
                     # Smart model selection
                     # 1. Prefer configured model
                     # 2. Prefer standard chat models (llama, mistral, gemma, qwen)
                     # 3. Fallback to first available non-embedding model
-                    
+
                     selected_model = OLLAMA_MODEL
-                    
+
                     # Check if configured model exists (allowing for :latest or specific tags)
                     model_exists = any(m.startswith(OLLAMA_MODEL) for m in models)
-                    
+
                     if not model_exists and models:
                         # Try to find a good fallback
                         candidates = ["gemma", "llama", "mistral", "qwen", "deepSeek", "phi"]
                         fallback = None
-                        
+
                         # Filter out embedding models if possible (heuristic: "embed" in name)
                         chat_models = [m for m in models if "embed" not in m.lower()]
-                        
+
                         if chat_models:
                             for candidate in candidates:
                                 for m in chat_models:
@@ -126,25 +130,26 @@ class ChatEngine:
                                         break
                                 if fallback:
                                     break
-                            
+
                             if not fallback:
                                 fallback = chat_models[0]
                         else:
                              # If all look like embeddings, just take first
                             fallback = models[0] if models else None
-                            
+
                         if fallback:
                             logger.info("Configured model %s not found. Falling back to %s", OLLAMA_MODEL, fallback)
                             selected_model = fallback
 
                     self._ollama_available = True
+                    self.current_model = selected_model  # persist; avoids a re-probe per request
                     return {
                         "available": True,
                         "models": models,
                         "current_model": selected_model,
                         "url": OLLAMA_BASE_URL,
                     }
-        except (httpx.ConnectError, httpx.TimeoutException, Exception) as exc:
+        except Exception as exc:  # noqa: BLE001 — probe failure is routine (Ollama not running)
             logger.debug("Ollama not available: %s", exc)
 
         self._ollama_available = False
@@ -157,8 +162,12 @@ class ChatEngine:
         }
 
     def get_or_create_session(self, session_id: str) -> ChatSession:
-        """Get existing session or create new one."""
+        """Get existing session or create new one (bounded, FIFO eviction)."""
         if session_id not in self.sessions:
+            if len(self.sessions) >= MAX_SESSIONS:
+                oldest = next(iter(self.sessions))
+                logger.warning("evicting oldest chat session %r (cap %d)", oldest, MAX_SESSIONS)
+                del self.sessions[oldest]
             session = ChatSession(session_id=session_id)
             session.add_message("system", SYSTEM_PROMPT)
             self.sessions[session_id] = session
@@ -211,15 +220,11 @@ class ChatEngine:
         session.add_message("user", full_message)
         session.context_video_ids = context_ids
 
-        # Call Ollama
+        # Call Ollama. Probe availability once, then reuse the persisted
+        # model selection across requests.
+        if self._ollama_available is None:
+            await self.check_ollama()
         current_model = getattr(self, "current_model", OLLAMA_MODEL)
-        
-        # If check_ollama hasn't run or set it, run it
-        if current_model == OLLAMA_MODEL:
-             status = await self.check_ollama()
-             if status["available"]:
-                 current_model = status["current_model"]
-                 self.current_model = current_model
 
         try:
             async with httpx.AsyncClient(timeout=120.0) as client:
@@ -242,11 +247,13 @@ class ChatEngine:
                 }
         except Exception as exc:
             logger.error("Ollama chat error: %s", exc)
+            # Do not echo the exception text to the client — it can leak
+            # host/port/internal detail. Return a generic error instead.
             return {
-                "response": f"Error communicating with Ollama: {exc}",
+                "response": "Error communicating with the Ollama model. Please try again.",
                 "context_video_ids": context_ids,
                 "model": OLLAMA_MODEL,
-                "error": str(exc),
+                "error": True,
             }
 
     async def chat_stream(
@@ -277,13 +284,11 @@ class ChatEngine:
 
         session.add_message("user", full_message)
 
-        # Stream from Ollama
+        # Stream from Ollama. Probe availability once, then reuse the persisted
+        # model selection across requests.
+        if self._ollama_available is None:
+            await self.check_ollama()
         current_model = getattr(self, "current_model", OLLAMA_MODEL)
-        if current_model == OLLAMA_MODEL:
-             status = await self.check_ollama()
-             if status["available"]:
-                 current_model = status["current_model"]
-                 self.current_model = current_model
 
         full_response = ""
         try:
@@ -315,7 +320,8 @@ class ChatEngine:
 
         except Exception as exc:
             logger.error("Ollama stream error: %s", exc)
-            yield f"data: {json.dumps({'type': 'error', 'message': str(exc)})}\n\n"
+            # Generic message to the browser; the real exception stays in logs.
+            yield f"data: {json.dumps({'type': 'error', 'message': 'Streaming error from the Ollama model.'})}\n\n"
 
         yield f"data: {json.dumps({'type': 'done'})}\n\n"
 

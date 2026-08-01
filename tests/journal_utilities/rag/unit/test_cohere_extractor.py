@@ -3,8 +3,9 @@ Unit tests for CohereExtractor with mocked Cohere API.
 """
 
 import json
+from unittest.mock import MagicMock, patch
+
 import pytest
-from unittest.mock import patch, MagicMock
 
 from journal_utilities.rag.extractors.cohere_extractor import CohereExtractor
 from journal_utilities.rag.models.entities import CoreEntities, DetailedAnalysis
@@ -42,7 +43,7 @@ class TestCohereExtractorInit:
     def test_init_with_defaults(self, mock_settings, mock_cohere_client, mock_schemas):
         """Test initialization uses settings by default."""
         extractor = CohereExtractor()
-        
+
         assert extractor.api_key == "test-api-key"
         assert extractor.model == "test-model"
         mock_cohere_client.assert_called_once_with(api_key="test-api-key")
@@ -50,7 +51,7 @@ class TestCohereExtractorInit:
     def test_init_with_custom_values(self, mock_settings, mock_cohere_client, mock_schemas):
         """Test initialization with custom api_key and model."""
         extractor = CohereExtractor(api_key="custom-key", model="custom-model")
-        
+
         assert extractor.api_key == "custom-key"
         assert extractor.model == "custom-model"
         mock_cohere_client.assert_called_once_with(api_key="custom-key")
@@ -58,9 +59,9 @@ class TestCohereExtractorInit:
     def test_init_loads_schemas(self, mock_settings, mock_cohere_client, mock_schemas):
         """Test initialization loads both schemas."""
         mock_core, mock_detailed = mock_schemas
-        
-        extractor = CohereExtractor()
-        
+
+        CohereExtractor()
+
         mock_core.assert_called_once()
         mock_detailed.assert_called_once()
 
@@ -79,14 +80,14 @@ class TestExtractCoreEntities:
             "technical_terms": [],
             "key_insights": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_core_entities("Test transcript text")
-        
+
         assert isinstance(result, CoreEntities)
         mock_client_instance.chat.assert_called_once()
 
@@ -113,14 +114,14 @@ class TestExtractCoreEntities:
             "technical_terms": [],
             "key_insights": ["Key insight 1"]
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_core_entities("Test transcript")
-        
+
         assert len(result.concepts) == 1
         assert result.concepts[0].name == "Active Inference"
         assert len(result.researchers) == 1
@@ -132,9 +133,9 @@ class TestExtractCoreEntities:
         mock_client_instance = MagicMock()
         mock_client_instance.chat.side_effect = Exception("API Error")
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
-        
+
         with pytest.raises(Exception, match="API Error"):
             extractor.extract_core_entities("Test transcript")
 
@@ -153,14 +154,14 @@ class TestExtractDetailedAnalysis:
             "research_problems": [],
             "applications": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_detailed_analysis("Test transcript")
-        
+
         assert isinstance(result, DetailedAnalysis)
 
     def test_extract_detailed_analysis_with_data(self, mock_settings, mock_cohere_client, mock_schemas):
@@ -185,14 +186,14 @@ class TestExtractDetailedAnalysis:
             "research_problems": [],
             "applications": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_detailed_analysis("Test transcript")
-        
+
         assert len(result.methods_techniques) == 1
         assert result.methods_techniques[0].name == "Variational Inference"
         assert len(result.tools_resources) == 1
@@ -211,7 +212,7 @@ class TestExtractComplete:
             "technical_terms": [],
             "key_insights": []
         }))]
-        
+
         mock_response_detailed = MagicMock()
         mock_response_detailed.message.content = [MagicMock(text=json.dumps({
             "methods_techniques": [],
@@ -221,14 +222,14 @@ class TestExtractComplete:
             "research_problems": [],
             "applications": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.side_effect = [mock_response_core, mock_response_detailed]
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_complete("Test transcript", transcript_id="test-123")
-        
+
         assert result.core is not None
         assert result.detailed is not None
         assert result.transcript_id == "test-123"
@@ -244,14 +245,14 @@ class TestExtractComplete:
             "technical_terms": [],
             "key_insights": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_complete("Test", include_detailed=False)
-        
+
         assert result.core is not None
         assert result.detailed is None
         assert mock_client_instance.chat.call_count == 1
@@ -270,12 +271,12 @@ class TestBackwardCompatibility:
             "technical_terms": [],
             "key_insights": []
         }))]
-        
+
         mock_client_instance = MagicMock()
         mock_client_instance.chat.return_value = mock_response
         mock_cohere_client.return_value = mock_client_instance
-        
+
         extractor = CohereExtractor()
         result = extractor.extract_entities("Test")
-        
+
         assert isinstance(result, CoreEntities)

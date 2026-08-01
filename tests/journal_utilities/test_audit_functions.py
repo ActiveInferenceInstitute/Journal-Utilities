@@ -5,8 +5,9 @@ Tests get_recent_import_runs, get_import_summary, get_failed_imports,
 and rollback_import against mocked SurrealDB connections.
 """
 
-import pytest
 from unittest.mock import AsyncMock, patch
+
+import pytest
 
 from journal_utilities.data.database import (
     get_failed_imports,
@@ -14,7 +15,6 @@ from journal_utilities.data.database import (
     get_recent_import_runs,
     rollback_import,
 )
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -214,17 +214,17 @@ async def test_rollback_import(
     db_name: str,
     db_namespace: str,
 ) -> None:
-    """rollback_import deletes sessions and returns count."""
+    """rollback_import deletes ONLY the exact run's session record (M4)."""
     mock = _make_mock_surreal()
     mock.query = AsyncMock(
         side_effect=[
-            # 1. Get successful inserts
-            [{"id": "audit:1", "session_name": "Session A"}],
-            # 2. Lookup sessions to delete
-            [{"id": "session:1"}],
-            # 3. Delete session
+            # 1. Get successful inserts for this run (audit carries the
+            #    created session id in result_data)
+            [{"id": "audit:1", "session_name": "Session A",
+              "result_data": {"id": "session:1"}}],
+            # 2. DELETE the exact session record
             [],
-            # 4. Update audit record
+            # 3. UPDATE the audit record to rolled_back
             [],
         ]
     )
@@ -236,6 +236,14 @@ async def test_rollback_import(
 
     assert result["rollback_count"] == 1
     assert result["errors"] == []
+    # The DELETE must target the exact record id (not re-match by session_name,
+    # which would delete legitimate records from other runs).
+    delete_call = mock.query.await_args_list[1]
+    assert delete_call.args[0] == "DELETE $id"
+    assert delete_call.args[1] == {"id": "session:1"}
+    # And the audit update must be parameterized (no f-string interpolation).
+    update_sql = mock.query.await_args_list[2].args[0]
+    assert "$rid" in update_sql and "$ts" in update_sql
 
 
 @pytest.mark.asyncio

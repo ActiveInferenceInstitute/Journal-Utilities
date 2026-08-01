@@ -2,9 +2,10 @@
 Unit tests for SurrealDBClient with mocks.
 """
 
+from datetime import UTC, datetime
+from unittest.mock import AsyncMock, patch
+
 import pytest
-from datetime import datetime, timezone
-from unittest.mock import AsyncMock, MagicMock, patch
 
 from journal_utilities.rag.graph.surreal_client import SurrealDBClient
 from journal_utilities.rag.models import Entity, Relationship, Transcript
@@ -21,9 +22,9 @@ class TestSurrealDBClientInit:
             mock_settings.surrealdb_database = "test"
             mock_settings.surrealdb_username = "root"
             mock_settings.surrealdb_password = "root"
-            
+
             client = SurrealDBClient()
-            
+
             assert client.url == "ws://localhost:8080"
             assert client.namespace == "test"
             assert client.database == "test"
@@ -37,7 +38,7 @@ class TestSurrealDBClientInit:
             username="user",
             password="pass"
         )
-        
+
         assert client.url == "ws://custom:9000"
         assert client.namespace == "custom_ns"
         assert client.database == "custom_db"
@@ -70,9 +71,9 @@ class TestSurrealDBClientConnection:
                 username="user",
                 password="pass"
             )
-            
+
             await client.connect()
-            
+
             mock_surreal.connect.assert_called_once()
             mock_surreal.signin.assert_called_once_with({"user": "user", "pass": "pass"})
             mock_surreal.use.assert_called_once_with("ns", "db")
@@ -88,10 +89,10 @@ class TestSurrealDBClientConnection:
                 username="user",
                 password="pass"
             )
-            
+
             await client.connect()
             await client.disconnect()
-            
+
             mock_surreal.close.assert_called_once()
 
 
@@ -124,7 +125,7 @@ class TestSurrealDBClientEntities:
     async def test_create_new_entity(self, mock_surreal, sample_entity):
         """Test creating a new entity."""
         mock_surreal.query = AsyncMock(return_value=[{"result": []}])  # No existing
-        
+
         with patch("journal_utilities.rag.graph.surreal_client.Surreal", return_value=mock_surreal):
             client = SurrealDBClient(
                 url="ws://test:8080",
@@ -134,9 +135,9 @@ class TestSurrealDBClientEntities:
                 password="pass"
             )
             await client.connect()
-            
+
             result = await client.create_entity(sample_entity)
-            
+
             assert result == "entity:1"
             mock_surreal.create.assert_called_once()
 
@@ -151,7 +152,7 @@ class TestSurrealDBClientEntities:
                 "description": "Old description"
             }]
         }])
-        
+
         with patch("journal_utilities.rag.graph.surreal_client.Surreal", return_value=mock_surreal):
             client = SurrealDBClient(
                 url="ws://test:8080",
@@ -161,9 +162,9 @@ class TestSurrealDBClientEntities:
                 password="pass"
             )
             await client.connect()
-            
+
             result = await client.create_entity(sample_entity)
-            
+
             assert result == "entity:existing"
             mock_surreal.update.assert_called_once()
 
@@ -186,7 +187,7 @@ class TestSurrealDBClientTranscripts:
     def sample_transcript(self):
         return Transcript(
             title="Test Transcript",
-            date=datetime.now(timezone.utc),
+            date=datetime.now(UTC),
             content="Test content",
             source="/path/to/file.txt"
         )
@@ -203,9 +204,9 @@ class TestSurrealDBClientTranscripts:
                 password="pass"
             )
             await client.connect()
-            
+
             result = await client.create_transcript(sample_transcript)
-            
+
             assert result == "transcript:1"
             mock_surreal.create.assert_called_once()
 
@@ -218,7 +219,7 @@ class TestSurrealDBClientTranscripts:
                 {"source": "/path/2.txt"}
             ]
         }])
-        
+
         with patch("journal_utilities.rag.graph.surreal_client.Surreal", return_value=mock_surreal):
             client = SurrealDBClient(
                 url="ws://test:8080",
@@ -228,9 +229,9 @@ class TestSurrealDBClientTranscripts:
                 password="pass"
             )
             await client.connect()
-            
+
             paths = await client.get_unprocessed_transcript_paths()
-            
+
             assert len(paths) == 2
             assert "/path/1.txt" in paths
             assert "/path/2.txt" in paths
@@ -261,7 +262,7 @@ class TestSurrealDBClientRelationships:
     async def test_create_relationship_entities_not_found(self, mock_surreal, sample_relationship):
         """Test creating relationship when entities not found."""
         mock_surreal.query = AsyncMock(return_value=[{"result": []}])  # No entities found
-        
+
         with patch("journal_utilities.rag.graph.surreal_client.Surreal", return_value=mock_surreal):
             client = SurrealDBClient(
                 url="ws://test:8080",
@@ -271,7 +272,7 @@ class TestSurrealDBClientRelationships:
                 password="pass"
             )
             await client.connect()
-            
+
             with pytest.raises(ValueError, match="Source or target entity not found"):
                 await client.create_relationship(sample_relationship)
 
@@ -288,7 +289,7 @@ class TestSurrealDBClientErrors:
             username="user",
             password="pass"
         )
-        
+
         # db is None until connect() is called
         assert client.db is None
 
@@ -302,7 +303,7 @@ class TestSurrealDBClientErrors:
             username="user",
             password="pass"
         )
-        
+
         entity = Entity(
             name="Test",
             type="concept",
@@ -310,6 +311,6 @@ class TestSurrealDBClientErrors:
             mentions=1,
             context=["test"]
         )
-        
+
         with pytest.raises(RuntimeError, match="Database not connected"):
             await client.create_entity(entity)

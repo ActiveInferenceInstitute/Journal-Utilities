@@ -22,16 +22,14 @@ Usage examples:
 import argparse
 import logging
 import sys
-import time
 from pathlib import Path
 
 # Ensure project root is importable
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
-from journal_utilities.youtube.channel import VideoInfo
 from journal_utilities.download.downloader import DownloadStatus, download_transcript
+from journal_utilities.render.renderer import scaffold_course, slugify
 from journal_utilities.youtube.playlist import (
-    PlaylistInfo,
     PlaylistManifest,
     enumerate_playlist_videos,
     enumerate_playlists,
@@ -39,7 +37,6 @@ from journal_utilities.youtube.playlist import (
     rate_limit_sleep,
     save_playlist_manifest,
 )
-from journal_utilities.render.renderer import scaffold_course, slugify
 
 # Active Inference Institute channel ID
 DEFAULT_CHANNEL_ID = "UCbPq2w41ZaJSWtpCq4BE6Dg"

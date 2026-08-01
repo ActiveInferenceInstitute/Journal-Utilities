@@ -21,7 +21,6 @@ from journal_utilities.youtube.playlist import (
     save_playlist_manifest,
 )
 
-
 # ---------------------------------------------------------------------------
 # PlaylistInfo dataclass
 # ---------------------------------------------------------------------------

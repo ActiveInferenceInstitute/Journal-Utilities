@@ -8,11 +8,10 @@ import pytest
 from journal_utilities.export.exporter import (
     ExportFormat,
     ExportResult,
+    _stem_to_title,
     export_single,
     export_transcripts,
-    _stem_to_title,
 )
-
 
 # ---------------------------------------------------------------------------
 # Fixtures

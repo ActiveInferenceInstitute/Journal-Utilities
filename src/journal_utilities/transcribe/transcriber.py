@@ -11,7 +11,6 @@ import time
 from dataclasses import dataclass, field
 from enum import Enum
 from pathlib import Path
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -33,10 +32,10 @@ class TranscriptionResult:
 
     video_id: str
     status: TranscriptionStatus
-    path: Optional[str] = None
-    duration_seconds: Optional[float] = None
-    model: Optional[str] = None
-    error: Optional[str] = None
+    path: str | None = None
+    duration_seconds: float | None = None
+    model: str | None = None
+    error: str | None = None
 
 
 @dataclass
@@ -154,7 +153,7 @@ def transcribe_audio(
 def find_missing_transcripts(
     audio_dir: Path,
     transcript_dir: Path,
-    audio_extensions: Optional[list[str]] = None,
+    audio_extensions: list[str] | None = None,
 ) -> list[Path]:
     """
     Find audio files that have no corresponding transcript.
@@ -179,14 +178,16 @@ def find_missing_transcripts(
         logger.warning("Audio directory does not exist: %s", audio_dir)
         return missing
 
-    for audio_file in sorted(audio_dir.iterdir()):
+    audio_files = sorted(audio_dir.iterdir())
+    total_audio = sum(1 for f in audio_files if f.suffix.lower() in audio_extensions)
+    for audio_file in audio_files:
         if audio_file.suffix.lower() in audio_extensions and audio_file.stem not in existing_transcripts:
             missing.append(audio_file)
 
     logger.info(
         "Found %d audio files missing transcripts (out of %d total audio files)",
         len(missing),
-        sum(1 for f in audio_dir.iterdir() if f.suffix.lower() in audio_extensions),
+        total_audio,
     )
     return missing
 
@@ -196,8 +197,8 @@ def transcribe_missing(
     transcript_dir: Path,
     model: str = DEFAULT_MODEL,
     language: str = "en",
-    max_files: Optional[int] = None,
-    audio_extensions: Optional[list[str]] = None,
+    max_files: int | None = None,
+    audio_extensions: list[str] | None = None,
 ) -> TranscriptionSummary:
     """
     Batch-transcribe all audio files missing transcripts.

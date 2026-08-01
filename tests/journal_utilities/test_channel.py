@@ -19,7 +19,6 @@ from journal_utilities.youtube.channel import (
     save_channel_manifest,
 )
 
-
 # ---------------------------------------------------------------------------
 # VideoInfo dataclass
 # ---------------------------------------------------------------------------

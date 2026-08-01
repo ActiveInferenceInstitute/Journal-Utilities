@@ -1,10 +1,10 @@
 """Main processing pipeline for JournalRAG."""
 
 import asyncio
+import re
 from collections.abc import Mapping
 from datetime import datetime
 from pathlib import Path
-from typing import Any
 
 import structlog
 
@@ -16,6 +16,22 @@ from journal_utilities.rag.settings import settings
 from journal_utilities.rag.utils import setup_logging
 
 logger = structlog.get_logger(__name__)
+
+
+def _date_from_filename(name: str) -> datetime:
+    """Extract a deterministic transcript date from a filename.
+
+    Prefers an embedded ``YYYY[-_/. ]MM[-_/. ]DD``; otherwise falls back to a
+    fixed epoch (datetime.min) instead of ``datetime.now()`` so reprocessing
+    the same file is deterministic.
+    """
+    m = re.search(r"(\d{4})[-_/. ](\d{1,2})[-_/. ](\d{1,2})", name)
+    if m:
+        try:
+            return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            pass
+    return datetime.min
 
 
 class JournalRAGPipeline:
@@ -122,10 +138,10 @@ class JournalRAGPipeline:
         # Read transcript content
         content = file_path.read_text(encoding="utf-8")
 
-        # Create transcript object
+        # Create transcript object (deterministic date from the filename)
         transcript = Transcript(
             title=file_path.stem,
-            date=datetime.now(),  # You may want to extract date from filename or content
+            date=_date_from_filename(file_path.name),
             content=content,
             source=str(file_path),
         )
