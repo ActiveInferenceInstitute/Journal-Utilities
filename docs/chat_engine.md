@@ -5,7 +5,7 @@ The **Chat Engine** (`src/journal_utilities/interface/chat_engine.py`) powers th
 ## Architecture
 
 1. **Search Index**: High-speed, in-memory BM25 search index (`src/journal_utilities/interface/data_loader.py`) loads all available transcripts.
-2. **Context Retrieval**: When a user asks a question, the engine retrieves the top 3 most relevant transcript chunks (approx. 2000 chars each).
+2. **Context Retrieval**: When a user asks a question, the engine retrieves the top 3 most relevant transcript chunks (≈ 2600 chars each — `CHAT_MAX_CONTEXT // 3`).
 3. **Prompt Construction**: System prompts inject the retrieved context and the user's query into the LLM context window.
 4. **Inference**: The engine communicates with a local Ollama instance to generate the response.
 5. **Streaming**: Responses are streamed to the frontend via Server-Sent Events (SSE) for a real-time experience.
@@ -42,6 +42,7 @@ The Chat Engine is configured via environment variables or `config.ini`:
 | `OLLAMA_MODEL` | `gemma3:4b` | Default model to use (see "Model Selection" below) |
 | `CHAT_MAX_CONTEXT` | `8000` | Max characters of transcript context to inject |
 | `CHAT_MAX_HISTORY` | `10` | Max number of previous messages to keep in history |
+| `CHAT_MAX_SESSIONS` | `200` | Max number of in-memory chat sessions |
 
 ## Smart Model Selection
 

@@ -34,7 +34,10 @@ uv run python scripts/transcribe_missing.py --max-files 5 --model mlx-community/
 
 ## 2. GPU Transcription (WhisperX)
 
-Designed for production-grade transcription with speaker identification (diarization).
+Designed for production-grade transcription with speaker identification (diarization)
+and word-level alignment. Journal transcripts produced here follow the raw-vs-derived
+design — `transcript.json` keeps machine `SPEAKER_NN` labels forever; human names live
+only in `metadata.json` `parts[].speakers` (see [`JOURNAL_SCHEMA.md`](JOURNAL_SCHEMA.md)).
 
 ### Requirements
 
@@ -43,10 +46,19 @@ Designed for production-grade transcription with speaker identification (diariza
 
 ### Usage (GPU)
 
+The journal workflow is driven by `scripts/transcribe_worklist.py` (GPU, resumable,
+dry-run plan by default; add `--run` to transcribe):
+
 ```bash
-# Workflow managed via Makefile
-make transcribe
+# Plan which items still need WhisperX + diarization (dry run)
+uv run python scripts/transcribe_worklist.py
+
+# Run WhisperX transcription + diarization for items missing transcripts
+uv run python scripts/transcribe_worklist.py --run
 ```
+
+(`make transcribe` runs the **local** `mlx-whisper` pipeline instead —
+`scripts/transcribe_missing.py` — see "Local Transcription" above.)
 
 ### Architecture (`transcribe.py`)
 

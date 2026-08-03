@@ -32,3 +32,7 @@ module- and workflow-level guides.
 Journal-Utilities is the **code**; ActiveInferenceJournal is the **content**. The schema
 of record is mirrored in both: `docs/JOURNAL_SCHEMA.md` here and `docs/SCHEMA.md` in the
 journal. Keep them in sync when the per-item structure changes.
+
+CLI tools (channel download, transcription, journal maintenance) are documented in
+[`scripts/README.md`](../scripts/README.md); contribution and security guidance in
+[`CONTRIBUTING.md`](../CONTRIBUTING.md) and [`SECURITY.md`](../SECURITY.md).

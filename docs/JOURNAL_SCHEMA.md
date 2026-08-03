@@ -32,7 +32,7 @@ data/video/activeinferenceinstitute/<Series>/<Series>_<NNN[.E]>/
   captions/            # original-language *.srt
   translations/        # translated *.srt (one per language) — preserved verbatim
   assets/
-    images/   html/   prose/   appendices/   bibliography/   # curated content, by type
+    images/   html/   prose/   appendices/   bibliography/   csv/   # curated content, by type
   # audio/ is NOT on main (gitignored). The `audio` branch carries audio/<video_id>.64k.m4a
 ```
 

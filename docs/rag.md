@@ -61,5 +61,5 @@ make extract-entities
 | Variable | Description |
 | :--- | :--- |
 | `COHERE_API_KEY` | API Key for Cohere AI |
-| `COHERE_MODEL` | Model ID (e.g., `command-r-plus`) |
+| `COHERE_MODEL` | Model ID (default `command-a-03-2025`, from `rag/settings.py`) |
 | `DB_URL` | SurrealDB connection string |

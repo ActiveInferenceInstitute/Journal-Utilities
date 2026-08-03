@@ -12,7 +12,9 @@ This module does **not** use the YouTube Data API v3 for enumeration, avoiding q
 
 Enumerates all videos on the channel.
 
-- **Method**: extract from the "Uploads" playlist (`UU...`) which contains every public video.
+- **Method**: unions the channel's `/videos`, `/streams`, and `/shorts` tabs via
+  `yt-dlp --flat-playlist --dump-json` and dedupes by video id. (The older
+  "Uploads" playlist form `UU...` truncates at ~100 entries, so it is no longer used.)
 - **Output**: `ChannelManifest` containing `VideoInfo` objects.
 - **Performance**: Can list 1000+ videos in seconds without downloading media.
 
@@ -63,7 +65,9 @@ Heuristic engine to parse video titles into structured metadata (Category, Serie
 - `title`: Video title
 - `upload_date`: YYYYMMDD
 - `duration`: Seconds
+- `description`: Video description
 - `view_count`: Approximate views
+- `url`: `https://www.youtube.com/watch?v=<id>` (auto-built from `id`)
 
 ### `ChannelManifest`
 
