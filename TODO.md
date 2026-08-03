@@ -237,16 +237,40 @@ root `AGENTS.md` mock-policy reconciled; `docs/REFACTOR_READINESS.md` marked a h
 
 ## Open / deferred (after this pass)
 
-- **CI duplicate lint step** — `.github/workflows/test.yml` "Lint the journal integrity gate"
-  (`ruff check scripts/validate_journal.py`) is fully covered by the repo-wide
-  `ruff check src/ tests/ scripts/` step. Deferred: CI stability, zero-risk policy; not docs.
-- **README `docs/translation.md` row** — belongs to the untracked subtitle-translation WIP
-  (scripts, docs, test) left uncommitted at pass start; excluded from this pass by rule.
-- **Heavy external flows not executed** — WhisperX/GPU, live SurrealDB, live Cohere, YouTube
-  network downloads. Claims verified by code reading instead; run these only on the target
-  hardware with real credentials.
+- **Heavy external flows not executed** — WhisperX/GPU, live SurrealDB, live
+  Cohere, YouTube network downloads. Claims verified by code reading instead; run
+  these only on the target hardware with real credentials. (During the follow-up
+  pass a live OpenRouter subtitle-translation run was observed against the
+  sibling journal — it was left untouched, and its CLI contract is unchanged.)
+- **`insights_findings.md` (working notes)** — Insights-series caption-fix and
+  translation-status notes; kept untracked per its own "Do not commit/push until
+  the user asks." note. Recurring translation-work logs like this should live
+  outside the repo or be deleted once the run is done.
 - **Coverage %** — intentionally not hardcoded anywhere (docs policy); see live
-  `uv run pytest tests/ --cov-report=term-missing`.
+  `uv run pytest tests/ --cov-report=term-missing`. Confirmed no-action.
+
+---
+
+## Follow-up pass — deferred items landed (2026-08-02)
+
+- **TR1 — Land the subtitle-translation feature** (was "README `docs/translation.md`
+  row" + untracked WIP): committed `scripts/translate_subtitles.py` (local Ollama),
+  `scripts/translate_subtitles_openrouter.py` (hosted OpenRouter),
+  `scripts/translate_tb_watchdog.sh` (portable resumable watchdog),
+  `tests/journal_utilities/test_translate_subtitles{,_openrouter}.py`, the new
+  `docs/translation.md`, the README docs-table row, and the
+  `.translate_tb_watchdog.lock*` gitignore pattern. The earlier duplicate OpenRouter
+  variant (`scripts/translate_openrouter.py`) was **consolidated** into
+  `translate_subtitles_openrouter.py` — its placeholder-hash skip, batch echo
+  guard, and per-cue fallback were ported, all 34 ruff errors fixed (annotations),
+  black-formatted, and the `~/.hermes/.env` API-key fallback replaced with the
+  repo's gitignored `.env` (public-repo safe). No personal paths remain in any
+  committed file (swept). ✓ `feat(translate): land subtitle translation pipeline (local Ollama + hosted OpenRouter)` (commit `177d2cf`)
+- **TR2 — Drop the duplicate CI lint step** — the "Lint the journal integrity
+  gate" step (`ruff check scripts/validate_journal.py`) was a subset of the
+  repo-wide `ruff check src/ tests/ scripts/`; removed. ✓ `ci: drop duplicate lint step (covered by the repo-wide ruff check)` (commit `e0e0dd8`)
+- **TR3 — Coverage policy** — confirmed: counts/coverage stay out of committed
+  docs by design; nothing to implement.
 
 ---
 
@@ -258,7 +282,6 @@ root `AGENTS.md` mock-policy reconciled; `docs/REFACTOR_READINESS.md` marked a h
   `uv run mypy src`. Both ruff and mypy are enforced in `.github/workflows/test.yml`.
 - The v2 journal maintenance pipeline lives in `docs/JOURNAL_SCHEMA.md` and the read-only/idempotent
   gate scripts `scripts/{enrich_metadata,repair_split_transcripts,generate_journal_indexes,validate_journal}.py`.
-- This pass (2026-08-02) was docs-only + config fixes; no source code was changed. The
-  subtitle-translation feature (untracked `translate_*.py`, `docs/translation.md`,
-  `test_translate_subtitles.py`) is still uncommitted work from a separate effort — review and land it
-  as its own PR.
+- This pass (2026-08-02) was docs-only + config fixes; the follow-up pass landed the
+  subtitle-translation feature (local Ollama + hosted OpenRouter engines, see
+  `docs/translation.md`). `insights_findings.md` remains untracked working notes.

@@ -106,3 +106,37 @@ the excluded WIP `docs/translation.md` row and the sibling-repo `docs/SCHEMA.md`
 refs).
 
 Open / deferred items and notes for the next reviewer: see `TODO.md`.
+
+## Phase 5 — Follow-up pass (deferred items landed)
+
+After the main pass, the user asked to proceed with the remaining open items.
+Landed (2 commits, 10 files):
+
+| Commit | Summary |
+| :--- | :--- |
+| `177d2cf` | feat(translate): land subtitle translation pipeline (local Ollama + hosted OpenRouter) |
+| `e0e0dd8` | ci: drop duplicate lint step (covered by the repo-wide ruff check) |
+
+What happened:
+
+- **Translation feature landed** — the previously-untracked WIP
+  (`scripts/translate_subtitles.py`, `scripts/translate_subtitles_openrouter.py`,
+  `scripts/translate_tb_watchdog.sh`, two unit-test files, `docs/translation.md`,
+  the README docs-table row, and the `.translate_tb_watchdog.lock*` gitignore
+  pattern) is now committed. The duplicate earlier OpenRouter variant
+  `scripts/translate_openrouter.py` was consolidated into
+  `translate_subtitles_openrouter.py` (placeholder-hash skip, batch echo guard,
+  per-cue fallback ported; 34 ruff errors fixed; black-formatted; API-key
+  fallback switched from `~/.hermes/.env` to the repo's gitignored `.env`).
+  A privacy sweep confirmed no personal paths/tool names remain in any committed
+  file. The superseded script was preserved at `/tmp/translate_openrouter.py.superseded`.
+- **CI cleanup** — removed the redundant "Lint the journal integrity gate" step.
+- **Still open (genuinely cannot run here)** — WhisperX/GPU, live SurrealDB,
+  live Cohere, YouTube network flows. A live OpenRouter translation run was
+  observed against the sibling journal during the pass; left untouched (its CLI
+  contract is unchanged by the consolidation).
+- **`insights_findings.md`** — kept untracked per its own "Do not commit until
+  the user asks" note.
+- Verification: `uv run pytest tests/` = **479 passed, 3 skipped, 2 warnings
+  (~80s)**; `ruff check` clean on all touched files; watchdog `bash -n` OK;
+  OpenRouter script pure-logic smoke + 4 new unit tests pass.
