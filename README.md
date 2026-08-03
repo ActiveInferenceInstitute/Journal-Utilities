@@ -7,8 +7,7 @@
 **A modular, config-driven pipeline for processing the [Active Inference Institute](https://www.youtube.com/@ActiveInference) video library.**
 
 [![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org)
-[![Tests](https://img.shields.io/badge/tests-pytest-brightgreen)](#testing)
-[![Coverage](https://img.shields.io/badge/coverage-pytest-yellow)](#testing)
+[![CI](https://github.com/ActiveInferenceInstitute/Journal-Utilities/actions/workflows/test.yml/badge.svg)](https://github.com/ActiveInferenceInstitute/Journal-Utilities/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-see%20repo-lightgrey)](LICENSE)
 
 *Download · Transcribe · Extract · Export · Browse · Chat*
@@ -286,6 +285,14 @@ Required in `.env`:
 | `CODA_API_TOKEN` | Coda session data |
 | `OLLAMA_MODEL` | Chat model (default: `gemma3:4b`) |
 | `OLLAMA_BASE_URL` | Ollama API URL (default: `http://localhost:11434`) |
+
+---
+
+## 🤝 Contributing
+
+See [**CONTRIBUTING.md**](CONTRIBUTING.md) for the dev setup, gate workflow, and
+pull-request process. Security and cookie-handling policy: [**SECURITY.md**](SECURITY.md).
+If you use or build on this work, please cite it — see [**CITATION.cff**](CITATION.cff).
 
 ---
 
