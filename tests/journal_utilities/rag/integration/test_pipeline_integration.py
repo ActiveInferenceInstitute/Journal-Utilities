@@ -4,7 +4,7 @@ These tests make actual API calls to Cohere and should be run less frequently
 than unit tests. They require a valid COHERE_API_KEY environment variable.
 
 Run these tests with:
-    uv run pytest tests/journalrag/integration/ -v -s
+    uv run pytest tests/journal_utilities/rag/integration/ -v -s
 """
 
 import os

@@ -1,7 +1,7 @@
 """Unit tests for JournalRAG pipeline.
 
 These tests use mocked dependencies for fast, isolated testing.
-For integration tests with real Cohere API, see tests/journalrag/integration/test_pipeline_integration.py
+For integration tests with real Cohere API, see tests/journal_utilities/rag/integration/test_pipeline_integration.py
 """
 
 from datetime import datetime

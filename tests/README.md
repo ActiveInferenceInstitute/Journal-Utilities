@@ -1,6 +1,7 @@
 # Tests
 
-Test suite for Journal-Utilities (currently 466 passed / 3 skipped). The count
+Test suite for Journal-Utilities (currently 475 passed / 3 skipped, snapshot of
+`uv run pytest tests/ -q` on 2026-08-02). The count
 is a live snapshot of the suite — run `uv run pytest tests/ -q` for the current
 number; it is intentionally not kept hardcoded elsewhere in the docs.
 

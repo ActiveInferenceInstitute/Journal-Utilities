@@ -2,7 +2,8 @@
 
 ## Test Suite Overview
 
-The suite is a live snapshot (currently ~466 passing, 3 API-gated skips); run
+The suite is a live snapshot (currently ~475 passing, 3 API-gated skips, snapshot
+of `uv run pytest tests/ -q` on 2026-08-02); run
 `uv run pytest tests/ -q` for the current count.
 
 ## Running Tests

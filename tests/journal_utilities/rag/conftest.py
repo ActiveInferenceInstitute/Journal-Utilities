@@ -1,4 +1,4 @@
-"""Pytest configuration and fixtures specific to journalrag tests."""
+"""Pytest configuration and fixtures specific to the journal_utilities.rag tests."""
 
 import os
 from pathlib import Path
