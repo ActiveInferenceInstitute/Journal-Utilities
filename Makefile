@@ -28,10 +28,9 @@ help:
 	@echo ""
 	@echo "Transcription Pipeline:"
 	@echo "  make fetch-coda   - Fetch latest data from Coda API"
-	@echo "  make import-sessions - Import sessions from Coda JSON to DB"
-	@echo "  make fetch-metadata - Fetch YouTube metadata for sessions"
-	@echo "  make transcribe   - Run transcription pipeline (WhisperX)"
-	@echo "  make copy-to-journal - Copy transcripts to journal repository"
+	@echo "  make transcribe   - Run local transcription (mlx-whisper, Apple Silicon)"
+	@echo "  (make import-sessions, fetch-metadata, copy-to-journal are retired;"
+	@echo "   they print guidance and exit 2)"
 	@echo ""
 	@echo "Entity Extraction Pipeline:"
 	@echo "  make extract-entities - Extract entities from transcripts (Cohere AI)"
@@ -67,14 +66,14 @@ test:
 	uv run pytest tests/
 
 lint:
-	uv run ruff check src/ tests/
+	uv run ruff check src/ tests/ scripts/
 
 format:
 	uv run black src/ tests/
 	uv run ruff check --fix src/ tests/
 
 db-start:
-	surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb:///mnt/md0/projects/Journal-Utilities/data/database
+	surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb://./data/database
 
 fetch-coda:
 	@echo "Fetching latest data from Coda API..."
@@ -113,7 +112,7 @@ extract-entities:
 		echo "Error: COHERE_API_KEY not found in .env file"; \
 		exit 1; \
 	fi
-	uv run python -m journalrag.main
+	uv run python -m journal_utilities.rag.main
 
 enumerate-channel:
 	@echo "Enumerating videos on the Active Inference channel..."
