@@ -8,7 +8,7 @@ Journal-Utilities is a Python processing pipeline for Active Inference Institute
 
 1. **YouTube Channel Download** — Enumerate and download transcripts, audio, and video via `yt-dlp`
 2. **Local Whisper Transcription** — Apple Silicon–optimized transcription via `mlx-whisper`
-3. **WhisperX Transcription** — GPU-based transcription with speaker diarization (CUDA + SurrealDB)
+3. **WhisperX Transcription** — GPU-based transcription with speaker diarization (CUDA)
 4. **Entity Extraction (RAG)** — Cohere AI entity/relationship extraction into SurrealDB graph
 5. **Export** — Multi-format transcript export (plaintext, PDF, Markdown, JSON, HTML)
 6. **Web Interface** — FastAPI SPA for browsing the video library with Ollama-powered RAG chat
@@ -69,8 +69,9 @@ uv run python run.py journal-check    # Validate sibling ActiveInferenceJournal 
 
 ```bash
 python scripts/download_channel.py --transcripts --audio --resume
-python scripts/download_channel.py --transcripts --audio --resume --cookies-from-browser chrome
 ```
+
+(The downloader runs cookie-free; see the cookie-safety note above.)
 
 ### Local Whisper Transcription
 
@@ -78,6 +79,13 @@ python scripts/download_channel.py --transcripts --audio --resume --cookies-from
 python scripts/transcribe_missing.py --dry-run
 python scripts/transcribe_missing.py
 python scripts/transcribe_missing.py --max-files 5
+```
+
+### WhisperX Transcription (GPU)
+
+```bash
+uv run python scripts/transcribe_worklist.py           # plan (dry run)
+uv run python scripts/transcribe_worklist.py --run     # transcribe + diarize
 ```
 
 ### Web Interface
@@ -131,7 +139,6 @@ surreal sql --endpoint http://localhost:8080 --username root --password root --n
 |------|---------|
 | `run.py` | Python CLI runner (argparse + configparser) |
 | `config.ini` | Pipeline configuration (all options in INI format) |
-| `run.sh` | Bash interactive menu (legacy, still functional) |
 
 ### Data Flow
 
@@ -153,7 +160,7 @@ All pipeline options in a single plaintext file:
 | Section | Keys |
 |---------|------|
 | `[general]` | `data_dir`, `log_level` |
-| `[download]` | `transcripts`, `audio`, `video`, `resume`, `max_videos`, `delay`, `cookies_from_browser` |
+| `[download]` | `transcripts`, `audio`, `video`, `resume`, `max_videos`, `delay`, `cookies_from_browser`, `audio_format`, `video_quality`, `transcript_languages` |
 | `[transcribe]` | `engine`, `model`, `max_files` |
 | `[export]` | `plaintext`, `pdf`, `markdown`, `json`, `html`, `output_dir` |
 | `[interface]` | `host`, `port` |
@@ -164,9 +171,11 @@ All pipeline options in a single plaintext file:
 | Variable | Required For | Purpose |
 |----------|-------------|---------|
 | `HUGGINGFACE_TOKEN` | WhisperX | Speaker diarization models |
-| `API_KEY` | Metadata | YouTube Data API v3 |
 | `CODA_API_TOKEN` | Import | Coda session data |
 | `COHERE_API_KEY` | RAG | Entity extraction |
+| `OLLAMA_MODEL` | Chat | Chat model (default `gemma3:4b`) |
+| `OLLAMA_BASE_URL` | Chat | Ollama API URL (default `http://localhost:11434`) |
+| `DB_URL` | Database | SurrealDB connection (also `DB_USER`, `DB_PASSWORD`, `DB_NAMESPACE`, `DB_NAME`) |
 
 ## Code Patterns
 
