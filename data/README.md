@@ -1,32 +1,34 @@
 # Data Directory
 
-Storage for database, input files, and processed outputs.
+Storage for input files and processed outputs.
 
 ## Structure
 
 ```
 data/
-├── database/      # SurrealDB RocksDB storage
 ├── input/         # Source data files
 │   └── livestream_fulldata_table.json  # Coda API export
-└── output/        # Processed transcripts
-    └── [session_name]/                  # Per-session outputs
-        ├── [session_name].json          # Detailed transcript
-        ├── [session_name]_simplified.json
-        └── [session_name].txt           # Plain text transcript
+├── output/        # Processed transcripts
+│   └── <video_id>/                     # Per-video artifacts (see below)
+└── database/      # SurrealDB RocksDB storage — created on first `make db-start`,
+                   # NOT committed to git
 ```
 
 ## Folders
 
 ### `database/`
 
-SurrealDB RocksDB storage. Contains all session metadata, transcription status, and extracted entities.
+SurrealDB RocksDB storage (created locally on first use; not tracked by git).
+Contains session metadata, transcription status, and extracted entities when the
+SurrealDB-backed data/RAG pipelines are used.
 
 **Start database:**
 
 ```bash
-surreal start --log trace --user root --pass root --bind 0.0.0.0:8080 rocksdb://./data/database
+make db-start
 ```
+
+(starts `surreal start … rocksdb://./data/database` on `0.0.0.0:8080`).
 
 ### `input/`
 
@@ -38,15 +40,23 @@ make fetch-coda
 
 ### `output/`
 
-Transcribed sessions. Each session has:
+Downloaded/transcribed artifacts, one set per video id (`<video_id>` is the 11-char
+YouTube id):
 
-- Full JSON with word-level timing
-- Simplified JSON (without word arrays)
-- Plain text transcript
+- `<video_id>.json` — full transcript metadata/details
+- `<video_id>.simple.json` — simplified transcript JSON (without word arrays)
+- `<video_id>.simple.txt` — plain-text transcript
+- `whisperx/` — WhisperX work-dir cache (diarization, used by
+  `scripts/transcribe_worklist.py`)
+- `../private_videos.json` — private-video registry written by the YouTube metadata
+  pipeline (at `<repo>/data/private_videos.json`, honoring `PRIVATE_VIDEOS_PATH`)
+
+(The repo also carries legacy `<id>.vtt` / `<id>.ytdl` / `.part` files from earlier
+download runs; new downloads write the `.json`/`.simple.*` set above.)
 
 ## Maintenance
 
-**Backup database:**
+**Backup the local database:**
 
 ```bash
 cp -r data/database data/database_backup
