@@ -23,11 +23,15 @@ python scripts/download_channel.py --transcripts --audio --video --cookies-from-
 
 ### Features — download_channel
 
-- Enumerate all playlists from a YouTube channel
+- Enumerate all videos from a YouTube channel (unions `/videos` + `/streams` + `/shorts`)
 - Download transcripts (YouTube captions), audio (m4a/mp3), and video (mp4)
 - Resume interrupted downloads
 - Fallback to local Whisper transcription when YouTube captions unavailable
 - Cookie-based auth to bypass rate limiting
+
+> ⚠ **Cookie safety:** the downloader runs cookie-free by default. Never write
+> cookies into a tracked path and never commit `cookies.txt` — see the
+> cookie-safety note in `CLAUDE.md`.
 
 ## `transcribe_missing.py`
 
@@ -47,6 +51,26 @@ python scripts/transcribe_missing.py --dry-run
 # Limit to N files
 python scripts/transcribe_missing.py --max-files 5
 ```
+
+## `transcribe_worklist.py`
+
+GPU WhisperX worklist for the journal — plans and runs transcription + speaker
+diarization for items that need it (dry-run plan by default; add `--run`).
+
+### Usage — transcribe_worklist
+
+```bash
+uv run python scripts/transcribe_worklist.py            # plan (dry run)
+uv run python scripts/transcribe_worklist.py --run      # transcribe + diarize
+uv run python scripts/transcribe_worklist.py --run --max-videos 20 \
+    --batch-size 48 --compute-type float16              # bounded run
+
+# Options: --journal <path>, --work-dir (default data/output/whisperx),
+#          --device (default cuda)
+```
+
+Requires `HF_TOKEN` (or `HUGGINGFACE_TOKEN`) in `.env` for diarization models.
+Resumable: already-processed videos are skipped on reruns.
 
 ## `scaffold_youtube_courses.py`
 
@@ -97,6 +121,20 @@ python scripts/fix_scheduled_dates.py
 
 > **Note**: Requires a running SurrealDB instance and valid credentials in `.env`.
 
+## `fetch_chapters.py`
+
+Fetch YouTube chapter lists (timestamped video descriptions) for every channel
+video and cache them to `data/input/video_chapters.json`. Chapters are the
+upstream source of truth for the journal's `sessions[]` seed data (see
+`enrich_metadata.py`). Incremental — already-fetched ids are skipped.
+
+### Usage — fetch_chapters
+
+```bash
+python scripts/fetch_chapters.py              # fetch all missing
+python scripts/fetch_chapters.py --limit 20   # bounded run
+```
+
 ## Journal v2 metadata and indexes
 
 ```bash
@@ -134,3 +172,72 @@ python scripts/repair_split_transcripts.py --journal ../ActiveInferenceJournal -
 
 The repair is idempotent and writes only when complete `<video_id>_sessNN`
 source pairs are available.
+
+## Journal v2 — transcription status, speaker mapping, recovery
+
+These tools operate on the sibling journal repo (`--journal`, default
+`../ActiveInferenceJournal`) and follow the raw-vs-derived transcript design in
+[`docs/JOURNAL_SCHEMA.md`](../docs/JOURNAL_SCHEMA.md): `transcript.json` keeps
+machine `SPEAKER_NN` labels forever; human names live only in `metadata.json`
+`parts[].speakers`.
+
+### `transcription_status.py`
+
+Derive the transcription worklist from the journal repo (no database). Status is
+computed, never stored; private/unlisted items are excluded by policy.
+
+```bash
+python scripts/transcription_status.py                        # summary + worklist
+python scripts/transcription_status.py --report worklist.json # write full JSON worklist
+```
+
+### `speaker_cues.py`
+
+Print identification cues for unmapped speakers in an item — first appearance,
+longest utterance, total talk time, and clickable YouTube links (`&t=Ns`). Record
+the names in `metadata.json` `parts[].speakers`, then run `apply_speaker_names.py`.
+
+```bash
+python scripts/speaker_cues.py                                # items still needing mapping
+python scripts/speaker_cues.py --item TextbookGroup/Namjoshi2026/Cohort_1/Session_024
+```
+
+### `apply_speaker_names.py`
+
+Regenerate `transcript.txt` from `transcript.json` + `parts[].speakers`. Labels
+with a name mapping are replaced; unmapped ones stay `SPEAKER_NN` and are
+reported. Idempotent — fixing a wrong name is editing `metadata.json` and
+re-running. Caption-only transcripts are salvaged to
+`captions/youtube_captions.txt` before replacement.
+
+```bash
+python scripts/apply_speaker_names.py       # dry run
+python scripts/apply_speaker_names.py --apply
+```
+
+### `recover_whisperx.py`
+
+Recover pre-reorg WhisperX transcripts from journal git history (they survive in
+git commits even though the June 2026 reorg dropped them from the working tree)
+and write them per the raw/derived design. Only caption-only items fully covered
+by whole-video outputs are written; partial/duplicate items are reported and
+skipped.
+
+```bash
+python scripts/recover_whisperx.py                  # dry run: show plan
+python scripts/recover_whisperx.py --apply          # write into the journal
+python scripts/recover_whisperx.py --item "GuestStream/GuestStream_040"
+```
+
+### `refactor_journal.py`
+
+Refactor the journal into the v2 schema (see `docs/JOURNAL_SCHEMA.md`). Dry-run
+by default: classifies every file and audits zero data loss before applying.
+Applying is done out-of-place with `--build <dir>` (staging copy), then validated
+with `validate_journal.py` before swapping in. `--apply` is intentionally refused
+with guidance rather than doing a silent in-place move.
+
+```bash
+python scripts/refactor_journal.py --journal ../ActiveInferenceJournal            # audit
+python scripts/refactor_journal.py --journal ../ActiveInferenceJournal --build /tmp/v2
+```

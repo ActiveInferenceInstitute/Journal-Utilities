@@ -32,10 +32,10 @@ python scripts/transcribe_missing.py
 
 # Legacy Operations (via Makefile)
 make fetch-coda        # Get Coda data
-make import-sessions   # Import to DB
-make fetch-metadata    # YouTube metadata
-make transcribe        # Run WhisperX transcription (GPU)
-make copy-to-journal   # Export transcripts
+make transcribe        # Run local transcription (mlx-whisper, Apple Silicon)
+# Retired make targets (print guidance and exit 2): import-sessions,
+# fetch-metadata, copy-to-journal — use the journal-enrich/journal-repair
+# workflow below instead
 
 # Web Interface
 uv run python run.py serve  # http://localhost:8000
