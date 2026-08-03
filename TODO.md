@@ -2,12 +2,135 @@
 
 **Status:** Maintained
 **Owner:** Active Inference Institute / Journal-Utilities maintainers
-**Last reviewed:** 2026-08-01 (deepest hostile red-team pass — 3 parallel subagent reviews; all
-Minor/Medium **and** every Major finding now implemented and verified; gates green)
+**Last reviewed:** 2026-08-02 (mega-deep documentation pass — full docs review, scoped
+findings below, all implemented and pushed; see `REVIEW_LOG_2026-08-02.md`)
+
+---
+
+## Scoped this pass — 2026-08-02 docs mega-deep review
+
+Severity definitions:
+- **Minor** = typo, broken link, formatting, small inaccurate claim.
+- **Medium** = stale section rewrite, doc restructure, added missing guide, config fix
+  that makes a documented command actually work.
+- **Major** = new documentation system / high-value missing docs for a public repo.
+
+### Major
+
+- **MA1 — Missing public-repo governance docs** — `CONTRIBUTING.md`, `SECURITY.md`,
+  `CITATION.cff` do not exist for this public org repo; add concise versions grounded
+  in the actual repo (dev setup, gates, cookie policy, authors from `pyproject.toml`)
+  and link them from `README.md`. ✓ `docs: add CONTRIBUTING, SECURITY, CITATION for public repo`
+  (commit `bf3449f`)
+
+- **MA2 — Live test-count refresh** — `tests/README.md` ("466 passed / 3 skipped") and
+  `tests/AGENTS.md` ("~466") drifted from the 2026-08-01 pass's 471; refresh from a live
+  `uv run pytest tests/` run (kept a snapshot, not a hardcoded CI promise). ✓ `docs: refresh live test counts`
+  (commit `a3b543a`)
+
+### Medium
+
+- **ME1 — `scripts/README.md` missing guides for 7 scripts** — add sections for
+  `speaker_cues.py`, `apply_speaker_names.py`, `transcribe_worklist.py`,
+  `transcription_status.py`, `fetch_chapters.py`, `recover_whisperx.py`,
+  `refactor_journal.py` (cross-link `docs/JOURNAL_SCHEMA.md`); it currently documents
+  only 6 of 13 scripts. ✓ `docs(scripts): document all CLI tools` (commit `60583a4`)
+
+- **ME2 — `make extract-entities` runs a nonexistent module** — `Makefile` target runs
+  `uv run python -m journalrag.main`; no `journalrag` package exists (it is
+  `journal_utilities.rag.main`). `docs/rag.md` tells users to run `make extract-entities`.
+  Fix the target so the documented command works. ✓ `fix(make): extract-entities -> journal_utilities.rag.main`
+  (commit `06a1356`)
+
+- **ME3 — `make db-start` hardcodes an internal machine path** — `rocksdb:///mnt/md0/projects/Journal-Utilities/data/database`
+  is a private absolute path and broken on every other machine; use the repo-relative
+  `rocksdb://./data/database` (matches `data/README.md`). ✓ `fix(make): portable db-start path`
+  (commit `06a1356`)
+
+- **ME4 — `.env.example` leaks internal paths and lists unused vars** — `WAV_DIRECTORY` /
+  `OUTPUT_DIR` contain `/mnt/docs/…` and `/mnt/md0/…` (legacy WhisperX-only, kept with
+  neutral placeholders); remove `API_KEY` (YouTube Data API v3 — module deliberately
+  avoids it), `JOURNAL_REPO_DIR`, `YOUTUBE_CHANNEL_ID` (no code consumer). ✓ `chore(env): de-private .env.example`
+  (commit `a24a223`)
+
+- **ME5 — README uses static placeholder shields for tests/coverage** — replace the
+  fake `tests-pytest` / `coverage-pytest` shields.io badges with the real GitHub Actions
+  CI badge for the public workflow. ✓ `docs(readme): real CI badge` (commit `bf3449f`)
+
+- **ME6 — `docs/configuration.md` claims `[transcribe]`/`[database]` control behavior,
+  but nothing consumes them** — `[download]`, `[export]`, `[interface]`, `[general]`,
+  `[pipeline]` are read by `run.py`; `[transcribe]` and `[database]` are not read by any
+  code (env vars `HF_TOKEN`/`DB_*` drive those). Document this accurately, move the
+  misplaced `[pipeline]` section out of "Environment Variables", and add the missing env
+  rows (`CODA_API_TOKEN`, `CHAT_MAX_*`, `PRIVATE_VIDEOS_PATH`). ✓ `docs(config): accurate section consumers + env reference`
+  (commit `d7d8974`)
+
+### Minor
+
+- **MI1 — `docs/youtube.md` stale enumeration method** — claims the `UU…` uploads
+  playlist "contains every public video"; `channel.py` unions the `/videos` +
+  `/streams` + `/shorts` tabs (the `UU…` form truncates at ~100). Also add `description`
+  / `url` to the documented `VideoInfo` fields. ✓ `docs(youtube): tabs-union enumeration`
+  (commit `b7255a0`)
+
+- **MI2 — `make transcribe` described as WhisperX everywhere, but runs local
+  mlx-whisper** — `Makefile` `transcribe:` runs `scripts/transcribe_missing.py`.
+  Fix in `docs/transcription.md` (GPU section), `src/journal_utilities/AGENTS.md`
+  ("Legacy Operations" table), and the Makefile help text. ✓ `docs(transcribe): make transcribe is local mlx-whisper`
+  (commit `60583a4`)
+
+- **MI3 — `docs/chat_engine.md` chunk-size and missing env row** — context chunks are
+  `MAX_CONTEXT_CHARS // 3` ≈ 2600 chars (not "approx 2000"); add undocumented
+  `CHAT_MAX_SESSIONS` (200). ✓ `docs(chat): exact chunk size + CHAT_MAX_SESSIONS`
+  (commit `b7255a0`)
+
+- **MI4 — `docs/rag.md` stale model example** — `COHERE_MODEL` default is
+  `command-a-03-2025` (`rag/settings.py`, `.env.example`), doc says `command-r-plus`.
+  ✓ `docs(rag): current COHERE_MODEL default` (commit `b7255a0`)
+
+- **MI5 — `CLAUDE.md` stale/incorrect rows** — `run.sh` "legacy, still functional" (file
+  was removed from the repo), `API_KEY` env row (unused; module avoids the Data API),
+  and `[download]` config keys missing `audio_format`, `video_quality`,
+  `transcript_languages`. ✓ `docs(claude): drop removed run.sh, fix env/config tables`
+  (commit `b6503dc`)
+
+- **MI6 — test-docstring package-name drift** — `tests/journal_utilities/rag/conftest.py`
+  and `tests/journal_utilities/rag/unit/test_pipeline.py` reference the old
+  `journalrag` package / `tests/journalrag/` path; point at `journal_utilities` and
+  `tests/journal_utilities/rag/`. ✓ `chore(tests): fix journalrag naming drift in docstrings`
+  (commit `a3b543a`)
+
+- **MI7 — `docs/configuration.md` misplaced `[pipeline]` heading** — `### [pipeline]`
+  sits inside "## Environment Variables"; move to the sections list. (Fold into ME6.)
+
+- **MI8 — TODO.md historical stale backticked paths** — the historical section's
+  bare test paths (tests/test_downloader.py, tests/test_audit_functions.py) →
+  actual tests/journal_utilities/…. (Fixed in this rewrite; see historical
+  section below.)
+
+- **MI9 — `docs/JOURNAL_SCHEMA.md` provenance table cites `assets/csv/` but the
+  per-item tree omits it** — add `csv/` to the assets listing. ✓ `docs(journal-schema): assets/csv in tree`
+  (commit `b7255a0`)
+
+- **MI10 — `data/README.md` stale layout** — documents a `database/` dir that does not
+  exist in the repo and `[session_name]_simplified.json` naming; actual output is
+  `{video_id}.json` / `{video_id}.simple.json` / `{video_id}.simple.txt` (+
+  `youtube_`-prefixed variants from the WhisperX pipeline). ✓ `docs(data): real output layout`
+  (commit `d7d8974`)
+
+- **MI11 — `.vscode/settings.json` disables pytest** — `python.testing.pytestEnabled:
+  false` contradicts the repo's pytest workflow; enable pytest and drop the unittest
+  config. ✓ `chore(vscode): enable pytest for the repo workflow` (commit `06a1356`)
+
+- **MI12 — `Makefile` help + `make lint` mismatch with CI** — `make lint` checks only
+  `src/ tests/` while CI checks `src/ tests/ scripts/`; align so `make lint` reproduces
+  the CI gate. ✓ `fix(make): lint covers scripts/ like CI` (commit `06a1356`)
 
 ---
 
 ## Completed / Closed
+
+### Historical — 2026-08-01 pass (deepest hostile red-team review)
 
 Everything below was implemented and verified in the 2026-08-01 pass. Final gates:
 `uv run pytest tests/` = **471 passed, 3 API-gated skips, 2 warnings (~100s)**;
@@ -15,13 +138,13 @@ Everything below was implemented and verified in the 2026-08-01 pass. Final gate
 `uv run mypy src` = **Success: no issues in 41 files**; CI golded gate
 `scripts/validate_journal.py` = **All checks passed**. No further action required.
 
-> Historical note: the earlier "Major — Scoped (deferred)" list from this pass is now fully
+> Historical note: the earlier "Major — Scoped (deferred)" list from that pass is now fully
 > resolved. All items below were previously scoped; each has since been **implemented** in
-> source + tests + docs and verified green. Nothing major remains open.
+> source + tests + docs and verified green. Nothing major remains open from that pass.
 
-### MAJORS — implemented this pass (M1–M11)
+#### MAJORS — implemented in the 2026-08-01 pass (M1–M11)
 
-**M1 — yt-dlp transcript strategy dead path — `download/downloader.py` + `tests/test_downloader.py`**
+**M1 — yt-dlp transcript strategy dead path — `download/downloader.py` + `tests/journal_utilities/test_downloader.py`**
 `_convert_vtt_to_text(best_file, final_path)` (was a one-arg `TypeError` swallowed at runtime, always
 falling back to the API). Added `_pick_transcript_vtt` (manual-over-auto, deterministic) and a no-mock
 regression test asserting the yt-dlp `SUCCESS` path converts a real VTT → `.txt`.
@@ -41,7 +164,7 @@ All dynamic values parameterized through `query(sql, params)` (`WHERE import_run
 `UPDATE $id …`, `LIMIT $limit`, youtube metadata `UPDATE $id MERGE {…}`); invalid backslash "escaping"
 removed.
 
-**M4 — `rollback_import` cross-run delete — `data/database.py` + `tests/test_audit_functions.py`**
+**M4 — `rollback_import` cross-run delete — `data/database.py` + `tests/journal_utilities/test_audit_functions.py`**
 Rollback now deletes the **exact** record id created during that run (from `import_audit.result_data`),
 never re-matching by `session_name`; audit update parameterized (`$rid`/`$ts`). Test updated to the new
 contract and asserts the delete/update bind params.
@@ -77,7 +200,7 @@ like "Insight 1" no longer merge across videos.
 `--apply` now refuses (exit 1, clear message) pointing at the safe out-of-place `--build <dir>` +
 `validate_journal.py` workflow; the misleading docstring was corrected. No more silent false-success.
 
-### Deferred backlog — now all implemented (previously MINOR/MEDIUM)
+#### Deferred backlog from that pass — now all implemented (previously MINOR/MEDIUM)
 
 - `/api/videos?q=` search mode now honors `offset`/`limit` and reports the **true** result total
   (`SearchIndex.search(limit=None)`; `Interface app.py` returns real `total`).
@@ -90,7 +213,7 @@ like "Insight 1" no longer merge across videos.
 - RAG: `settings.py` secrets optional at import (no import crash); transcript `date` derived
   deterministically from the filename (`_date_from_filename`) instead of `datetime.now()`.
 
-### Earlier pass — implemented in the same day (Medium/Minor)
+#### Earlier same-day pass — implemented (Medium/Minor)
 
 **Download/source:** yt-dlp UA centralized on every path; `download_audio`/`download_video` no longer
 report false SUCCESS on 0-byte/missing artifacts; `channel.py`/`playlist.py` UA; `playlist.py`
@@ -112,11 +235,30 @@ root `AGENTS.md` mock-policy reconciled; `docs/REFACTOR_READINESS.md` marked a h
 
 ---
 
+## Open / deferred (after this pass)
+
+- **CI duplicate lint step** — `.github/workflows/test.yml` "Lint the journal integrity gate"
+  (`ruff check scripts/validate_journal.py`) is fully covered by the repo-wide
+  `ruff check src/ tests/ scripts/` step. Deferred: CI stability, zero-risk policy; not docs.
+- **README `docs/translation.md` row** — belongs to the untracked subtitle-translation WIP
+  (scripts, docs, test) left uncommitted at pass start; excluded from this pass by rule.
+- **Heavy external flows not executed** — WhisperX/GPU, live SurrealDB, live Cohere, YouTube
+  network downloads. Claims verified by code reading instead; run these only on the target
+  hardware with real credentials.
+- **Coverage %** — intentionally not hardcoded anywhere (docs policy); see live
+  `uv run pytest tests/ --cov-report=term-missing`.
+
+---
+
 ## Notes for the next reviewer
 
 - Test/corpus counts are live snapshots — run `uv run pytest tests/ -q`; do not hardcode totals
   (`docs/AGENTS.md`).
 - Gate workflow: `uv run pytest tests/ -q`, `uv run ruff check src/ tests/ scripts/`,
-  `uv run mypy src`. Both ruff and mypy are now enforced in `.github/workflows/test.yml`.
+  `uv run mypy src`. Both ruff and mypy are enforced in `.github/workflows/test.yml`.
 - The v2 journal maintenance pipeline lives in `docs/JOURNAL_SCHEMA.md` and the read-only/idempotent
   gate scripts `scripts/{enrich_metadata,repair_split_transcripts,generate_journal_indexes,validate_journal}.py`.
+- This pass (2026-08-02) was docs-only + config fixes; no source code was changed. The
+  subtitle-translation feature (untracked `translate_*.py`, `docs/translation.md`,
+  `test_translate_subtitles.py`) is still uncommitted work from a separate effort — review and land it
+  as its own PR.
