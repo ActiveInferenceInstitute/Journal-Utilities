@@ -17,6 +17,7 @@ CLI tools over `src/journal_utilities/`. See [`README.md`](README.md) for usage.
 - `repair_split_transcripts.py` — rebuild complete split-session transcript artifacts;
   `--check` is read-only.
 - `validate_journal.py` — run the combined read-only integrity gate before handoff.
+- `translate_subtitles.py` / `translate_subtitles_openrouter.py` — translate per-item caption SRTs into 11 languages via local Ollama (`gemma3:4b` / `qwen2.5:3b`) or hosted OpenRouter. Pair with `translate_tb_watchdog.sh` for resilient long-horizon runs.
 
 ## Conventions
 - `PYTHONPATH=src` + the project venv. `timeout` is absent on macOS (use `gtimeout`/none).

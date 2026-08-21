@@ -18,6 +18,7 @@ module- and workflow-level guides.
 | [`render.md`](render.md) | Markdown/HTML rendering, course scaffolding. |
 | [`web_interface.md`](web_interface.md) | FastAPI SPA for browsing the library. |
 | [`chat_engine.md`](chat_engine.md) | Ollama-powered RAG chat over transcripts. |
+| [`translation.md`](translation.md) | Local Ollama + hosted OpenRouter subtitle translation (`scripts/translate_subtitles*.py`). |
 | [`configuration.md`](configuration.md) | `config.ini` + `.env` reference. |
 
 ## Journal refactor

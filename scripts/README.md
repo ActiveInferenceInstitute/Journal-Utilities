@@ -241,3 +241,32 @@ with guidance rather than doing a silent in-place move.
 python scripts/refactor_journal.py --journal ../ActiveInferenceJournal            # audit
 python scripts/refactor_journal.py --journal ../ActiveInferenceJournal --build /tmp/v2
 ```
+
+## Subtitle Translation (`translate_subtitles.py`, `translate_subtitles_openrouter.py`, `translate_tb_watchdog.sh`)
+
+Translate per-item caption SRTs (`captions/*.srt`) in `ActiveInferenceJournal` into 11 target languages (es/fr/de/pt/it/nl/ru/ja/ko/zh-Hans/zh-Hant). See full guide in [`docs/translation.md`](../docs/translation.md).
+
+### Local Ollama Translation (`translate_subtitles.py`)
+
+Uses local Ollama models (`gemma3:4b` for Latin scripts, `qwen2.5:3b` for CJK):
+
+```bash
+# Preview what would be translated for a series
+python scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --series "Livestream" --dry-run
+
+# Run local translation
+python scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --series "Livestream"
+```
+
+### Hosted OpenRouter Translation (`translate_subtitles_openrouter.py`)
+
+Uses OpenRouter API (requires `OPENROUTER_API_KEY` in `.env` or environment):
+
+```bash
+# Run hosted translation for a series
+python scripts/translate_subtitles_openrouter.py --journal ../ActiveInferenceJournal --series "Livestream"
+```
+
+### Resumable Translation Watchdog (`translate_tb_watchdog.sh`)
+
+Bash watchdog script that manages retries, lockfile acquisition, and process restarts for long-running batch translation.
