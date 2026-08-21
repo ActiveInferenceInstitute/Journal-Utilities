@@ -7,6 +7,8 @@
  * - Live transcript synchronization & cue highlighting
  * - Real-time multi-language subtitle translation switching
  * - In-browser fuzzy search and series filtering
+ * - Chapter / session jump links
+ * - Copy transcript to clipboard
  */
 
 const state = {
@@ -47,6 +49,17 @@ function formatTime(seconds) {
         return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
     }
     return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+function parseTimeToSeconds(timeStr) {
+    if (!timeStr) return 0;
+    const parts = timeStr.trim().split(':');
+    if (parts.length === 3) {
+        return parseFloat(parts[0]) * 3600 + parseFloat(parts[1]) * 60 + parseFloat(parts[2]);
+    } else if (parts.length === 2) {
+        return parseFloat(parts[0]) * 60 + parseFloat(parts[1]);
+    }
+    return parseFloat(timeStr) || 0;
 }
 
 function escapeHtml(str) {
@@ -177,21 +190,23 @@ function renderLibraryView() {
 
     app.innerHTML = `
         <div class="stats-strip">
-            <div class="stat-chip">Total Items: <strong>${state.items.length}</strong></div>
-            <div class="stat-chip">With Transcripts: <strong>${state.items.filter(i => i.has_transcript).length}</strong></div>
-            <div class="stat-chip">Translated Items: <strong>${state.items.filter(i => i.languages && i.languages.length > 0).length}</strong></div>
-            <div class="stat-chip">Series Categories: <strong>${seriesList.length - 1}</strong></div>
+            <div class="stat-chip">📚 Total Items: <strong>${state.items.length}</strong></div>
+            <div class="stat-chip">📝 Diarized Transcripts: <strong>${state.items.filter(i => i.has_transcript).length}</strong></div>
+            <div class="stat-chip">🌐 Translated Items: <strong>${state.items.filter(i => i.languages && i.languages.length > 0).length}</strong></div>
+            <div class="stat-chip">📺 Series Categories: <strong>${seriesList.length - 1}</strong></div>
         </div>
 
         <div class="filter-section">
             <div class="search-wrapper">
+                <span class="search-icon" aria-hidden="true">🔍</span>
                 <input type="search" class="search-input" id="searchInput"
-                       placeholder="Search videos, topics, series, or transcripts..."
-                       value="${escapeHtml(state.searchQuery)}">
+                       placeholder="Search videos by title, guests, topic, keywords, or series..."
+                       value="${escapeHtml(state.searchQuery)}"
+                       aria-label="Search videos and transcripts">
             </div>
-            <div class="series-pills" id="seriesPills">
+            <div class="series-pills" id="seriesPills" role="tablist" aria-label="Filter by Series">
                 ${seriesList.map(s => `
-                    <button class="pill ${s === state.currentSeries ? 'active' : ''}" data-series="${escapeHtml(s)}">
+                    <button class="pill ${s === state.currentSeries ? 'active' : ''}" data-series="${escapeHtml(s)}" role="tab" aria-selected="${s === state.currentSeries}">
                         ${escapeHtml(s)}
                     </button>
                 `).join('')}
@@ -200,8 +215,9 @@ function renderLibraryView() {
 
         <div class="video-grid" id="videoGrid">
             ${state.filteredItems.length === 0 ? `
-                <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
-                    No videos found matching your criteria.
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+                    <h3>No items found matching your search.</h3>
+                    <p style="margin-top: 0.5rem;">Try adjusting your keywords or clearing the category filter.</p>
                 </div>
             ` : state.filteredItems.map(renderVideoCard).join('')}
         </div>
@@ -218,8 +234,12 @@ function renderLibraryView() {
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
             state.currentSeries = pill.getAttribute('data-series');
-            document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.pill').forEach(p => {
+                p.classList.remove('active');
+                p.setAttribute('aria-selected', 'false');
+            });
             pill.classList.add('active');
+            pill.setAttribute('aria-selected', 'true');
             filterItems();
             updateVideoGrid();
         });
@@ -233,7 +253,9 @@ function filterItems() {
         const matchesQuery = !q ||
             (it.title && it.title.toLowerCase().includes(q)) ||
             (it.series && it.series.toLowerCase().includes(q)) ||
-            (it.item && it.item.toLowerCase().includes(q));
+            (it.item && it.item.toLowerCase().includes(q)) ||
+            (it.guests && it.guests.some(g => g.toLowerCase().includes(q))) ||
+            (it.keywords && it.keywords.some(k => k.toLowerCase().includes(q)));
         return matchesSeries && matchesQuery;
     });
 }
@@ -243,8 +265,9 @@ function updateVideoGrid() {
     if (!grid) return;
     if (state.filteredItems.length === 0) {
         grid.innerHTML = `
-            <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted);">
-                No videos found matching your criteria.
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--text-muted);">
+                <h3>No items found matching your search.</h3>
+                <p style="margin-top: 0.5rem;">Try adjusting your keywords or clearing the category filter.</p>
             </div>
         `;
     } else {
@@ -260,17 +283,20 @@ function renderVideoCard(item) {
         <span class="lang-tag">${escapeHtml(l)}</span>
     `).join('');
 
+    const guestsList = (item.guests && item.guests.length > 0) ? item.guests.join(', ') : '';
+
     return `
-        <div class="video-card" onclick="window.location.hash='#/item/${encodeURIComponent(item.id)}'">
+        <div class="video-card" onclick="window.location.hash='#/item/${encodeURIComponent(item.id)}'" role="button" tabindex="0" aria-label="Open ${escapeHtml(item.title)}">
             <div class="card-thumbnail">
-                ${thumbUrl ? `<img src="${thumbUrl}" alt="${escapeHtml(item.title)}" loading="lazy">` : ''}
+                ${thumbUrl ? `<img src="${thumbUrl}" alt="Thumbnail for ${escapeHtml(item.title)}" loading="lazy">` : ''}
                 ${item.parts_count > 1 ? `<span class="card-badge">${item.parts_count} parts</span>` : ''}
             </div>
             <div class="card-body">
                 <span class="card-series">${escapeHtml(item.series)}</span>
                 <h3 class="card-title">${escapeHtml(item.title)}</h3>
+                ${guestsList ? `<div class="card-guests">👥 ${escapeHtml(guestsList)}</div>` : ''}
                 <div class="card-footer">
-                    <span>${item.has_transcript ? '📝 Transcript' : '✕ Audio only'}</span>
+                    <span>${item.has_transcript ? '📝 Diarized' : '✕ Audio only'}</span>
                     <div class="lang-tags">
                         ${langBadges}
                         ${item.languages && item.languages.length > 4 ? `<span class="lang-tag">+${item.languages.length - 4}</span>` : ''}
@@ -328,11 +354,16 @@ function renderCurrentItemDOM() {
     const videoId = currentPart.video_id || (parts.length > 0 ? parts[0].video_id : '');
 
     const translationLangs = Object.keys(item.translations || {});
+    const sessions = item.sessions || [];
+
+    // Filter sessions matching current video if multi-part
+    const currentSessions = sessions.filter(s => !s.session_name || s.session_name.startsWith(videoId));
 
     app.innerHTML = `
-        <a href="#/" class="btn-back">← Back to Library</a>
+        <a href="#/" class="btn-back" aria-label="Return to library view">← Back to Library</a>
 
         <div class="detail-view">
+            <!-- Left Panel: Video Player & Details -->
             <div class="player-panel">
                 <div class="video-frame-container" id="ytPlayerContainer"></div>
 
@@ -342,17 +373,47 @@ function renderCurrentItemDOM() {
                         <span><strong>Series:</strong> ${escapeHtml(item.series)}</span>
                         ${item.episode ? `<span><strong>Episode:</strong> ${escapeHtml(item.episode)}</span>` : ''}
                         ${currentPart.duration ? `<span><strong>Duration:</strong> ${formatTime(currentPart.duration)}</span>` : ''}
-                        ${currentPart.upload_date ? `<span><strong>Date:</strong> ${escapeHtml(currentPart.upload_date)}</span>` : ''}
+                        ${currentPart.date || currentPart.upload_date ? `<span><strong>Date:</strong> ${escapeHtml(currentPart.date || currentPart.upload_date)}</span>` : ''}
                     </div>
+
+                    ${(item.guests && item.guests.length > 0) ? `
+                        <div class="detail-meta-row" style="margin-top: 0.5rem;">
+                            <span><strong>Guests & Speakers:</strong> ${escapeHtml(item.guests.join(', '))}</span>
+                        </div>
+                    ` : ''}
+
+                    ${(item.keywords && item.keywords.length > 0) ? `
+                        <div class="detail-tags">
+                            ${item.keywords.map(k => `<span class="detail-tag">🏷️ ${escapeHtml(k)}</span>`).join('')}
+                        </div>
+                    ` : ''}
                 </div>
+
+                ${currentSessions.length > 0 ? `
+                    <div class="chapters-card">
+                        <div class="chapters-card__title">📑 Chapters / Sessions</div>
+                        <div class="chapters-list">
+                            ${currentSessions.map(s => `
+                                <div class="chapter-item" data-start="${parseTimeToSeconds(s.start)}">
+                                    <span class="chapter-time">⏱ ${escapeHtml(s.start)}</span>
+                                    <span class="chapter-label">${escapeHtml(s.title || s.session_name)}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
             </div>
 
+            <!-- Right Panel: Interactive Transcript & Translations -->
             <div class="transcript-panel">
                 <div class="panel-header">
                     <div class="panel-title">
                         <span>💬 Transcript</span>
+                    </div>
+
+                    <div class="panel-controls">
                         ${parts.length > 1 ? `
-                            <select class="part-selector" id="partSelector">
+                            <select class="part-selector" id="partSelector" aria-label="Select Video Part">
                                 ${parts.map((p, idx) => `
                                     <option value="${idx}" ${idx === state.currentPartIndex ? 'selected' : ''}>
                                         Part ${idx + 1}: ${escapeHtml(p.title || p.video_id)}
@@ -360,21 +421,23 @@ function renderCurrentItemDOM() {
                                 `).join('')}
                             </select>
                         ` : ''}
-                    </div>
 
-                    <select class="lang-selector" id="langSelector">
-                        <option value="original" ${state.currentLanguage === 'original' ? 'selected' : ''}>
-                            ${LANGUAGE_LABELS['original']}
-                        </option>
-                        ${translationLangs.map(l => `
-                            <option value="${escapeHtml(l)}" ${state.currentLanguage === l ? 'selected' : ''}>
-                                ${LANGUAGE_LABELS[l] || l}
+                        <select class="lang-selector" id="langSelector" aria-label="Select Language Translation">
+                            <option value="original" ${state.currentLanguage === 'original' ? 'selected' : ''}>
+                                ${LANGUAGE_LABELS['original']}
                             </option>
-                        `).join('')}
-                    </select>
+                            ${translationLangs.map(l => `
+                                <option value="${escapeHtml(l)}" ${state.currentLanguage === l ? 'selected' : ''}>
+                                    ${LANGUAGE_LABELS[l] || l}
+                                </option>
+                            `).join('')}
+                        </select>
+
+                        <button class="btn-tool" id="btnCopyTranscript" title="Copy transcript to clipboard" aria-label="Copy transcript text">📋 Copy</button>
+                    </div>
                 </div>
 
-                <div class="transcript-body" id="transcriptBody">
+                <div class="transcript-body" id="transcriptBody" tabindex="0" role="region" aria-label="Interactive transcript text">
                     ${renderTranscriptCues()}
                 </div>
             </div>
@@ -405,6 +468,29 @@ function renderCurrentItemDOM() {
         });
     }
 
+    const btnCopy = document.getElementById('btnCopyTranscript');
+    if (btnCopy) {
+        btnCopy.addEventListener('click', () => {
+            const body = document.getElementById('transcriptBody');
+            if (body) {
+                navigator.clipboard.writeText(body.innerText).then(() => {
+                    btnCopy.textContent = '✓ Copied!';
+                    setTimeout(() => { btnCopy.textContent = '📋 Copy'; }, 2000);
+                });
+            }
+        });
+    }
+
+    const chapterItems = document.querySelectorAll('.chapter-item');
+    chapterItems.forEach(ch => {
+        ch.addEventListener('click', () => {
+            const start = parseFloat(ch.getAttribute('data-start'));
+            if (!isNaN(start)) {
+                seekToTime(start);
+            }
+        });
+    });
+
     attachCueClickListeners();
 }
 
@@ -419,7 +505,7 @@ function renderTranscriptCues() {
             return `<p class="text-muted">No translated cues available for this part.</p>`;
         }
         return transObj.cues.map((c) => `
-            <div class="cue-row" data-start="${c.start}" data-end="${c.end}">
+            <div class="cue-row" data-start="${c.start}" data-end="${c.end}" role="button" tabindex="0">
                 <div class="cue-meta">
                     <span class="cue-time">⏱ ${formatTime(c.start)}</span>
                     <span class="cue-speaker">Translation (${escapeHtml(state.currentLanguage)})</span>
@@ -436,7 +522,7 @@ function renderTranscriptCues() {
         return currentTrans.segments.map(seg => {
             const speakerName = speakersMap[seg.speaker] || seg.speaker || 'Speaker';
             return `
-                <div class="cue-row" data-start="${seg.start}" data-end="${seg.end}">
+                <div class="cue-row" data-start="${seg.start}" data-end="${seg.end}" role="button" tabindex="0">
                     <div class="cue-meta">
                         <span class="cue-time">⏱ ${formatTime(seg.start)}</span>
                         <span class="cue-speaker">👤 ${escapeHtml(speakerName)}</span>
@@ -449,7 +535,7 @@ function renderTranscriptCues() {
 
     if (item.raw_text) {
         return `
-            <div style="white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; color: var(--text-primary);">
+            <div style="white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; color: var(--text-primary); padding: 0.5rem;">
                 ${escapeHtml(item.raw_text)}
             </div>
         `;
@@ -467,6 +553,12 @@ function attachCueClickListeners() {
                 seekToTime(start);
                 cueRows.forEach(r => r.classList.remove('active'));
                 row.classList.add('active');
+            }
+        });
+        row.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                row.click();
             }
         });
     });

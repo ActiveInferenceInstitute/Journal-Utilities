@@ -2,11 +2,13 @@
 
 Compiles ActiveInferenceJournal data into a standalone, client-side static site
 with:
-- Full index and series directory
+- Full index and series directory with category filtering
 - Embedded YouTube video playback with interactive timestamp seeking
 - Diarized transcripts with speaker labels and synchronized cues
+- Chapters / session navigation
 - Multi-language subtitle & translation switching
-- Client-side full-text search index
+- Client-side full-text search index and clipboard copy tools
+- Dark/Black/Gray theme with red accents, full accessibility (ARIA) and SEO metadata
 """
 
 import json
@@ -59,6 +61,12 @@ def build_item_payload(item_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
     episode = meta.get("episode", "")
     parts = meta.get("parts", [])
     speakers = meta.get("speakers", {})
+    guests = meta.get("guests", [])
+    other_participants = meta.get("other_participants", [])
+    keywords = meta.get("keywords", [])
+    paper_title = meta.get("paper_title", "")
+    github_url = meta.get("github", "")
+    sessions = meta.get("sessions", [])
 
     payload: dict[str, Any] = {
         "id": f"{series}/{item_id}",
@@ -69,6 +77,12 @@ def build_item_payload(item_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
         "episode": episode,
         "parts": parts,
         "speakers": speakers,
+        "guests": guests,
+        "other_participants": other_participants,
+        "keywords": keywords,
+        "paper_title": paper_title,
+        "github": github_url,
+        "sessions": sessions,
         "transcripts": [],
         "translations": {},
         "raw_text": "",
@@ -106,7 +120,7 @@ def build_item_payload(item_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
     # 3. Process translations
     tr_dir = item_dir / "translations"
     if tr_dir.exists():
-        for srt_file in tr_dir.glob("*.srt"):
+        for srt_file in sorted(tr_dir.glob("*.srt")):
             parts_name = srt_file.name.split(".")
             if len(parts_name) >= 2:
                 lang = parts_name[-2]
@@ -165,6 +179,8 @@ def build_site(
         title = meta.get("title") or item_id
         category = meta.get("category") or series
         parts = meta.get("parts", [])
+        guests = meta.get("guests", [])
+        keywords = meta.get("keywords", [])
 
         # Build full item JSON payload
         item_payload = build_item_payload(item_path, meta)
@@ -185,6 +201,8 @@ def build_site(
                 "has_transcript": it.get("has_transcript", False),
                 "parts_count": len(parts),
                 "video_ids": [pt.get("video_id") for pt in parts if pt.get("video_id")],
+                "guests": guests,
+                "keywords": keywords,
                 "languages": sorted(item_payload["translations"].keys()),
                 "data_url": item_json_rel,
             }
