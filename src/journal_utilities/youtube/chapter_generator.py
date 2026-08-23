@@ -207,9 +207,10 @@ class ChapterGenerator:
             f"2. Provide between {max(8, target_count - 5)} and {target_count + 5} granular chapters marking every significant topic, speaker transition, model slide, or discussion question.\n"
             f"3. Timestamps must be strictly chronological and derived from the bracketed [MM:SS] timestamps in the transcript.\n"
             f"4. Format each line strictly as: MM:SS Chapter Title or HH:MM:SS Chapter Title.\n"
-            f"5. Every chapter title MUST be descriptive and informative: 6-12 words capturing the topic, claim, question, or speaker moment of that segment (e.g. \"How free energy bounds perception - Friston's formulation\", \"Chris Fields on reference frames and quantum choice\"), never a bare topic label like \"Free Energy\" or \"Reference frames\".\n"
-            f"6. BANNED title styles: single-word titles; bare generic labels such as \"Summary\", \"Conclusion\", \"Discussion\", or \"Q&A\" (a plain \"Introduction\" is allowed ONLY as the 00:00 entry); and generic numbering like \"Chapter 5\" or \"Part 3\" instead of a real descriptive title.\n"
-            f"7. Output ONLY the numbered or clean timestamp list, no introduction, markdown headers, or summary prose.\n\n"
+            f"5. Every chapter title MUST be descriptive and informative: 6-12 words capturing the specific concept, formalization, mathematical model, or scientific argument discussed (e.g. \"Markov blankets as internal states preserving intent\", \"Derivation of expected free energy in Equation 2.5\"), never a bare topic label like \"Free Energy\".\n"
+            f"6. FOCUS ON SEARCHABLE TOPICS, NO ATTRIBUTION NOISE: Do NOT include personal names or conversational attributions (e.g. avoid \"Tanner discussing...\", \"Chris Fields explaining...\", \"Daniel's Three Minds\", \"Ali's Explanation\"). State the conceptual subject directly (e.g. \"Markov boundaries as agentic models\", \"Three Minds Model and Agent-Environment Dynamics\").\n"
+            f"7. BANNED title styles: personal speaker attributions / names; single-word titles; bare generic labels such as \"Summary\", \"Conclusion\", \"Discussion\", or \"Q&A\" (a plain \"Introduction\" is allowed ONLY as the 00:00 entry); and generic numbering like \"Chapter 5\" or \"Part 3\" without a real descriptive topic.\n"
+            f"8. Output ONLY the numbered or clean timestamp list, no introduction, markdown headers, or summary prose.\n\n"
             f"TRANSCRIPT EXCERPT WITH TIMESTAMPS:\n"
             f"{sample_text}\n"
         )
