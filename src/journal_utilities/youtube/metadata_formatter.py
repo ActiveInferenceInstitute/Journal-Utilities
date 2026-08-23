@@ -41,6 +41,44 @@ def format_seconds_to_timestamp(seconds: float | int) -> str:
     return f"{minutes:02d}:{secs:02d}"
 
 
+# Characters YouTube rejects in descriptions: control chars except tab/newline,
+# plus other known-problematic codepoints.
+_YT_REPLACEMENTS = {
+    "\u000b": " ",  # vertical tab
+    "\u000c": " ",  # form feed
+    "\u00a0": " ",  # nbsp
+    "\u200b": "",   # zero-width space
+    "\u200c": "",
+    "\u200d": "",
+    "\ufeff": "",   # BOM
+}
+
+
+def sanitize_for_youtube(text: str) -> str:
+    """Strip control characters and invalid Unicode YouTube rejects from a description.
+
+    Keeps \\n, \\t, and \\r; removes every other C0/C1 control character and
+    replaces common invisible characters that trigger ``invalidDescription``.
+    """
+    out: list[str] = []
+    for ch in text:
+        if ch in ("\n", "\t", "\r"):
+            out.append(ch)
+            continue
+        code = ord(ch)
+        if code < 32 or code == 127:
+            out.append(" ")
+            continue
+        if 128 <= code <= 159:  # C1 controls
+            out.append(" ")
+            continue
+        out.append(_YT_REPLACEMENTS.get(ch, ch))
+    cleaned = "".join(out)
+    # Collapse runs of blank-space-only lines left by removals, trim trailing junk.
+    cleaned = "\n".join(line.rstrip() for line in cleaned.split("\n"))
+    return cleaned.strip()
+
+
 @dataclass
 class ChapterEntry:
     """Represents a single video chapter / timestamp entry."""
@@ -192,4 +230,4 @@ def assemble_video_description(
     # 4. Standard updated Institute link block
     sections.append(STANDARD_INSTITUTE_LINKBLOCK)
 
-    return "\n\n".join(sections)
+    return sanitize_for_youtube("\n\n".join(sections))

@@ -99,6 +99,20 @@ def parse_llm_chapters_text(text: str) -> list[ChapterEntry]:
             len(unique_chapters),
         )
 
+    # Title-quality gate: surface (but keep) suspiciously short titles for review.
+    short_titles = [
+        c.title
+        for c in unique_chapters
+        if len(c.title) < 25
+        and not (c.start == 0 and c.title.strip().lower() == "introduction")
+    ]
+    if short_titles:
+        logger.warning(
+            "Chapter title quality review: %d title(s) shorter than 25 characters: %s",
+            len(short_titles),
+            "; ".join(short_titles),
+        )
+
     return unique_chapters
 
 
@@ -193,7 +207,9 @@ class ChapterGenerator:
             f"2. Provide between {max(8, target_count - 5)} and {target_count + 5} granular chapters marking every significant topic, speaker transition, model slide, or discussion question.\n"
             f"3. Timestamps must be strictly chronological and derived from the bracketed [MM:SS] timestamps in the transcript.\n"
             f"4. Format each line strictly as: MM:SS Chapter Title or HH:MM:SS Chapter Title.\n"
-            f"5. Output ONLY the numbered or clean timestamp list, no introduction, markdown headers, or summary prose.\n\n"
+            f"5. Every chapter title MUST be descriptive and informative: 6-12 words capturing the topic, claim, question, or speaker moment of that segment (e.g. \"How free energy bounds perception - Friston's formulation\", \"Chris Fields on reference frames and quantum choice\"), never a bare topic label like \"Free Energy\" or \"Reference frames\".\n"
+            f"6. BANNED title styles: single-word titles; bare generic labels such as \"Summary\", \"Conclusion\", \"Discussion\", or \"Q&A\" (a plain \"Introduction\" is allowed ONLY as the 00:00 entry); and generic numbering like \"Chapter 5\" or \"Part 3\" instead of a real descriptive title.\n"
+            f"7. Output ONLY the numbered or clean timestamp list, no introduction, markdown headers, or summary prose.\n\n"
             f"TRANSCRIPT EXCERPT WITH TIMESTAMPS:\n"
             f"{sample_text}\n"
         )

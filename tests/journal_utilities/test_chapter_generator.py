@@ -73,7 +73,8 @@ def _make_llm_chapter_lines(count: int) -> str:
     for i in range(count):
         total = i * seconds_per_chapter
         ts = f"{total // 3600:02d}:{(total % 3600) // 60:02d}:{total % 60:02d}"
-        lines.append(f"{ts} Chapter {i} Topic")
+        # Titles are >= 25 chars so the short-title quality warning does not fire.
+        lines.append(f"{ts} Chapter {i} Topic with a descriptive informative title")
     return "\n".join(lines)
 
 

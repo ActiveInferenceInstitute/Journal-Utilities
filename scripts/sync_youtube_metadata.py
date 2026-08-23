@@ -3,6 +3,7 @@
 
 import argparse
 import json
+import os
 import logging
 import sys
 from pathlib import Path
@@ -98,7 +99,13 @@ def main() -> int:
         targets = targets[: args.limit]
 
     logger.info("Found %d target video(s) to evaluate.", len(targets))
-    client = YouTubeClient()
+    # Build client from standard env-var credential locations (same contract as
+    # the InstituteOS YouTubeAdapter.connect config).
+    client = YouTubeClient(
+        client_secrets_path=os.environ.get("YOUTUBE_CLIENT_SECRETS"),
+        token_path=os.environ.get("YOUTUBE_TOKEN_PATH"),
+        api_key=os.environ.get("YOUTUBE_API_KEY"),
+    )
 
     chapter_gen = None
     if args.llm_backend != "none":
@@ -193,8 +200,10 @@ def main() -> int:
 
         updated_count += 1
 
-        # 4. VERIFY
+        # 4. VERIFY (short sleep for YouTube propagation)
         if args.verify and not args.dry_run:
+            import time as _time
+            _time.sleep(5)
             logger.info("Verifying update on YouTube for %s...", vid)
             try:
                 verified = client.get_video_snippet(vid)
