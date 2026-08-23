@@ -209,7 +209,7 @@ and [`docs/REFACTOR_READINESS.md`](docs/REFACTOR_READINESS.md) for the refactor 
 | [**YouTube**](docs/youtube.md) | Channel enumeration, playlist parsing, title categorization |
 | [**Download**](docs/youtube_download.md) | Cookie auth, 403 troubleshooting, download strategies |
 | [**Transcription**](docs/transcription.md) | MLX-Whisper (Mac), WhisperX (GPU), model selection |
-| [**Subtitles → Translations**](docs/translation.md) | Local Ollama + hosted OpenRouter subtitle translation |
+| [**Subtitles → Translations**](docs/translation.md) | Hosted OpenRouter subtitle translation |
 | [**Export**](docs/export.md) | Format details, metadata enrichment, library API |
 | [**Web Interface**](docs/web_interface.md) | API endpoints, SPA frontend, development server |
 | [**Chat Engine**](docs/chat_engine.md) | Ollama RAG, prompt engineering, model auto-discovery |
