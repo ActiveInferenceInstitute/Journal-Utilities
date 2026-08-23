@@ -8,8 +8,8 @@ per item into `translations/` (see `JOURNAL_SCHEMA.md`).
 
 | Code | Language | Model (default) |
 | :--- | :--- | :--- |
-| `es` `fr` `de` `pt` `it` `nl` `ru` | Western European/Russian | `gemma3:4b` (local) / `openai/gpt-4o-mini` (hosted) |
-| `ja` `ko` `zh-Hans` `zh-Hant` | CJK | `qwen2.5:3b` (local) / `openai/gpt-4o-mini` (hosted) |
+| `es` `fr` `de` `pt` `it` `nl` `ru` | Western European/Russian | `openai/gpt-4o-mini` |
+| `ja` `ko` `zh-Hans` `zh-Hant` | CJK | `openai/gpt-4o-mini` |
 
 Both engines preserve SRT index, timing lines, and CRLF line endings, and keep
 brand/proper nouns verbatim (e.g. `Active Inference Institute`, `pymdp`,
@@ -17,30 +17,11 @@ brand/proper nouns verbatim (e.g. `Active Inference Institute`, `pymdp`,
 
 ## Engines
 
-### 1. Local (Ollama) — `scripts/translate_subtitles.py`
+### Local vs hosted
 
-Reproducible, idempotent, resumable offline translator. Translates each cue's
-text via local Ollama models (zero network dependency), skips languages that
-already exist unless `--force`, and checkpoints progress.
+The local-Ollama engine (`translate_subtitles.py`) was removed on 2026-08-23; the hosted OpenRouter engine is now the only supported translator.
 
-```bash
-# all series, all languages
-python3 scripts/translate_subtitles.py --journal ../ActiveInferenceJournal
-
-# one series / one language / capped run / force redo
-python3 scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --series GuestStream
-python3 scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --lang es
-python3 scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --limit 10
-python3 scripts/translate_subtitles.py --journal ../ActiveInferenceJournal --force
-```
-
-Environment: `OLLAMA_URL` (default `http://localhost:11434`),
-`OLLAMA_MODEL` (optional override).
-
-> Note: local 4B/3B models are slow at scale and serialize against a single
-> shared GPU. Prefer the hosted engine for large batches.
-
-### 2. Hosted (OpenRouter) — `scripts/translate_subtitles_openrouter.py`
+### Hosted (OpenRouter) — sole supported engine — `scripts/translate_subtitles_openrouter.py`
 
 Fast batch translator for large corpora. Two speedups over the local path:
 (1) many subtitle cues are translated per HTTP request (batching), and (2)

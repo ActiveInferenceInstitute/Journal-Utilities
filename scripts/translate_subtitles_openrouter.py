@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Translate ActiveInferenceJournal caption SRTs into target languages via OpenRouter.
 
-Fast, resumable, idempotent replacement for the local-Ollama path. Two speedups
-over the Ollama translator: (1) many subtitle cues are translated per HTTP
+Fast, resumable, idempotent subtitle translator. Key design points: (1) many subtitle cues are translated per HTTP
 request (batch), not one HTTP round-trip per cue; (2) requests run concurrently
 against a hosted API instead of a serialized local GPU.
 
