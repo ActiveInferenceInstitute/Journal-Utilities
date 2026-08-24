@@ -55,11 +55,14 @@ _YT_REPLACEMENTS = {
 
 
 def sanitize_for_youtube(text: str) -> str:
-    """Strip control characters and invalid Unicode YouTube rejects from a description.
+    """Strip control characters, angle brackets, and invalid Unicode YouTube rejects from a description.
 
-    Keeps \\n, \\t, and \\r; removes every other C0/C1 control character and
-    replaces common invisible characters that trigger ``invalidDescription``.
+    YouTube unconditionally rejects raw '<' and '>' characters in metadata snippets.
+    Keeps newlines and tabs; removes other control characters and replaces
+    invisible characters that trigger invalidDescription.
     """
+    # Replace literal angle brackets that cause invalidDescription
+    text = text.replace('<', '[').replace('>', ']')
     out: list[str] = []
     for ch in text:
         if ch in ("\n", "\t", "\r"):
@@ -77,7 +80,6 @@ def sanitize_for_youtube(text: str) -> str:
     # Collapse runs of blank-space-only lines left by removals, trim trailing junk.
     cleaned = "\n".join(line.rstrip() for line in cleaned.split("\n"))
     return cleaned.strip()
-
 
 @dataclass
 class ChapterEntry:
