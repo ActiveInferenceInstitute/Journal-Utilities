@@ -2,6 +2,32 @@
 
 CLI utilities for data processing, transcription, and course scaffolding.
 
+Every script here is a thin CLI orchestrator over `src/journal_utilities/` or the
+sibling `ActiveInferenceJournal` checkout. Run any of them as
+`uv run python scripts/<name>.py --help` for exact flags.
+
+## Pipeline map (what exists and how it chains)
+
+```text
+YouTube ingest            download_channel.py --> data/output/channel_videos.json
+                          sync_youtube_metadata.py (enrich titles/tags/chapters from local metadata)
+Transcription             transcribe_missing.py / transcribe_worklist.py (mlx-whisper, Mac)
+                          transcription_status.py (read-only coverage report)
+Caption/subtitle layer    derive_captions_from_json.py (transcript.json -> captions/*.srt)
+                          txt_to_segments.py (plain .txt -> pseudo-timed segments)
+Speaker attribution       speaker_cues.py -> apply_speaker_names.py (repair + name mapping)
+Recovery/repair           repair_split_transcripts.py, recover_whisperx.py,
+                          patch_whisperx.py, fix_scheduled_dates.py, fetch_chapters.py
+Journal v2 maintenance    enrich_metadata.py -> repair_split_transcripts.py
+                          -> generate_journal_indexes.py -> validate_journal.py (read-only gate)
+Publication surfaces      build_pages_site.py (journal -> static GitHub Pages bundle)
+Translation               translate_subtitles_openrouter.py (docs/translation.md)
+Curriculum                scaffold_youtube_courses.py
+```
+
+The canonical maintenance chain is documented in `docs/JOURNAL_SCHEMA.md`; the
+read-only `validate_journal.py` is the acceptance gate for every step above.
+
 ## `download_channel.py`
 
 Primary CLI for enumerate-and-download of YouTube channel content.
@@ -255,3 +281,28 @@ Uses OpenRouter API (requires `OPENROUTER_API_KEY` in `.env` or environment):
 python scripts/translate_subtitles_openrouter.py --journal ../ActiveInferenceJournal --series "Livestream"
 ```
 
+
+## `build_pages_site.py`
+
+Compile the sibling `ActiveInferenceJournal` checkout into a static GitHub Pages
+bundle (HTML pages + index) under the journal's own output directory. Pass
+`--help` for the journal-path and output flags; read-only with respect to this repo.
+
+## `derive_captions_from_json.py`
+
+Derive base English `captions/*.srt` files from each item's diarized
+`transcript.json` for journal items that currently lack caption SRTs. Dry-run by
+default; add `--apply` to write the `.srt` files to disk.
+
+## `sync_youtube_metadata.py`
+
+Closed-loop metadata synchronizer: merges locally cached channel data
+(`data/output/channel_videos.json`, `data/input/video_chapters.json`) and the
+InstituteOS source tree to derive video tags and refresh transcript-adjacent
+metadata. Uses repo-relative paths automatically.
+
+## `txt_to_segments.py`
+
+Convert a timestamp-free plain-text transcript
+(`data/output/transcripts/<id>.txt`) into pseudo-timed ~30-second segments
+(~80 words each) so downstream diarization/segment tooling has a uniform input.

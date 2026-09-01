@@ -274,6 +274,25 @@ root `AGENTS.md` mock-policy reconciled; `docs/REFACTOR_READINESS.md` marked a h
 
 ---
 
+## Round-2 agent-ergonomics pass — 2026-08-31 (lane E)
+
+- [x] **scripts/README.md covered 6 of 24 scripts by name; 4 on-disk scripts
+      entirely undocumented** (`build_pages_site.py`, `derive_captions_from_json.py`,
+      `sync_youtube_metadata.py`, `txt_to_segments.py`). Added a pipeline map
+      (ingest → transcribe → captions → speakers → journal v2 maintenance →
+      pages/translation surfaces) at the top plus per-script sections for the four
+      missing ones. Acceptance: a mechanical name-scan of `scripts/*.py` vs
+      `scripts/README.md` reports zero undocumented scripts; all referenced paths
+      exist on disk. ✓ this pass
+- [x] **Verified Makefile target references and docs script references resolve**
+      (`-m` module paths and `scripts/*.py` args in `Makefile`, plus every
+      `scripts/…py` mention in `docs/*.md`). All resolve; no stale commands found
+      this pass. Acceptance: zero missing refs in the same mechanical scan. ✓
+- [ ] **Documentation test-count snapshot drift** — `tests/README.md` /
+      `tests/AGENTS.md` counts are dated snapshots by policy; refresh from a live
+      `uv run pytest tests/ -q` whenever a pass touches tests. Deferred: this
+      round changed docs only; no test surface moved.
+
 ## Notes for the next reviewer
 
 - Test/corpus counts are live snapshots — run `uv run pytest tests/ -q`; do not hardcode totals
